@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+@import "@heroui/styles";
+
+
+*{
+   font-family: "Hind Siliguri", sans-serif;
+}
+
+
+ .swiper-pagination-bullet-active {
+          background: #10b981 !important;
+          width: 28px !important;
+          border-radius: 6px !important;
+        }
+        .swiper-pagination-bullet {
+          background: rgba(255, 255, 255, 0.7);
+          transition: all 0.3s ease;
+        }
