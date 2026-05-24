@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import Products from "./Products";
+import { Link } from "react-router";
 
-const ProductsCard = () => {
+const ProductsCard = ({ initialCategory }) => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -14,34 +15,23 @@ const ProductsCard = () => {
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
-
-        const uniqueCategories = [
-          ...new Set(data.map((item) => item.category)),
-        ];
+        const uniqueCategories = [...new Set(data.map((item) => item.category))];
         setCategoriesTabs(uniqueCategories);
 
-        if (uniqueCategories.length > 0) {
-          const defaultTab = uniqueCategories[0];
-          setActiveTab(defaultTab);
-          const initialFiltered = data.filter(
-            (product) => product.category === defaultTab
-          );
-          setFilteredProducts(initialFiltered);
-        }
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Error fetching data:", err);
+        // Dynamic logic: use URL category OR first available category
+        const targetTab = initialCategory && uniqueCategories.includes(initialCategory) 
+                           ? initialCategory 
+                           : uniqueCategories[0];
+                           
+        setActiveTab(targetTab);
+        setFilteredProducts(data.filter((item) => item.category === targetTab));
         setLoading(false);
       });
-  }, []);
+  }, [initialCategory]); // Re-run when URL changes
 
   const handleTabChange = (tabName) => {
     setActiveTab(tabName);
-    const updatedList = products.filter(
-      (product) => product.category === tabName
-    );
-    setFilteredProducts(updatedList);
+    setFilteredProducts(products.filter((product) => product.category === tabName));
   };
 
   if (loading) {
@@ -80,13 +70,15 @@ const ProductsCard = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 gap-6 lg:gap-8 min-h-[440px]">
-        <AnimatePresence mode="popLayout">
-          {filteredProducts.slice(0, 4).map((product) => (
-            <Products key={product.id} product={product} />
-          ))}
-        </AnimatePresence>
-      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 min-h-[440px]">
+  <AnimatePresence mode="popLayout">
+    {filteredProducts.slice(0, 4).map((product) => (
+      <Link to={`/best-products/${product.id}`} key={product.id}>
+        <Products product={product} />
+      </Link>
+    ))}
+  </AnimatePresence>
+</div>
     </div>
   );
 };

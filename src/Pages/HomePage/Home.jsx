@@ -6,10 +6,10 @@ import PopularProducts from "../../Components/PopularProducts"
 import FridayGrocery from "../../Components/Shear/FridayGrocery"
 import GroceryItem from "../../Components/Shear/GroceryItem"
 import HeroSlider from "../../Components/Shear/HeroSlider"
-import ProductsCard from "../../Components/Shear/ProductsCard"
 import SpecialBrandProducts from "../../Components/SpecialBrandProducts"
 import Testimonials from "../../Components/testimonials"
 import YourOrder from "../../Components/YourOrder"
+import BestProduct from "../BestProducts/BestProduct"
 
 const Home = () => {
   return (
@@ -17,7 +17,7 @@ const Home = () => {
       <HeroSlider />
       <GroceryItem />
       <FridayGrocery />
-      <ProductsCard />
+      <BestProduct />
       <FlashSale />
       <PopularProducts />
       <BardenLogo />

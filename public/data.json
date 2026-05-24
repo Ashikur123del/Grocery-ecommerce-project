@@ -1,16 +1,22 @@
 [
   {
-    "id": 1,
-    "name": "Organic Bananas",
-    "category": "Fruits",
-    "price": 2.99,
-    "discount": 3.99,
-    "quantity": "1 Dozen",
-    "brand": "Fresh Farm",
-    "description": "Fresh organic bananas full of natural energy and nutrients.",
-    "image": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=500&auto=format&fit=crop&q=80",
-    "inStock": true
-  },
+  "id": 1,
+  "name": "Organic Bananas",
+  "category": "Fruits",
+  "price": 2.99,
+  "discount": 3.99,
+  "quantity": "1 Dozen",
+  "brand": "Fresh Farm",
+  "description": "Fresh organic bananas full of natural energy and nutrients.",
+  "image": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=500&auto=format&fit=crop&q=80",
+  "images": [
+   "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e",
+  "https://images.unsplash.com/photo-1768672991601-e72e8005142c",
+  "https://images.unsplash.com/photo-1757332050958-b797a022c910",
+  "https://bestfruitatmosman.com.au/cdn/shop/products/BANANALARGEEACH.jpg"
+  ],
+  "inStock": true
+},
   {
     "id": 2,
     "name": "Ripe Avocados (Pack of 4)",
@@ -20,7 +26,13 @@
     "quantity": "4pcs",
     "brand": "Green Valley",
     "description": "Creamy ripe avocados perfect for salads and toast.",
-    "image": "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=500&auto=format&fit=crop&q=80",
+    "image": "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=500",
+    "images": [
+      "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=500",
+      "https://t4.ftcdn.net/jpg/09/97/06/33/360_F_997063386_gCAtEkoNC1AfGDyaUA6fd934CiBqHnjh.jpg",
+      "https://static.vecteezy.com/system/resources/thumbnails/071/334/663/small/avocados-displayed-in-ceramic-white-plate-with-minimal-modern-setup-photo.jpg",
+      "https://static.scientificamerican.com/blogs/cache/file/F60B8563-5116-4C40-8838BB8099345BBC_source.jpg"
+    ],
     "inStock": true
   },
   {
@@ -32,7 +44,13 @@
     "quantity": "1kg",
     "brand": "Nature Fresh",
     "description": "Sweet and crispy red apples directly from the orchard.",
-    "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=500&auto=format&fit=crop&q=80",
+    "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=500",
+    "images": [
+      "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=500",
+      "https://images.unsplash.com/photo-1568702846914-96b305d2aaeb",
+      "https://plus.unsplash.com/premium_photo-1667049292983-d2524dd0ef08",
+      "https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=500"
+    ],
     "inStock": true
   },
   {
@@ -44,7 +62,13 @@
     "quantity": "1 Gallon",
     "brand": "Farm Fresh",
     "description": "Pure and creamy whole milk rich in calcium and vitamins.",
-    "image": "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=500&auto=format&fit=crop&q=80",
+    "image": "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=500",
+    "images": [
+      "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=500",
+      "https://img.magnific.com/free-photo/fresh-milk-bottle-glass_1150-17631.jpg",
+      "https://www.shutterstock.com/image-photo/bottles-fresh-milk-on-wooden-260nw-791094307.jpg",
+      "https://st.depositphotos.com/18508348/58244/i/450/depositphotos_582445854-stock-photo-bottle-fresh-milk-sunny-summer.jpg"
+    ],
     "inStock": true
   },
   {
@@ -56,7 +80,13 @@
     "quantity": "12pcs",
     "brand": "Organic Farm",
     "description": "Healthy free-range eggs packed with protein.",
-    "image": "https://images.unsplash.com/photo-1516448424440-5db472d47bf9?w=500&auto=format&fit=crop&q=80",
+    "image": "https://images.unsplash.com/photo-1598965675045-45c5e72c7d05",
+    "images": [
+      "https://images.unsplash.com/photo-1598965675045-45c5e72c7d05",
+      "https://plus.unsplash.com/premium_photo-1726072360068-cdc3561ea615",
+      "https://media.istockphoto.com/id/465645566/photo/eggs-in-rattan-basket-a-healthy-food-gift-isolated.jpg",
+      "https://www.shutterstock.com/image-photo/box-eggs-red-chicken-dry-260nw-2197609359.jpg"
+    ],
     "inStock": true
   },
   {
@@ -68,7 +98,13 @@
     "quantity": "1 Loaf",
     "brand": "Golden Bakery",
     "description": "Freshly baked sourdough bread with a crispy crust.",
-    "image": "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=500&auto=format&fit=crop&q=80",
+    "image": "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=500",
+    "images": [
+      "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=500",
+      "https://images.unsplash.com/photo-1547978059-2639fd612c66",
+      "https://images.unsplash.com/photo-1486887396153-fa416526c108",
+      "https://images.unsplash.com/photo-1634485880662-349321105b22"
+    ],
     "inStock": true
   },
   {
@@ -80,7 +116,13 @@
     "quantity": "1L",
     "brand": "Olivia",
     "description": "Premium extra virgin olive oil for healthy cooking.",
-    "image": "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=500&auto=format&fit=crop&q=80",
+    "image": "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=500",
+    "images": [
+      "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=500",
+      "https://images.unsplash.com/photo-1757801333112-7b89af15c7fe",
+      "https://www.geo.tv/assets/uploads/updates/2024-02-05/529931_7263254_updates.jpg",
+      "https://static.vecteezy.com/system/resources/thumbnails/027/844/128/small/there-is-a-bottle-of-olive-oil-that-is-isolated-on-a-white-background-photo.jpg"
+    ],
     "inStock": true
   },
   {
@@ -92,7 +134,13 @@
     "quantity": "500g",
     "brand": "Ocean Fresh",
     "description": "Fresh Atlantic salmon fillet rich in omega-3.",
-    "image": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=500&auto=format&fit=crop&q=80",
+    "image": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=500",
+    "images": [
+      "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=500",
+      "https://images.unsplash.com/photo-1599084993091-1cb5c0721cc6?w=500",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsNVWV00Pz3f7VAobKUKbhESIhXxCb4F6cHg&s",
+      "https://images.unsplash.com/photo-1565688534245-05d6b5be184a?w=500"
+    ],
     "inStock": true
   },
   {
@@ -104,7 +152,13 @@
     "quantity": "500g",
     "brand": "Ispahani",
     "description": "Rich flavored premium black tea for refreshing mornings.",
-    "image": "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?w=500&auto=format&fit=crop&q=80",
+    "image": "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?w=500",
+    "images": [
+      "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?w=500",
+      "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=500",
+      "https://images.unsplash.com/photo-1433891248364-3ce993ff0e92",
+      "https://images.unsplash.com/photo-1769893854321-7b0951695080"
+    ],
     "inStock": true
   },
   {
@@ -116,7 +170,13 @@
     "quantity": "250g",
     "brand": "Nescafe",
     "description": "Strong aromatic instant coffee for coffee lovers.",
-    "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=500&auto=format&fit=crop&q=80",
+    "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=500",
+    "images": [
+      "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=500",
+      "https://images.unsplash.com/photo-1642102903996-cdad15f5dcdd",
+      "https://media.istockphoto.com/id/168372570/photo/mans-hand-cutting-chicken-breast.jpg",
+      "https://images.unsplash.com/photo-1580915411954-282cb1b0d780?w=500"
+    ],
     "inStock": true
   },
   {
@@ -128,7 +188,13 @@
     "quantity": "1kg",
     "brand": "Fresh Meat",
     "description": "Boneless fresh chicken breast perfect for healthy meals.",
-    "image": "https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=500&auto=format&fit=crop&q=80",
+    "image": "https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=500",
+    "images": [
+      "https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=500",
+      "https://images.unsplash.com/photo-1642102903996-cdad15f5dcdd",
+      "https://static.vecteezy.com/system/resources/thumbnails/049/970/605/small/a-delicious-plate-of-fresh-chicken-accompanied-by-vegetables-placed-on-a-wooden-cutting-board-photo.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfUMu-n1YOR8LhwRMiwrli1M1qwE9ACBn0KQ&s"
+    ],
     "inStock": true
   },
   {
@@ -140,7 +206,13 @@
     "quantity": "2kg",
     "brand": "Local Farm",
     "description": "Fresh organic potatoes directly from local farms.",
-    "image": "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=500&auto=format&fit=crop&q=80",
+    "image": "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=500",
+    "images": [
+      "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=500",
+      "https://thumbs.dreamstime.com/b/potato-15229580.jpg",
+      "https://carbethplants.co.uk/cdn/shop/files/SARPOMIRAPOT-organicsarpomiramaincropseedpotato-image1.jpg?v=1753775781&width=900",
+      "https://img.magnific.com/free-photo/potatoes-closeup-as-background-top-view_176474-2023.jpg"
+    ],
     "inStock": true
   },
   {
@@ -152,7 +224,13 @@
     "quantity": "1kg",
     "brand": "Green Harvest",
     "description": "Fresh onions ideal for cooking and salads.",
-    "image": "https://images.unsplash.com/photo-1618512496248-a07fe83766c5?w=500&auto=format&fit=crop&q=80",
+    "image": "https://images.unsplash.com/photo-1668295037469-8b0e8d11cd2a",
+    "images": [
+      "https://images.unsplash.com/photo-1668295037469-8b0e8d11cd2a",
+      "https://plus.unsplash.com/premium_photo-1723708958105-09e29205e551",
+      "https://images.unsplash.com/photo-1605197378298-02bf0af1c896",
+      "https://images.indianexpress.com/2023/07/onions.jpg?w=1200"
+    ],
     "inStock": true
   },
   {
@@ -164,7 +242,13 @@
     "quantity": "1kg",
     "brand": "Imported Fresh",
     "description": "Juicy imported apples with natural sweetness.",
-    "image": "https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=500&auto=format&fit=crop&q=80",
+    "image": "https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=500",
+    "images": [
+       "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=500",
+      "https://images.unsplash.com/photo-1568702846914-96b305d2aaeb",
+      "https://plus.unsplash.com/premium_photo-1667049292983-d2524dd0ef08",
+      "https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=500"
+    ],
     "inStock": true
   },
   {
@@ -176,7 +260,13 @@
     "quantity": "12pcs",
     "brand": "Tropical Farm",
     "description": "Naturally sweet ripe bananas full of energy.",
-    "image": "https://images.unsplash.com/photo-1543218024-57a70143c369?w=500&auto=format&fit=crop&q=80",
+    "image": "https://images.unsplash.com/photo-1543218024-57a70143c369?w=500",
+    "images": [
+      "https://images.unsplash.com/photo-1543218024-57a70143c369?w=500",
+      "https://images.unsplash.com/photo-1587132137056-bfbf0166836e?w=500",
+      "https://images.unsplash.com/photo-1603833665858-e61d17a86ca2?w=500",
+      "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=500"
+    ],
     "inStock": true
   }
 ]
