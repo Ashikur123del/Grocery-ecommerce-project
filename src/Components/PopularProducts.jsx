@@ -9,6 +9,7 @@ import man2 from "../assets/man-2.png"
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router';
 
 const PopularProducts = () => {
   const [products, setProducts] = useState([]);
@@ -135,11 +136,12 @@ const PopularProducts = () => {
 
               return (
                 <SwiperSlide key={product.id} className="h-full flex">
-                  <motion.div
+                  <Link to={`/popular-product/${product.id}`} className="w-full h-full">
+                       <motion.div
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 12 }}
-                    whileHover="hover"
+                    whileHover="hover" 
                     layout
                     transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
                     className="w-full h-full flex"
@@ -212,6 +214,7 @@ const PopularProducts = () => {
                       </div>
                     </Card>
                   </motion.div>
+                  </Link>
                 </SwiperSlide>
               );
             })}

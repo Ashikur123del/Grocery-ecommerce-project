@@ -3,6 +3,7 @@ import { Card } from "@heroui/react";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { FiArrowUpRight, FiStar } from 'react-icons/fi';
+import { Link } from "react-router";
 
 const SpecialBrandProducts = () => {
   const [products, setProducts] = useState([]);
@@ -70,7 +71,8 @@ const SpecialBrandProducts = () => {
               : null;
 
             return (
-              <motion.div
+          <Link to={`/YourSpecialBrandProducts/${product.id}`} key={product.id}>
+                <motion.div
                 key={product.id}
                 whileHover={{ y: -3 }}
                 transition={{ duration: 0.2 }}
@@ -120,6 +122,7 @@ const SpecialBrandProducts = () => {
                   </div>
                 </Card>
               </motion.div>
+        </Link>
             );
           })}
         </div>

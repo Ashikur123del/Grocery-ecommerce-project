@@ -1,20 +1,26 @@
 import { useState, useEffect } from "react";
+
 import {
   FaRegHeart,
   FaChevronRight,
   FaBoxOpen,
   FaSignOutAlt,
 } from "react-icons/fa";
+
 import { IoMdArrowDropdown } from "react-icons/io";
 import { BiTransfer } from "react-icons/bi";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { FiUser } from "react-icons/fi";
-import logo from "../../assets/logo.webp";
-import NavLinks from "./NavLinks";
-import MobileMenu from "./MobileMenu";
 import { MdAccountCircle, MdDashboard } from "react-icons/md";
 
+import { Link } from "react-router";
+
 import { useDisclosure } from "@heroui/use-disclosure";
+
+import logo from "../../assets/logo.webp";
+
+import NavLinks from "./NavLinks";
+import MobileMenu from "./MobileMenu";
 import { Drawers } from "../Modle/Drawers";
 
 const Header = () => {
@@ -22,12 +28,19 @@ const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState(null);
+
   const { isOpen, onOpenChange } = useDisclosure();
 
   useEffect(() => {
-    const handleScroll = () => setIsSticky(window.scrollY > 150);
+    const handleScroll = () => {
+      setIsSticky(window.scrollY > 150);
+    };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const categories = [
@@ -42,89 +55,132 @@ const Header = () => {
   const navLinks = [
     {
       label: "Home",
-      href: "#",
-      hasDropdown: true,
-      subItems: ["Classic Home", "Fashion Home", "Electronic Home"],
+      href: "/",
     },
     {
       label: "Shop",
-      href: "#",
+      href: "/shop",
       hasDropdown: true,
-      subItems: ["Shop Grid", "Shop List", "Product Details"],
+      subItems: [
+        { label: "Product List", href: "/product-list" },
+        { label: "Product Details", href: "/product-details" },
+        { label: "Cart", href: "/cart" },
+        { label: "Checkout", href: "/checkout" },
+      ],
     },
     {
       label: "Stores",
-      href: "#",
+      href: "/stores",
       hasDropdown: true,
-      subItems: ["Store Directory", "Store Vendor"],
+      subItems: [
+        { label: "Store List", href: "/store-list" },
+        { label: "Store Details", href: "/store-details" },
+        { label: "Become a Vendor", href: "/become-vendor" },
+      ],
     },
     {
       label: "Pages",
-      href: "#",
+      href: "/pages",
       hasDropdown: true,
-      subItems: ["About Us", "FAQ", "Terms"],
+      subItems: [
+        { label: "About Us", href: "/about" },
+        { label: "Product Category", href: "/product-category" },
+        { label: "Product Brand", href: "/product-brand" },
+        { label: "Cart View", href: "/cart-view" },
+        { label: "Checkout", href: "/checkout" },
+        { label: "Compare", href: "/compare" },
+        { label: "Wishlist", href: "/wishlist" },
+        { label: "Order Tracking", href: "/order-tracking" },
+        { label: "Sign In", href: "/signing-in" },
+        { label: "Sign Up", href: "/sign-up" },
+        { label: "Privacy Policy", href: "/privacy-policy" },
+        { label: "Terms of Service", href: "/terms-of-service" },
+        { label: "Return Policy", href: "/return-policy" },
+        { label: "Payment successfully", href: "/payment-successfully" },
+        { label: "Payment Failed", href: "/payment-failed" },
+        { label: "FAQ", href: "/faq" },
+      ],
     },
-    { label: "Flash Deals", href: "#" },
+    {
+      label: "Flash Deals",
+      href: "/flash-deals",
+    },
     {
       label: "Blog",
-      href: "#",
+      href: "/blog",
       hasDropdown: true,
-      subItems: ["Blog Standard", "Blog Single"],
+      subItems: [
+        { label: "Blog Classic", href: "/blog-classic" },
+        { label: "Blog Right Sidebar", href: "/blog-right-sidebar" },
+        { label: "Blog Left Sidebar", href: "/blog-left-sidebar" },
+        { label: "Blog Details", href: "/blog-details" },
+      ],
     },
-    { label: "Contact", href: "#" },
+    {
+      label: "Contact",
+      href: "/contact",
+    },
   ];
 
-  const handleUserAction = (actionId) => {
-    console.log(`Selected action: ${actionId}`);
+  const handleUserAction = (action) => {
+    console.log(action);
   };
 
   return (
     <>
       <header
-        className={`w-full bg-white transition-all duration-300 z-10 ${isSticky ? "fixed top-0 left-0 shadow-lg py-2" : "relative border-b border-gray-100"}`}
+        className={`w-full bg-white z-30 transition-all duration-300 ${
+          isSticky
+            ? "fixed top-0 left-0 shadow-lg py-2"
+            : "relative border-b border-gray-100"
+        }`}
       >
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16 sm:h-20 gap-2">
-            <div className="block md:hidden items-center gap-2 sm:gap-4 flex-shrink-0">
-              <button
-                onClick={() => setIsMobileMenuOpen(true)}
-                className="lg:hidden text-gray-700 hover:text-[#05a845] transition-colors p-1"
-              >
-                <HiMenuAlt3 size={28} />
-              </button>
-            </div>
-            {isSticky ? (
-              <div className="">
-                <img
-                  src={logo}
-                  alt="Logo"
-                  className="w-9 h-9 sm:w-16 sm:h-16 object-contain cursor-pointer"
-                />
-              </div>
-            ) : (
-              ""
-            )}
+          <div className="flex items-center justify-between h-16 sm:h-20">
 
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(true)}
+              className="lg:hidden text-gray-700"
+            >
+              <HiMenuAlt3 size={28} />
+            </button>
+
+           
+            {isSticky ? <>
+            <Link to="/">
+              <img
+                src={logo}
+                alt="logo"
+                className="w-10 sm:w-14 object-contain"
+              />
+            </Link></> :  ""}
+
+            {/* Categories */}
             {!isSticky && (
-              <div className="hidden lg:block relative group flex-shrink-0">
-                <button className="bg-[#05a845] text-white px-5 py-3 rounded-t-md flex items-center gap-3 min-w-[200px] xl:min-w-[230px]">
+              <div className="hidden lg:block relative group">
+                <button className="bg-[#05a845] text-white px-5 py-3 rounded-t-md flex items-center gap-3 min-w-[230px]">
                   <HiMenuAlt3 size={20} />
+
                   <span className="font-semibold uppercase text-sm">
                     Categories
                   </span>
+
                   <IoMdArrowDropdown size={18} className="ml-auto" />
                 </button>
-                <div className="absolute top-full left-0 w-full bg-white border border-gray-100 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[60]">
+
+                <div className="absolute top-full left-0 w-full bg-white shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                   <ul className="py-1">
                     {categories.map((cat, i) => (
                       <li key={i}>
-                        <a
-                          href="#"
+                        <Link
+                          to="/"
                           className="flex items-center justify-between px-5 py-3 text-sm text-gray-700 hover:bg-[#05a845] hover:text-white"
                         >
-                          {cat}{" "}
-                          <FaChevronRight size={10} className="text-gray-300" />
-                        </a>
+                          {cat}
+
+                          <FaChevronRight size={10} />
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -132,96 +188,100 @@ const Header = () => {
               </div>
             )}
 
+            {/* Nav Links */}
             <NavLinks
               navLinks={navLinks}
               activeDropdown={activeDropdown}
               setActiveDropdown={setActiveDropdown}
             />
 
-            <div className="flex items-center gap-2 sm:gap-4 xl:gap-5">
-              <div className="flex relative cursor-pointer group">
-                <BiTransfer
-                  size={24}
-                  className="text-gray-700 group-hover:text-[#05a845]"
-                />
+            {/* Right Side */}
+            <div className="flex items-center gap-4">
+
+              {/* Compare */}
+              <div className="relative cursor-pointer">
+                <BiTransfer size={24} />
+
                 <span className="absolute -top-2 -right-2 bg-[#05a845] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
                   3
                 </span>
               </div>
 
-              <div className="relative cursor-pointer group">
-                <FaRegHeart
-                  size={22}
-                  className="text-gray-700 group-hover:text-[#05a845]"
-                />
+              {/* Wishlist */}
+              <div className="relative cursor-pointer">
+                <FaRegHeart size={22} />
+
                 <span className="absolute -top-2 -right-2 bg-[#05a845] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
                   8
                 </span>
               </div>
 
-              <div className="flex items-center gap-4">
-                <Drawers isOpen={isOpen} onOpenChange={onOpenChange} />
-              </div>
+              {/* Drawer */}
+              <Drawers isOpen={isOpen} onOpenChange={onOpenChange} />
 
-              {isSticky ? (
-                <div className="flex items-center gap-2 border-l pl-2 sm:pl-4 border-gray-200 relative group cursor-pointer">
-                  <div className="w-9 h-9 rounded-full border border-[#05a845] flex items-center justify-center text-[#05a845] group-hover:bg-[#05a845] group-hover:text-white transition-all duration-300">
+              {/* User */}
+              {isSticky && (
+                <div className="relative group flex items-center gap-2 border-l pl-4">
+
+                  <div className="w-9 h-9 rounded-full border border-[#05a845] flex items-center justify-center text-[#05a845]">
                     <FiUser size={20} />
                   </div>
 
-                  <div className="hidden xl:block leading-tight select-none">
-                    <p className="font-bold text-[10px] text-[#05a845] uppercase">
+                  <div className="hidden xl:block">
+                    <p className="text-[10px] text-[#05a845] font-bold uppercase">
                       Welcome
                     </p>
+
                     <div className="flex items-center gap-1">
-                      <span className="text-sm font-bold text-[#001e2b]">
-                        Ashikur
-                      </span>
-                      <IoMdArrowDropdown className="text-gray-600 transition-transform group-hover:rotate-180" />
+                      <span className="font-bold">Ashikur</span>
+
+                      <IoMdArrowDropdown />
                     </div>
                   </div>
 
-                  <div className="absolute top-full right-0 mt-3 w-52 sm:w-56 bg-white rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[100] origin-top-right translate-y-2 group-hover:translate-y-0">
-                    <div className="py-2">
-                      <button
-                        onClick={() => handleUserAction("dashboard")}
-                        className="w-full px-4 py-2.5 text-left text-sm text-gray-700 hover:bg-gray-50 flex items-center gap-3 transition-colors"
-                      >
-                        <MdDashboard size={18} className="text-[#05a845]" />{" "}
-                        Dashboard
-                      </button>
-                      <button
-                        onClick={() => handleUserAction("orders")}
-                        className="w-full px-4 py-2.5 text-left text-sm text-gray-700 hover:bg-gray-50 flex items-center gap-3 transition-colors"
-                      >
-                        <FaBoxOpen size={16} className="text-[#05a845]" /> My
-                        Orders
-                      </button>
-                      <button
-                        onClick={() => handleUserAction("account")}
-                        className="w-full px-4 py-2.5 text-left text-sm text-gray-700 hover:bg-gray-50 flex items-center gap-3 transition-colors"
-                      >
-                        <MdAccountCircle size={18} className="text-[#05a845]" />{" "}
-                        Account
-                      </button>
-                      <div className="border-t border-gray-100 my-1"></div>
-                      <button
-                        onClick={() => handleUserAction("logout")}
-                        className="w-full px-4 py-2.5 text-left text-sm text-red-600 hover:bg-red-50 flex items-center gap-3 transition-colors"
-                      >
-                        <FaSignOutAlt size={16} /> Logout
-                      </button>
-                    </div>
+                  {/* User Dropdown */}
+                  <div className="absolute top-full right-0 mt-3 w-56 z-50 bg-white shadow-xl rounded-lg border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+
+                    <button
+                      onClick={() => handleUserAction("dashboard")}
+                      className="w-full px-4 py-3 flex items-center gap-3 hover:bg-gray-50"
+                    >
+                      <MdDashboard />
+                      Dashboard
+                    </button>
+
+                    <button
+                      onClick={() => handleUserAction("orders")}
+                      className="w-full px-4 py-3 flex items-center gap-3 hover:bg-gray-50"
+                    >
+                      <FaBoxOpen />
+                      My Orders
+                    </button>
+
+                    <button
+                      onClick={() => handleUserAction("account")}
+                      className="w-full px-4 py-3 flex items-center gap-3 hover:bg-gray-50"
+                    >
+                      <MdAccountCircle />
+                      Account
+                    </button>
+
+                    <button
+                      onClick={() => handleUserAction("logout")}
+                      className="w-full px-4 py-3 flex items-center gap-3 text-red-600 hover:bg-red-50"
+                    >
+                      <FaSignOutAlt />
+                      Logout
+                    </button>
                   </div>
                 </div>
-              ) : (
-                ""
               )}
             </div>
           </div>
         </div>
       </header>
 
+      {/* Mobile Menu */}
       <MobileMenu
         isOpen={isMobileMenuOpen}
         setIsOpen={setIsMobileMenuOpen}
@@ -229,7 +289,8 @@ const Header = () => {
         openSubMenu={openSubMenu}
         setOpenSubMenu={setOpenSubMenu}
       />
-      {isSticky && <div className="h-16 sm:h-20"></div>}
+
+      {isSticky && <div className="h-20"></div>}
     </>
   );
 };

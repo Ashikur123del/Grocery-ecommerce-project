@@ -9,10 +9,10 @@ const BestProduct = () => {
   return (
     <div>
       {id ? (
-        // যদি URL-এ id থাকে, তবে ডিটেইলস পেজ দেখাও
+        
         <ProductDetails id={id} />
       ) : (
-        // id না থাকলে আগের মতো লিস্ট দেখাও
+      
         <ProductsCard />
       )}
     </div>
