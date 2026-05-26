@@ -103,7 +103,7 @@ const HeroSlider = () => {
 
               <p className="text-sm sm:text-base md:text-lg text-zinc-300/90 font-normal mb-8 max-w-xl leading-relaxed">
                 {slide.desc}
-              </p>
+              </p> 
 
               <div className="flex flex-wrap items-center gap-4">
                 <Button

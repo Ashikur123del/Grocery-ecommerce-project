@@ -63,7 +63,7 @@ const Header = () => {
       hasDropdown: true,
       subItems: [
         { label: "Product List", href: "/product-list" },
-        { label: "Product Details", href: "/product-details" },
+        { label: "Product Details", href: "/productdetailspage" },
         { label: "Cart", href: "/cart" },
         { label: "Checkout", href: "/checkout" },
       ],
@@ -78,6 +78,7 @@ const Header = () => {
         { label: "Become a Vendor", href: "/become-vendor" },
       ],
     },
+ 
     {
       label: "Pages",
       href: "/pages",

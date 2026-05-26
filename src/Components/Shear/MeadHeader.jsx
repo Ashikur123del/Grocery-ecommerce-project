@@ -3,7 +3,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { IoSearchOutline } from "react-icons/io5";
 import { LuPhoneCall } from "react-icons/lu";
 import { MdDashboard, MdAccountCircle } from "react-icons/md";
-import logo from "../../assets/logo.webp"
+
 
 const MidHeader = () => {
 
@@ -12,9 +12,8 @@ const MidHeader = () => {
     <div className="bg-white border-b border-gray-100 hidden md:block">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between gap-4">
-        
           <div className="flex items-center gap-2 min-w-fit">
-            <img src={logo} alt="Logo" className="w-24"/>
+            Bazarpeon 
           </div>
           <div className="flex-grow max-w-2xl relative px-4">
             <div className="flex items-center bg-[#f3f4f6] rounded-lg border border-gray-200 p-1 h-12 hover:border-[#05a845] transition-colors">
