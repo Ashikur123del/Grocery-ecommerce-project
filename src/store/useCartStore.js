@@ -1,5 +1,3 @@
-// src/store/useCartStore.js
-
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
@@ -10,58 +8,33 @@ export const useCartStore = create(
 
       addToCart: (product, quantity) =>
         set((state) => {
-          const existingItem = state.cartItems.find(
-            (item) => item.id === product.id
-          );
-
-          if (existingItem) {
+          const existing = state.cartItems.find((i) => i.id === product.id);
+          if (existing) {
             return {
-              cartItems: state.cartItems.map((item) =>
-                item.id === product.id
-                  ? {
-                      ...item,
-                      quantity: item.quantity + quantity,
-                    }
-                  : item
+              cartItems: state.cartItems.map((i) =>
+                i.id === product.id
+                  ? { ...i, quantity: i.quantity + quantity }
+                  : i
               ),
             };
           }
-          return {
-            cartItems: [
-              ...state.cartItems,
-              {
-                ...product,
-                quantity,
-              },
-            ],
-          };
+          return { cartItems: [...state.cartItems, { ...product, quantity }] };
         }),
 
-  
-      removeFromCart: (id) =>
+      updateQuantity: (id, quantity) =>
         set((state) => ({
-          cartItems: state.cartItems.filter(
-            (item) => item.id !== id
+          cartItems: state.cartItems.map((i) =>
+            i.id === id ? { ...i, quantity } : i
           ),
         })),
 
+      removeFromCart: (id) =>
+        set((state) => ({
+          cartItems: state.cartItems.filter((i) => i.id !== id),
+        })),
 
-      clearCart: () =>
-        set({
-          cartItems: [],
-        }),
+      clearCart: () => set({ cartItems: [] }),
     }),
-    {
-      name: "cart-storage",
-    }
+    { name: "cart-storage" }
   )
 );
-
-
-
-
-
-
-
-
-

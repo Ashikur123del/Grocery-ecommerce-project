@@ -1,84 +1,64 @@
-import { useEffect, useState } from "react";
-import { AnimatePresence } from "framer-motion";
-import Products from "./Products";
-import { Link } from "react-router";
+import { useState } from "react";
+import { useNavigate } from "react-router"; 
+import { useBoundStore } from "../../store/useBoundStore";
+import { useCartStore } from "../../store/useCartStore"; 
 
-const ProductsCard = ({ initialCategory }) => {
-  const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState("");
-  const [categoriesTabs, setCategoriesTabs] = useState([]);
+const ProductsCard = () => {
+  const navigate = useNavigate();
+  const products = useBoundStore((state) => state.products);
+  const addToCart = useCartStore((state) => state.addToCart); 
 
-  useEffect(() => {
-    fetch("/data.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data);
-        const uniqueCategories = [...new Set(data.map((item) => item.category))];
-        setCategoriesTabs(uniqueCategories);
+  const categories = ["All", ...new Set(products.map((p) => p.category))];
+  const [activeTab, setActiveTab] = useState("All");
 
-        // Dynamic logic: use URL category OR first available category
-        const targetTab = initialCategory && uniqueCategories.includes(initialCategory) 
-                           ? initialCategory 
-                           : uniqueCategories[0];
-                           
-        setActiveTab(targetTab);
-        setFilteredProducts(data.filter((item) => item.category === targetTab));
-        setLoading(false);
-      });
-  }, [initialCategory]); // Re-run when URL changes
+  const filteredProducts = activeTab === "All" 
+    ? products 
+    : products.filter((p) => p.category === activeTab);
 
-  const handleTabChange = (tabName) => {
-    setActiveTab(tabName);
-    setFilteredProducts(products.filter((product) => product.category === tabName));
+  const handleAddToCart = (product) => {
+    addToCart(product, 1); 
+    navigate("/product-list");    
   };
 
-  if (loading) {
-    return (
-      <div className="w-full flex justify-center py-24">
-        <span className="loading loading-spinner text-emerald-500 loading-lg"></span>
-      </div>
-    );
-  }
-
   return (
-    <div className="w-full container mx-auto py-14 px-4 md:px-8">
-      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 border-b border-gray-100 pb-5 mb-10">
-        <div>
-          <span className="text-xs md:text-sm font-bold text-emerald-500 tracking-wide block mb-1">
-            Best This Month
-          </span>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-zinc-800 tracking-tight">
-            Best Selling Products
-          </h2>
-        </div>
-        <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-semibold text-zinc-400">
-          {categoriesTabs.map((tab) => (
-            <button
-              key={tab}
-              onClick={() => handleTabChange(tab)}
-              className={`transition-all duration-200 relative pb-1 whitespace-nowrap uppercase tracking-wider text-xs ${
-                activeTab === tab
-                  ? "text-emerald-500 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-emerald-500"
-                  : "hover:text-zinc-600"
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
+    <div className="container mx-auto py-14 px-4">
+      {/* ক্যাটাগরি বাটন সেকশন */}
+      <div className="flex gap-4 mb-8 overflow-x-auto pb-2 justify-end">
+        {categories.map((item) => (
+          <button
+            key={item}
+            onClick={() => setActiveTab(item)}
+            className={`px-4 py-2 font-semibold rounded-full transition-all duration-300 ${
+              activeTab === item 
+                ? "bg-emerald-600 text-white" 
+                : "bg-emerald-50 text-emerald-700 hover:bg-emerald-100"
+            }`}
+          >
+            {item}
+          </button>
+        ))}
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 min-h-[440px]">
-  <AnimatePresence mode="popLayout">
-    {filteredProducts.slice(0, 4).map((product) => (
-      <Link to={`/best-products/${product.id}`} key={product.id}>
-        <Products product={product} />
-      </Link>
-    ))}
-  </AnimatePresence>
-</div>
+      {/* প্রোডাক্ট গ্রিড */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {filteredProducts.slice(0, 4).map((product) => (
+          <div key={product.id} className="border rounded-2xl p-4 hover:shadow-xl transition-shadow bg-white flex flex-col gap-3">
+            <img src={product.image} alt={product.name} className="h-48 w-full object-contain" />
+            <h3 className="font-bold text-lg text-zinc-800">{product.name}</h3>
+            
+            <div className="flex items-center gap-2">
+              <span className="text-emerald-600 font-bold text-xl">${product.price}</span>
+              <span className="text-zinc-400 line-through text-sm">${product.discount}</span>
+            </div>
+            <button 
+              onClick={() => handleAddToCart(product)} 
+              className="w-full py-2 border border-emerald-500 text-emerald-600 rounded-lg font-bold hover:bg-emerald-500 hover:text-white transition-colors"
+            >
+              Add To Cart
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
