@@ -1,24 +1,32 @@
 [
   {
-  "id": 1,
-  "name": "Organic Bananas",
-  "category": "Fruits",
-  "price": 2.99,
-  "discount": 3.99,
-  "rating": 4.5,
-  "color": ["Yellow", "Green", "Brown", "Red"],
-  "quantity": "1 Dozen",
-  "brand": "Fresh Farm",
-  "description": "Fresh organic bananas full of natural energy and nutrients.",
-  "image": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=500&auto=format&fit=crop&q=80",
-  "images": [
-   "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e",
-  "https://images.unsplash.com/photo-1768672991601-e72e8005142c",
-  "https://images.unsplash.com/photo-1757332050958-b797a022c910",
-  "https://bestfruitatmosman.com.au/cdn/shop/products/BANANALARGEEACH.jpg"
-  ],
-  "inStock": true
-},
+    "id": 1,
+    "name": "Organic Bananas",
+    "category": "Fruits",
+    "price": 2.99,
+    "discount": 3.99,
+    "rating": 4.5,
+    "color": ["Yellow", "Green", "Brown", "Red"],
+    "quantity": "1 Dozen",
+    "brand": "Fresh Farm",
+    "description": "Fresh organic bananas full of natural energy and nutrients.",
+    "benefits": [
+      "Boosts energy – Natural sugars provide quick and sustained energy.",
+      "Rich in potassium – Supports heart health and muscle function.",
+      "Improves digestion – High fiber content aids the digestive system.",
+      "Mood enhancer – Contains tryptophan which helps produce serotonin.",
+      "Supports weight management – Low calorie and filling snack option."
+    ],
+    "origin": "Fresh Farm, Bangladesh",
+    "image": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=500&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e",
+      "https://images.unsplash.com/photo-1768672991601-e72e8005142c",
+      "https://images.unsplash.com/photo-1757332050958-b797a022c910",
+      "https://bestfruitatmosman.com.au/cdn/shop/products/BANANALARGEEACH.jpg"
+    ],
+    "inStock": true
+  },
   {
     "id": 2,
     "name": "Ripe Avocados (Pack of 4)",
@@ -30,6 +38,14 @@
     "quantity": "4pcs",
     "brand": "Green Valley",
     "description": "Creamy ripe avocados perfect for salads and toast.",
+    "benefits": [
+      "Heart healthy – Rich in monounsaturated fats that lower bad cholesterol.",
+      "High in fiber – Supports digestive health and keeps you full longer.",
+      "Packed with vitamins – Contains vitamins K, C, B5, B6, and E.",
+      "Eye health – Lutein and zeaxanthin protect against eye disease.",
+      "Anti-inflammatory – Oleic acid reduces inflammation in the body."
+    ],
+    "origin": "Green Valley, Mexico",
     "image": "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=500",
     "images": [
       "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=500",
@@ -50,6 +66,14 @@
     "quantity": "1kg",
     "brand": "Nature Fresh",
     "description": "Sweet and crispy red apples directly from the orchard.",
+    "benefits": [
+      "Rich in antioxidants – Quercetin and catechin protect cells from damage.",
+      "Supports heart health – Lowers cholesterol and blood pressure.",
+      "Aids digestion – Pectin fiber feeds good gut bacteria.",
+      "Boosts immunity – High vitamin C content strengthens the immune system.",
+      "Weight friendly – Low calorie and high fiber keeps hunger at bay."
+    ],
+    "origin": "Nature Fresh Orchards, USA",
     "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=500",
     "images": [
       "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=500",
@@ -70,6 +94,14 @@
     "quantity": "1 Gallon",
     "brand": "Farm Fresh",
     "description": "Pure and creamy whole milk rich in calcium and vitamins.",
+    "benefits": [
+      "Builds strong bones – High calcium and vitamin D content.",
+      "Muscle recovery – Protein helps repair and build muscles after exercise.",
+      "Rich in vitamins – Contains vitamins A, B12, and riboflavin.",
+      "Supports brain health – Iodine and B vitamins improve cognitive function.",
+      "Boosts immunity – Zinc and selenium strengthen the immune system."
+    ],
+    "origin": "Farm Fresh Dairy, USA",
     "image": "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=500",
     "images": [
       "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=500",
@@ -90,6 +122,14 @@
     "quantity": "12pcs",
     "brand": "Organic Farm",
     "description": "Healthy free-range eggs packed with protein.",
+    "benefits": [
+      "High quality protein – Contains all essential amino acids for the body.",
+      "Brain health – Choline supports memory and cognitive function.",
+      "Eye protection – Lutein and zeaxanthin reduce risk of eye disease.",
+      "Vitamin rich – Provides vitamins D, B6, B12, and minerals.",
+      "Weight management – High protein keeps you full and reduces cravings."
+    ],
+    "origin": "Organic Farm, Australia",
     "image": "https://images.unsplash.com/photo-1598965675045-45c5e72c7d05",
     "images": [
       "https://images.unsplash.com/photo-1598965675045-45c5e72c7d05",
@@ -110,6 +150,14 @@
     "quantity": "1 Loaf",
     "brand": "Golden Bakery",
     "description": "Freshly baked sourdough bread with a crispy crust.",
+    "benefits": [
+      "Easier to digest – Natural fermentation breaks down gluten partially.",
+      "Better gut health – Prebiotics feed beneficial gut bacteria.",
+      "Lower glycemic index – Causes slower rise in blood sugar than regular bread.",
+      "Rich in nutrients – Contains B vitamins, iron, and folate.",
+      "Long lasting freshness – Natural acids act as preservatives."
+    ],
+    "origin": "Golden Bakery, France",
     "image": "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=500",
     "images": [
       "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=500",
@@ -130,6 +178,14 @@
     "quantity": "1L",
     "brand": "Olivia",
     "description": "Premium extra virgin olive oil for healthy cooking.",
+    "benefits": [
+      "Heart protective – Reduces bad cholesterol and lowers heart disease risk.",
+      "Anti-inflammatory – Oleocanthal has similar effects to ibuprofen.",
+      "Rich in antioxidants – Vitamin E and polyphenols fight free radicals.",
+      "Supports brain health – Healthy fats improve memory and focus.",
+      "Aids weight control – Promotes feeling of fullness and boosts metabolism."
+    ],
+    "origin": "Olivia Farms, Greece",
     "image": "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=500",
     "images": [
       "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=500",
@@ -150,6 +206,14 @@
     "quantity": "500g",
     "brand": "Ocean Fresh",
     "description": "Fresh Atlantic salmon fillet rich in omega-3.",
+    "benefits": [
+      "Rich in omega-3 – Reduces inflammation and supports heart health.",
+      "High protein – Builds and repairs muscle tissue effectively.",
+      "Brain booster – DHA fatty acids improve memory and concentration.",
+      "Vitamin D source – Supports bone health and immune function.",
+      "Improves skin health – Omega-3 keeps skin hydrated and glowing."
+    ],
+    "origin": "Ocean Fresh, Norway",
     "image": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=500",
     "images": [
       "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=500",
@@ -170,6 +234,14 @@
     "quantity": "500g",
     "brand": "Ispahani",
     "description": "Rich flavored premium black tea for refreshing mornings.",
+    "benefits": [
+      "Boosts alertness – Caffeine and L-theanine improve focus and energy.",
+      "Rich in antioxidants – Polyphenols protect against cell damage.",
+      "Supports gut health – Promotes growth of good gut bacteria.",
+      "Heart health – Regular consumption lowers risk of heart disease.",
+      "Reduces stress – L-theanine promotes relaxation without drowsiness."
+    ],
+    "origin": "Ispahani Tea Gardens, Bangladesh",
     "image": "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?w=500",
     "images": [
       "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?w=500",
@@ -190,6 +262,14 @@
     "quantity": "250g",
     "brand": "Nescafe",
     "description": "Strong aromatic instant coffee for coffee lovers.",
+    "benefits": [
+      "Boosts energy – Caffeine improves alertness and reduces fatigue.",
+      "Improves metabolism – Speeds up fat burning and physical performance.",
+      "Rich in antioxidants – Protects body cells from oxidative stress.",
+      "Enhances mood – Stimulates dopamine production for better mood.",
+      "Supports liver health – Regular moderate consumption protects the liver."
+    ],
+    "origin": "Nescafe, Switzerland",
     "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=500",
     "images": [
       "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=500",
@@ -206,10 +286,18 @@
     "price": 8.99,
     "discount": 10.99,
     "rating": 4.6,
-  "color": ["Yellow", "Green", "Brown", "Red"],
+    "color": ["Yellow", "Green", "Brown", "Red"],
     "quantity": "1kg",
     "brand": "Fresh Meat",
     "description": "Boneless fresh chicken breast perfect for healthy meals.",
+    "benefits": [
+      "High protein – Supports muscle growth and body repair.",
+      "Low in fat – Ideal for weight loss and lean diet plans.",
+      "Rich in B vitamins – Niacin and B6 support energy metabolism.",
+      "Boosts immunity – Zinc and selenium strengthen immune defenses.",
+      "Versatile ingredient – Perfect for grilling, baking, and stir-frying."
+    ],
+    "origin": "Fresh Meat Farms, Bangladesh",
     "image": "https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=500",
     "images": [
       "https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=500",
@@ -226,10 +314,18 @@
     "price": 2.49,
     "discount": 3.49,
     "rating": 3.5,
-  "color": ["Yellow", "Green", "Brown", "Red"],
+    "color": ["Yellow", "Green", "Brown", "Red"],
     "quantity": "2kg",
     "brand": "Local Farm",
     "description": "Fresh organic potatoes directly from local farms.",
+    "benefits": [
+      "Energy source – Complex carbohydrates provide long lasting energy.",
+      "Rich in potassium – Supports healthy blood pressure and heart function.",
+      "Vitamin C boost – Strengthens immune system and skin health.",
+      "High in fiber – Promotes healthy digestion and gut health.",
+      "Naturally gluten free – Safe for people with gluten intolerance."
+    ],
+    "origin": "Local Farm, Bangladesh",
     "image": "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=500",
     "images": [
       "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=500",
@@ -250,6 +346,14 @@
     "quantity": "1kg",
     "brand": "Green Harvest",
     "description": "Fresh onions ideal for cooking and salads.",
+    "benefits": [
+      "Immune booster – Rich in vitamin C and antioxidants.",
+      "Heart health – Quercetin lowers blood pressure and cholesterol.",
+      "Anti-bacterial – Natural compounds fight harmful bacteria.",
+      "Blood sugar control – Chromium helps regulate blood sugar levels.",
+      "Bone strength – Contains calcium and phosphorus for strong bones."
+    ],
+    "origin": "Green Harvest, Bangladesh",
     "image": "https://images.unsplash.com/photo-1668295037469-8b0e8d11cd2a",
     "images": [
       "https://images.unsplash.com/photo-1668295037469-8b0e8d11cd2a",
@@ -270,15 +374,22 @@
     "quantity": "1kg",
     "brand": "Imported Fresh",
     "description": "Juicy imported apples with natural sweetness.",
+    "benefits": [
+      "Antioxidant rich – Protects body cells from free radical damage.",
+      "Digestive health – Pectin fiber supports healthy gut bacteria.",
+      "Heart friendly – Lowers bad cholesterol and reduces stroke risk.",
+      "Hydrating – High water content keeps body hydrated.",
+      "Natural teeth cleaner – Chewing stimulates saliva and reduces bacteria."
+    ],
+    "origin": "Imported Fresh, USA",
     "image": "https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=500",
     "images": [
-       "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=500",
+      "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=500",
       "https://images.unsplash.com/photo-1568702846914-96b305d2aaeb",
       "https://plus.unsplash.com/premium_photo-1667049292983-d2524dd0ef08",
       "https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=500"
     ],
     "inStock": false
-    
   },
   {
     "id": 15,
@@ -291,6 +402,14 @@
     "quantity": "12pcs",
     "brand": "Tropical Farm",
     "description": "Naturally sweet ripe bananas full of energy.",
+    "benefits": [
+      "Instant energy – Natural sugars provide quick fuel for the body.",
+      "Potassium source – Supports heart health and proper muscle function.",
+      "Mood booster – Tryptophan converts to serotonin improving mood.",
+      "Digestive aid – Fiber and pectin support healthy digestion.",
+      "Workout recovery – Replenishes glycogen and reduces muscle cramps."
+    ],
+    "origin": "Tropical Farm, Philippines",
     "image": "https://images.unsplash.com/photo-1543218024-57a70143c369?w=500",
     "images": [
       "https://images.unsplash.com/photo-1543218024-57a70143c369?w=500",

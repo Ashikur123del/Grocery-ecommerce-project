@@ -8,7 +8,6 @@ import {
 } from "react-icons/fa";
 
 import { IoMdArrowDropdown } from "react-icons/io";
-import { BiTransfer } from "react-icons/bi";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { FiUser } from "react-icons/fi";
 import { MdAccountCircle, MdDashboard } from "react-icons/md";
@@ -63,7 +62,6 @@ const Header = () => {
       hasDropdown: true,
       subItems: [
         { label: "Product List", href: "/product-list" },
-        { label: "Product Details", href: "/productdetailspage" },
         { label: "Cart", href: "/cart" },
         { label: "Checkout", href: "/checkout" },
       ],
@@ -196,19 +194,9 @@ const Header = () => {
               setActiveDropdown={setActiveDropdown}
             />
 
-            {/* Right Side */}
+      
             <div className="flex items-center gap-4">
 
-              {/* Compare */}
-              <div className="relative cursor-pointer">
-                <BiTransfer size={24} />
-
-                <span className="absolute -top-2 -right-2 bg-[#05a845] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
-                  3
-                </span>
-              </div>
-
-              {/* Wishlist */}
               <div className="relative cursor-pointer">
                 <FaRegHeart size={22} />
 
