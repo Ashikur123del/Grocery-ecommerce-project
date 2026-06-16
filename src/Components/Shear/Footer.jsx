@@ -1,5 +1,6 @@
 
 import { FaTruck, FaHeadset, FaShieldAlt, FaTag, FaFacebookF, FaTwitter, FaGooglePlusG, FaLinkedinIn, FaPaperPlane, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
+import logo from "../../assets/logo.png"
 
 const Footer = () => {
   return (
@@ -22,14 +23,14 @@ const Footer = () => {
       </div>
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 mt-10">
         <div className="lg:col-span-1">
-          <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-             <span className="bg-green-600 text-white px-2 py-0.5 rounded-sm">Z</span> Zenis
-          </h2>
+          <div className="flex items-center gap-2 min-w-fit">
+               <img src={logo} alt="Logo" className="w-24"/>
+                    </div>
           <p className="text-gray-300 text-sm mb-6">It is a long established fact that reader distracted looking layout.</p>
           <div className="space-y-3 text-sm text-gray-300">
-            <p className="flex items-center gap-2"><FaMapMarkerAlt /> 37 W 24th St, New York, NY</p>
-            <p className="flex items-center gap-2"><FaPhoneAlt /> +123 324 5879 39</p>
-            <p className="flex items-center gap-2"><FaEnvelope /> info@Zenis.com</p>
+            <p className="flex items-center gap-2"><FaMapMarkerAlt /> Chorongi Super Market, 5th floor, Lift 4, Savar Bus Stand, Savar, Dhaka.</p>
+            <p className="flex items-center gap-2"><FaPhoneAlt /> 01962779366 </p>
+            <p className="flex items-center gap-2"><FaEnvelope /> leadskillit@gmail.com </p>
           </div>
         </div>
         {[

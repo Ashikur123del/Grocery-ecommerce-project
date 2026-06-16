@@ -1,20 +1,35 @@
 import { FaStar } from "react-icons/fa";
+import { FiShoppingCart, FiHeart } from "react-icons/fi";
 import { toast } from "react-toastify";
 import { useCartStore } from "../store/useCartStore";
+import { useWishlistStore } from "../store/useWishlistStore";
 import { useNavigate } from "react-router";
 
 const ProductCard = ({ product }) => {
   const addToCart = useCartStore((state) => state.addToCart);
+  const { wishlistItems, addToWishlist, removeFromWishlist } = useWishlistStore();
   const navigate = useNavigate();
 
   const handleAddToCart = (e) => {
-    e.stopPropagation(); // ← card click আটকাবে
+    e.stopPropagation();
     addToCart(product, 1);
     toast.success(`${product.name} added to cart!`);
   };
 
+  const toggleWishlist = (e) => {
+    e.stopPropagation();
+    const isWishlisted = wishlistItems.some((item) => item.id === product.id);
+    if (isWishlisted) {
+      removeFromWishlist(product.id);
+      toast.info("Removed from Wishlist");
+    } else {
+      addToWishlist(product);
+      toast.success("Added to Wishlist");
+    }
+  };
+
   const handleCardClick = () => {
-    navigate(`/best-products/${product.id}`); // ← তোমার route অনুযায়ী path দাও
+    navigate(`/best-products/${product.id}`);
   };
 
   const price = Number(product?.price) || 0;
@@ -23,6 +38,8 @@ const ProductCard = ({ product }) => {
 
   const discountRate =
     discount > price ? Math.round(((discount - price) / discount) * 100) : 0;
+
+  const isWishlisted = wishlistItems.some((item) => item.id === product.id);
 
   return (
     <div
@@ -43,6 +60,27 @@ const ProductCard = ({ product }) => {
         >
           {product?.inStock ? "In Stock" : "Out Stock"}
         </span>
+
+        {/* Floating Icons (Visible on Hover) */}
+        <div className="absolute top-3 right-3 z-20 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          {/* Wishlist Icon */}
+          <button 
+            onClick={toggleWishlist} 
+            className="p-2 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors"
+            disabled={!product?.inStock}
+          >
+            <FiHeart className={`text-sm ${isWishlisted ? "fill-red-500 text-red-500" : "text-gray-600"}`} />
+          </button>
+          {/* Shopping Cart Icon */}
+          <button 
+            onClick={handleAddToCart} 
+            className="p-2 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors"
+            disabled={!product?.inStock}
+          >
+            <FiShoppingCart className="text-sm text-gray-600" />
+          </button>
+        </div>
+
         <img
           src={product?.image}
           alt={product?.name}

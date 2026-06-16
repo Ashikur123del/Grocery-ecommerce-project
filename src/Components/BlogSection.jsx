@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import man1 from '../assets/grocery_blog_img_1.webp';
 import man2 from '../assets/grocery_blog_img_2.webp';
 import man3 from '../assets/grocery_blog_img_3.webp';
+import { Link } from 'react-router';
 
 const blogData = [
   { title: "Freshly Served Exploring The World Of Fresh", comments: "15 Comments", image: man1 },
@@ -27,8 +28,9 @@ const BlogSection = () => {
             whileHover={{ y: -10 }}
             className="group bg-white rounded-3xl shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100"
           >
-            {/* ইমেজ কন্টেইনার */}
-            <div className="relative overflow-hidden h-64">
+            <Link to="/product-list">
+            
+                <div className="relative overflow-hidden h-64">
               <img 
                 src={blog.image} 
                 alt={blog.title} 
@@ -37,7 +39,6 @@ const BlogSection = () => {
               <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-500"></div>
             </div>
             
-            {/* কন্টেন্ট */}
             <div className="p-7">
               <div className="flex items-center gap-5 text-xs font-medium text-gray-400 mb-4 uppercase tracking-wide">
                 <div className="flex items-center gap-1.5 hover:text-green-600 cursor-pointer transition-colors">
@@ -64,6 +65,7 @@ const BlogSection = () => {
                 </span>
               </div>
             </div>
+            </Link>
           </motion.div>
         ))}
       </div>

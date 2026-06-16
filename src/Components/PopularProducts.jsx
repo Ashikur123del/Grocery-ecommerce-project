@@ -1,4 +1,4 @@
-import { FiChevronLeft, FiChevronRight, FiArrowUpRight } from 'react-icons/fi';
+import { FiChevronLeft, FiChevronRight, FiArrowUpRight, FiShoppingCart, FiHeart } from 'react-icons/fi';
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
@@ -11,6 +11,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { useBoundStore } from '../store/useBoundStore';
 import { useCartStore } from '../store/useCartStore';
+import { useWishlistStore } from '../store/useWishlistStore';
 
 const categoryHighlights = {
   Fruits: "bg-orange-50 text-orange-600 border-orange-100/50",
@@ -26,6 +27,7 @@ const categoryHighlights = {
 const PopularProducts = () => {
   const { products, fetchProducts, isLoading } = useBoundStore();
   const addToCart = useCartStore((state) => state.addToCart);
+  const { wishlistItems, addToWishlist, removeFromWishlist } = useWishlistStore();
   const navigate = useNavigate();
 
   const prevRef = useRef(null);
@@ -36,10 +38,22 @@ const PopularProducts = () => {
     fetchProducts();
   }, [fetchProducts]);
 
-  // ✅ e parameter নেই, শুধু product
-  const handleAddToCart = (product) => {
+  const handleAddToCart = (e, product) => {
+    e.stopPropagation();
     addToCart(product, 1);
     toast.success(`${product.name} added to cart!`);
+  };
+
+  const toggleWishlist = (e, product) => {
+    e.stopPropagation();
+    const isWishlisted = wishlistItems.some((item) => item.id === product.id);
+    if (isWishlisted) {
+      removeFromWishlist(product.id);
+      toast.info("Removed from Wishlist");
+    } else {
+      addToWishlist(product);
+      toast.success("Added to Wishlist");
+    }
   };
 
   const handleCardClick = (productId) => {
@@ -135,6 +149,8 @@ const PopularProducts = () => {
                 product.discount && product.discount > product.price
                   ? Math.round(((product.discount - product.price) / product.discount) * 100)
                   : 0;
+              
+              const isWishlisted = wishlistItems.some((item) => item.id === product.id);
 
               return (
                 <SwiperSlide key={product.id} className="h-full flex">
@@ -146,18 +162,36 @@ const PopularProducts = () => {
                     transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
                     className="w-full h-full flex"
                   >
-                    {/* ✅ Card div — click করলে details page */}
                     <div
                       onClick={() => handleCardClick(product.id)}
                       className="w-full h-full border border-zinc-200/50 bg-[#F9FAFB] hover:bg-white hover:border-emerald-500/30 hover:shadow-[0_16px_36px_rgba(0,0,0,0.05)] rounded-[24px] p-4 flex flex-col justify-between transition-all duration-300 group text-left cursor-pointer"
                     >
-                      {/* Image */}
+                      {/* Image Area with Floating Icons */}
                       <div className="relative w-full aspect-square flex items-center justify-center overflow-hidden rounded-[18px] bg-white border border-zinc-100">
                         {percentOff > 0 && (
                           <span className="absolute top-2.5 left-2.5 z-10 bg-rose-500 text-white text-[10px] font-black px-2 py-0.5 rounded-md shadow-sm tracking-wider uppercase">
                             {percentOff}% Off
                           </span>
                         )}
+                        
+                        {/* Floating Icons (Visible on Hover) */}
+                        <div className="absolute top-2.5 right-2.5 z-20 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          {/* Wishlist Icon */}
+                          <button 
+                            onClick={(e) => toggleWishlist(e, product)} 
+                            className="p-2 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors"
+                          >
+                            <FiHeart className={`text-sm ${isWishlisted ? "fill-red-500 text-red-500" : "text-gray-600"}`} />
+                          </button>
+                          {/* Shopping Cart Icon */}
+                          <button 
+                            onClick={(e) => handleAddToCart(e, product)} 
+                            className="p-2 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors"
+                          >
+                            <FiShoppingCart className="text-sm text-gray-600" />
+                          </button>
+                        </div>
+
                         <motion.div
                           variants={{ hover: { scale: 1.04, y: -2 } }}
                           transition={{ type: "spring", stiffness: 300, damping: 25 }}
@@ -196,11 +230,10 @@ const PopularProducts = () => {
                           </div>
                         </div>
 
-                        {/* ✅ button click এ e.stopPropagation() — card click যাবে না */}
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
-                            handleAddToCart(product);
+                            handleAddToCart(e, product);
                           }}
                           className="w-full py-2.5 bg-white border border-zinc-200 text-zinc-700 font-semibold rounded-xl transition-all duration-300 text-sm group-hover:bg-[#00A859] group-hover:text-white group-hover:border-[#00A859] shadow-sm"
                         >

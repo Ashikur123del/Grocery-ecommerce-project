@@ -3,7 +3,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { IoSearchOutline } from "react-icons/io5";
 import { LuPhoneCall } from "react-icons/lu";
 import { MdDashboard, MdAccountCircle } from "react-icons/md";
-import logo from "../../assets/logo.webp"
+import logo from "../../assets/logo.png"
 
 const MidHeader = () => {
 
@@ -45,7 +45,7 @@ const MidHeader = () => {
                   Hotline
                 </p>
                 <p className="text-[15px] font-bold text-[#001e2b]">
-                  +(402) 763 282 46
+                  01688667870
                 </p>
               </div>
             </div>

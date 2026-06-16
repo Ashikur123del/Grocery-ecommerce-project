@@ -61,7 +61,7 @@ const SpecialBrandProducts = () => {
                 : null;
 
             return (
-              <Link to={`/best-products/${product.id}`} key={product.id}>
+              <Link to={`/product-list/`} key={product.id}>
                 <motion.div
                   whileHover={{ y: -3 }}
                   transition={{ duration: 0.2 }}

@@ -12,15 +12,15 @@ import { HiMenuAlt3 } from "react-icons/hi";
 import { FiUser } from "react-icons/fi";
 import { MdAccountCircle, MdDashboard } from "react-icons/md";
 
-import { Link } from "react-router";
-
 import { useDisclosure } from "@heroui/use-disclosure";
 
-import logo from "../../assets/logo.webp";
+import logo from "../../assets/logo.png";
 
 import NavLinks from "./NavLinks";
 import MobileMenu from "./MobileMenu";
 import { Drawers } from "../Modle/Drawers";
+import { Link, useNavigate } from "react-router";
+import { useWishlistStore } from "../../store/useWishlistStore";
 
 const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
@@ -29,6 +29,9 @@ const Header = () => {
   const [openSubMenu, setOpenSubMenu] = useState(null);
 
   const { isOpen, onOpenChange } = useDisclosure();
+
+  const navigate = useNavigate();
+  const { wishlistItems } = useWishlistStore();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,7 +79,7 @@ const Header = () => {
         { label: "Become a Vendor", href: "/become-vendor" },
       ],
     },
- 
+
     {
       label: "Pages",
       href: "/pages",
@@ -136,7 +139,6 @@ const Header = () => {
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16 sm:h-20">
-
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(true)}
@@ -145,15 +147,19 @@ const Header = () => {
               <HiMenuAlt3 size={28} />
             </button>
 
-           
-            {isSticky ? <>
-            <Link to="/">
-              <img
-                src={logo}
-                alt="logo"
-                className="w-10 sm:w-14 object-contain"
-              />
-            </Link></> :  ""}
+            {isSticky ? (
+              <>
+                <Link to="/">
+                  <img
+                    src={logo}
+                    alt="logo"
+                    className="w-10 sm:w-14 object-contain"
+                  />
+                </Link>
+              </>
+            ) : (
+              ""
+            )}
 
             {/* Categories */}
             {!isSticky && (
@@ -194,15 +200,18 @@ const Header = () => {
               setActiveDropdown={setActiveDropdown}
             />
 
-      
             <div className="flex items-center gap-4">
-
-              <div className="relative cursor-pointer">
+              <div
+                className="relative cursor-pointer"
+                onClick={() => navigate("/wishlist")}
+              >
                 <FaRegHeart size={22} />
 
-                <span className="absolute -top-2 -right-2 bg-[#05a845] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
-                  8
-                </span>
+                {wishlistItems.length > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-[#05a845] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
+                    {wishlistItems.length}
+                  </span>
+                )}
               </div>
 
               {/* Drawer */}
@@ -211,7 +220,6 @@ const Header = () => {
               {/* User */}
               {isSticky && (
                 <div className="relative group flex items-center gap-2 border-l pl-4">
-
                   <div className="w-9 h-9 rounded-full border border-[#05a845] flex items-center justify-center text-[#05a845]">
                     <FiUser size={20} />
                   </div>
@@ -230,7 +238,6 @@ const Header = () => {
 
                   {/* User Dropdown */}
                   <div className="absolute top-full right-0 mt-3 w-56 z-50 bg-white shadow-xl rounded-lg border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-
                     <button
                       onClick={() => handleUserAction("dashboard")}
                       className="w-full px-4 py-3 flex items-center gap-3 hover:bg-gray-50"

@@ -8,7 +8,7 @@ import PorpularProduct from './Pages/PopularProducts/PorpularProduct';
 import YourSpecialBrandProducts from './Pages/YourSpecialBrandProducts/YourSpecialBrandProducts';
 import ProductList from './Pages/ProductList/ProductList';
 import Cart from './Pages/Cart/Cart';
-// import Checkout from './Pages/Checkout/Checkout';
+import Checkout from './Pages/Checkout/Checkout';
 import Compare from './Pages/Compare/Compare';
 import Wishlist from './Pages/Wishlist/Wishlist';
 import OrderTracking from './Pages/OrderTracking/OrderTracking';
@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
       { path: "YourSpecialBrandProducts", element: <YourSpecialBrandProducts /> },
       { path: "product-list", element: <ProductList /> },
       { path: "cart", element: <Cart /> },
-      // { path: "checkout", element: <Checkout /> },
+      { path: "checkout", element: <Checkout /> },
       // {path: "ordersucces", element: <OrderSuccess />} ,
       { path: "compare", element: <Compare /> },
       { path: "wishlist", element: <Wishlist /> },

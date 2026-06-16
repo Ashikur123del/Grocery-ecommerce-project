@@ -11,6 +11,8 @@ import grocery3 from "../../assets/category_icon_3.webp";
 import grocery4 from "../../assets/category_icon_4.webp";
 import grocery5 from "../../assets/category_icon_5.webp";
 import grocery6 from "../../assets/category_icon_6.webp";
+import { Link } from "react-router";
+
 
 const GroceryItem = () => {
   const categories = [
@@ -56,7 +58,8 @@ const GroceryItem = () => {
                 whileHover="hover"
                 className="w-full"
               >
-                <Card
+                <Link to="/product-list">
+                      <Card
                   isPressable
                   shadow="none"
                   className={`w-full aspect-[1/1.25] border rounded-[32px] transition-all duration-400 ease-out p-4 flex flex-col justify-between items-center select-none overflow-hidden relative ${item.bgColor}`}
@@ -105,18 +108,19 @@ const GroceryItem = () => {
                     {item.name}
                   </div>
                 </Card>
+                </Link>
               </motion.div>
             </SwiperSlide>
           ))}
         </Swiper>
-        <button className="cat-next-btn absolute -right-4 lg:-right-6 z-20 w-12 h-12 rounded-full bg-white border border-gray-100 text-gray-500 shadow-[0_4px_12px_rgba(0,0,0,0.05)] hover:bg-emerald-500 hover:text-white flex items-center justify-center transition-all duration-300 disabled:opacity-40 disabled:pointer-events-none active:scale-90">
+        <Link to="/product-list" className="cat-next-btn absolute -right-4 lg:-right-6 z-20 w-12 h-12 rounded-full bg-white border border-gray-100 text-gray-500 shadow-[0_4px_12px_rgba(0,0,0,0.05)] hover:bg-emerald-500 hover:text-white flex items-center justify-center transition-all duration-300 disabled:opacity-40 disabled:pointer-events-none active:scale-90">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
           </svg>
-        </button>
+        </Link>
       </div>
     </div>
   );
-};
+};  
 
 export default GroceryItem;

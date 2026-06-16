@@ -1,104 +1,82 @@
 import { Link } from "react-router";
 import { motion } from "framer-motion";
+import { FiShoppingCart, FiHeart } from "react-icons/fi";
 import { useCartStore } from "../../store/useCartStore";
+import { useWishlistStore } from "../../store/useWishlistStore";
 import { toast } from "react-toastify";
-
-const categoryHighlights = {
-  Fruits: "bg-orange-50 text-orange-600 border-orange-100/50",
-  Dairy: "bg-blue-50 text-blue-600 border-blue-100/50",
-  Bakery: "bg-amber-50 text-amber-700 border-amber-100/50",
-  Vegetables: "bg-emerald-50 text-emerald-600 border-emerald-100/50",
-  Cooking: "bg-rose-50 text-rose-600 border-rose-100/50",
-  Seafood: "bg-cyan-50 text-cyan-600 border-cyan-100/50",
-  Beverages: "bg-violet-50 text-violet-600 border-violet-100/50",
-  Meat: "bg-red-50 text-red-600 border-red-100/50",
-};
 
 const ProductsCard = ({ products = [] }) => {
   const addToCart = useCartStore((state) => state.addToCart);
+  const { wishlistItems, addToWishlist, removeFromWishlist } = useWishlistStore();
 
   const handleAddToCart = (e, product) => {
     e.preventDefault();
     e.stopPropagation();
     addToCart(product, 1);
-    toast.success(`${product?.name || "Product"} added!`);
+    toast.success(`${product.name} added to cart!`);
+  };
+
+  const toggleWishlist = (e, product) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const isWishlisted = wishlistItems.some((item) => item.id === product.id);
+    if (isWishlisted) {
+      removeFromWishlist(product.id);
+      toast.info("Removed from Wishlist");
+    } else {
+      addToWishlist(product);
+      toast.success("Added to Wishlist");
+    }
   };
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
-      {products.slice(0, 4).map((product) => {
-        const discount =
-          product?.originalPrice && product.originalPrice > product.price
-            ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
-            : null;
-
-        const tagStyle =
-          categoryHighlights[product?.category] || "bg-zinc-100 text-zinc-600 border-zinc-200";
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {products.slice(0,4).map((product) => {
+        const isWishlisted = wishlistItems.some((item) => item.id === product.id);
 
         return (
-          <Link to={`/best-products/${product?.id}`} key={product?.id} className="w-full h-full">
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              whileHover="hover"
-              transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
-              className="w-full h-full border border-zinc-200/50 bg-[#F9FAFB] hover:bg-white hover:border-emerald-500/30 hover:shadow-[0_16px_36px_rgba(0,0,0,0.05)] rounded-[24px] p-4 flex flex-col transition-all duration-300 group cursor-pointer"
+          <Link to={`/product/${product.id}`} key={product.id} className="group">
+            <motion.div 
+              className="bg-white rounded-3xl border border-gray-100 p-4 transition-all duration-300 hover:shadow-2xl relative"
+              whileHover={{ y: -8 }}
             >
-              {/* Image */}
-              <div className="relative w-full aspect-square flex items-center justify-center overflow-hidden rounded-[18px] bg-white border border-zinc-100 shadow-[inset_0_2px_8px_rgba(0,0,0,0.01)]">
-                {discount && (
-                  <span className="absolute top-2.5 left-2.5 z-10 bg-rose-500 text-white text-[10px] font-black px-2 py-0.5 rounded-md shadow-sm tracking-wider uppercase">
-                    {discount}% Off
-                  </span>
-                )}
-                <motion.div
-                  variants={{ hover: { scale: 1.04, y: -2 } }}
-                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                  className="w-full h-full p-3 flex items-center justify-center"
-                >
-                  <img
-                    src={product?.image}
-                    alt={product?.name}
-                    className="w-full h-full object-contain rounded-[12px] pointer-events-none"
-                    loading="lazy"
-                  />
-                </motion.div>
-              </div>
-
-              {/* Info */}
-              <div className="mt-4 flex flex-col flex-1 justify-between px-0.5">
-                <div className="mb-3">
-                  {product?.category && (
-                    <span className={`inline-block text-[10px] font-bold px-2 py-0.5 rounded-md border uppercase tracking-wider mb-2 ${tagStyle}`}>
-                      {product.category}
-                    </span>
-                  )}
-                  <h3 className="text-base font-bold text-zinc-800 tracking-tight line-clamp-1 group-hover:text-[#00A859] transition-colors duration-200">
-                    {product?.name}
-                  </h3>
-                  {product?.brand && (
-                    <span className="text-xs font-medium text-zinc-400 block mt-0.5">
-                      {product?.quantity || "1 unit"}
-                      <span className="text-zinc-300 mx-1">•</span>
-                      {product.brand}
-                    </span>
-                  )}
-                  <div className="flex items-baseline gap-2 mt-2">
-                    <span className="text-lg font-black text-zinc-900">
-                      ${product?.price}
-                    </span>
-                    {product?.originalPrice && (
-                      <span className="text-xs text-zinc-400 line-through font-medium">
-                        ${product.originalPrice}
-                      </span>
-                    )}
-                  </div>
+              {/* Product Image Area */}
+              <div className="relative w-full aspect-square bg-gray-50 rounded-2xl overflow-hidden mb-4">
+                <img src={product.image} alt={product.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                
+                {/* Discount Badge */}
+                <div className="absolute top-3 left-3 bg-pink-500 text-white text-[10px] font-bold px-2 py-1 rounded-md">
+                  {product.discount || "20"}% OFF
                 </div>
 
-                {/* Add to Cart */}
-                <button
+                {/* Floating Icons (Visible on Hover) */}
+                <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {/* Wishlist Icon */}
+                  <button onClick={(e) => toggleWishlist(e, product)} className="p-2.5 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors">
+                    <FiHeart className={isWishlisted ? "fill-red-500 text-red-500" : "text-gray-600"} />
+                  </button>
+                  {/* Shopping Cart Icon */}
+                  <button onClick={(e) => handleAddToCart(e, product)} className="p-2.5 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors">
+                    <FiShoppingCart className="text-gray-600" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Product Info */}
+              <div className="px-1">
+                <p className="text-[10px] font-bold text-orange-400 tracking-wider uppercase mb-1">FRUITS</p>
+                <h3 className="font-bold text-gray-800 text-base mb-0.5 truncate">{product.name}</h3>
+                <p className="text-gray-400 text-[11px] mb-3">{product.quantity || "1kg"} • Nature Fresh</p>
+                
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="text-xl font-black text-gray-900">${product.price}</span>
+                  <span className="text-gray-400 line-through text-xs">${product.originalPrice}</span>
+                </div>
+
+                {/* Smart Add To Cart Button */}
+                <button 
                   onClick={(e) => handleAddToCart(e, product)}
-                  className="w-full py-2.5 bg-white border border-zinc-200 text-zinc-700 font-semibold rounded-xl transition-all duration-300 text-sm group-hover:bg-[#00A859] group-hover:text-white group-hover:border-[#00A859] shadow-sm"
+                  className="w-full py-3 border border-gray-200 text-gray-700 font-bold rounded-xl transition-all duration-300 hover:bg-[#00A859] hover:text-white hover:border-[#00A859] flex items-center justify-center gap-2"
                 >
                   Add To Cart
                 </button>
