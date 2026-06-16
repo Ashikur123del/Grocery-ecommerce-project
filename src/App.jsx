@@ -14,7 +14,7 @@ import Wishlist from './Pages/Wishlist/Wishlist';
 import OrderTracking from './Pages/OrderTracking/OrderTracking';
 import SignIn from './Pages/SignIn/SignIn';
 import SignUp from './Pages/SignUp/SignUp';
-// import OrderSuccess from './Pages/OrderSuccesPage/OrderSucces';
+import OrderSuccess from './Pages/OrderSuccesPage/OrderSucces';
 
 
 
@@ -31,7 +31,7 @@ export const router = createBrowserRouter([
       { path: "product-list", element: <ProductList /> },
       { path: "cart", element: <Cart /> },
       { path: "checkout", element: <Checkout /> },
-      // {path: "ordersucces", element: <OrderSuccess />} ,
+      {path: "ordersucces", element: <OrderSuccess />} ,
       { path: "compare", element: <Compare /> },
       { path: "wishlist", element: <Wishlist /> },
       { path: "order-tracking", element: <OrderTracking/> },
