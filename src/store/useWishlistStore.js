@@ -8,7 +8,6 @@ export const useWishlistStore = create(
 
       addToWishlist: (product) =>
         set((state) => {
-          // যদি আইটেমটি আগে থেকেই থাকে, তবে যোগ করবে না
           const existing = state.wishlistItems.find((i) => i.id === product.id);
           if (existing) return state;
           

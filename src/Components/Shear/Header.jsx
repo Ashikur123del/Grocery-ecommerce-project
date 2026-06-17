@@ -21,6 +21,7 @@ import MobileMenu from "./MobileMenu";
 import { Drawers } from "../Modle/Drawers";
 import { Link, useNavigate } from "react-router";
 import { useWishlistStore } from "../../store/useWishlistStore";
+import { LuArrowUpDown } from "react-icons/lu";
 
 const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
@@ -86,14 +87,14 @@ const Header = () => {
       hasDropdown: true,
       subItems: [
         { label: "About Us", href: "/about" },
-        { label: "Product Category", href: "/product-category" },
+        { label: "Product Category", href: "/products-category" },
         { label: "Product Brand", href: "/product-brand" },
         { label: "Cart View", href: "/cart-view" },
         { label: "Checkout", href: "/checkout" },
         { label: "Compare", href: "/compare" },
         { label: "Wishlist", href: "/wishlist" },
         { label: "Order Tracking", href: "/order-tracking" },
-        { label: "Sign In", href: "/signing-in" },
+        { label: "Sign In", href: "/sign-in" },
         { label: "Sign Up", href: "/sign-up" },
         { label: "Privacy Policy", href: "/privacy-policy" },
         { label: "Terms of Service", href: "/terms-of-service" },
@@ -201,6 +202,14 @@ const Header = () => {
             />
 
             <div className="flex items-center gap-4">
+               <div
+                className="relative cursor-pointer"
+                onClick={() => navigate("/wishlist")}
+              >
+                <LuArrowUpDown size={22} />
+
+              </div>
+              
               <div
                 className="relative cursor-pointer"
                 onClick={() => navigate("/wishlist")}

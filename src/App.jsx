@@ -15,6 +15,9 @@ import OrderTracking from './Pages/OrderTracking/OrderTracking';
 import SignIn from './Pages/SignIn/SignIn';
 import SignUp from './Pages/SignUp/SignUp';
 import OrderSuccess from './Pages/OrderSuccesPage/OrderSucces';
+import AboutPage from './Pages/About/AboutPage';
+// import ProductsCategoryPage from './Pages/ProductsCategory/ProductsCategoryPage';
+
 
 
 
@@ -35,8 +38,10 @@ export const router = createBrowserRouter([
       { path: "compare", element: <Compare /> },
       { path: "wishlist", element: <Wishlist /> },
       { path: "order-tracking", element: <OrderTracking/> },
+      {path: 'about', element: <AboutPage />},
       { path: "sign-in", element: <SignIn /> },
-      { path: "sign-up", element: <SignUp /> }
+      { path: "sign-up", element: <SignUp /> },
+      // {path: "products-category", element: <ProductsCategoryPage />}
     ]
   },
 ]);
