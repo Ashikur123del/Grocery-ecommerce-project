@@ -22,6 +22,7 @@ import { Drawers } from "../Modle/Drawers";
 import { Link, useNavigate } from "react-router";
 import { useWishlistStore } from "../../store/useWishlistStore";
 import { LuArrowUpDown } from "react-icons/lu";
+import { useCompareStore } from "../../store/compare";
 
 const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
@@ -33,6 +34,7 @@ const Header = () => {
 
   const navigate = useNavigate();
   const { wishlistItems } = useWishlistStore();
+  const compareItems = useCompareStore((state) => state.compare);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -202,14 +204,18 @@ const Header = () => {
             />
 
             <div className="flex items-center gap-4">
-               <div
+              <div
                 className="relative cursor-pointer"
-                onClick={() => navigate("/wishlist")}
+                onClick={() => navigate("/compare")}
               >
                 <LuArrowUpDown size={22} />
-
+                {compareItems.length > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-[#00A859] text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                    {compareItems.length}
+                  </span>
+                )}
               </div>
-              
+
               <div
                 className="relative cursor-pointer"
                 onClick={() => navigate("/wishlist")}

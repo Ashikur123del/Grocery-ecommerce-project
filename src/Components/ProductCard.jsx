@@ -4,10 +4,14 @@ import { toast } from "react-toastify";
 import { useCartStore } from "../store/useCartStore";
 import { useWishlistStore } from "../store/useWishlistStore";
 import { useNavigate } from "react-router";
+import { useCompareStore } from "../store/compare";
+import { LuArrowUpDown } from "react-icons/lu";
 
 const ProductCard = ({ product }) => {
   const addToCart = useCartStore((state) => state.addToCart);
   const { wishlistItems, addToWishlist, removeFromWishlist } = useWishlistStore();
+  const addToCompare = useCompareStore((state) => state.addToCompare);
+  const compareItems = useCompareStore((state) => state.compare);
   const navigate = useNavigate();
 
   const handleAddToCart = (e) => {
@@ -27,6 +31,21 @@ const ProductCard = ({ product }) => {
       toast.success("Added to Wishlist");
     }
   };
+
+  const handleCompare = (e, product) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const alreadyAdded = compareItems.find((i) => i.id === product.id);
+    if (alreadyAdded) {
+      toast.info(`${product.name} is already in compare list`);
+      return;
+    }
+
+    addToCompare(product);
+    toast.success(`${product.name} added to compare!`); // added toast
+  };
+
 
   const handleCardClick = () => {
     navigate(`/best-products/${product.id}`);
@@ -79,6 +98,20 @@ const ProductCard = ({ product }) => {
           >
             <FiShoppingCart className="text-sm text-gray-600" />
           </button>
+            
+             <button
+                    onClick={(e) => handleCompare(e, product)}
+                    className="p-2.5 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors"
+                  >
+                    <LuArrowUpDown
+                      className={
+                        compareItems.find((i) => i.id === product.id)
+                          ? "text-green-500"
+                          : "text-gray-600"
+                      }
+                    />
+                  </button>
+
         </div>
 
         <img

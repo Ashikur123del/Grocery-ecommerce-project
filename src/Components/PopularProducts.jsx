@@ -1,17 +1,25 @@
-import { FiChevronLeft, FiChevronRight, FiArrowUpRight, FiShoppingCart, FiHeart } from 'react-icons/fi';
+import {
+  FiChevronLeft,
+  FiChevronRight,
+  FiArrowUpRight,
+  FiShoppingCart,
+  FiHeart,
+} from "react-icons/fi";
 import { motion } from "framer-motion";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
-import { useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router';
-import { toast } from 'react-toastify';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import { useEffect, useRef } from "react";
+import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 import man2 from "../assets/man-2.png";
 
-import 'swiper/css';
-import 'swiper/css/navigation';
-import { useBoundStore } from '../store/useBoundStore';
-import { useCartStore } from '../store/useCartStore';
-import { useWishlistStore } from '../store/useWishlistStore';
+import "swiper/css";
+import "swiper/css/navigation";
+import { useBoundStore } from "../store/useBoundStore";
+import { useCartStore } from "../store/useCartStore";
+import { useWishlistStore } from "../store/useWishlistStore";
+import { useCompareStore } from "../store/compare";
+import { LuArrowUpDown } from "react-icons/lu";
 
 const categoryHighlights = {
   Fruits: "bg-orange-50 text-orange-600 border-orange-100/50",
@@ -27,7 +35,10 @@ const categoryHighlights = {
 const PopularProducts = () => {
   const { products, fetchProducts, isLoading } = useBoundStore();
   const addToCart = useCartStore((state) => state.addToCart);
-  const { wishlistItems, addToWishlist, removeFromWishlist } = useWishlistStore();
+  const { wishlistItems, addToWishlist, removeFromWishlist } =
+    useWishlistStore();
+  const addToCompare = useCompareStore((state) => state.addToCompare);
+  const compareItems = useCompareStore((state) => state.compare);
   const navigate = useNavigate();
 
   const prevRef = useRef(null);
@@ -56,6 +67,20 @@ const PopularProducts = () => {
     }
   };
 
+  const handleCompare = (e, product) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const alreadyAdded = compareItems.find((i) => i.id === product.id);
+    if (alreadyAdded) {
+      toast.info(`${product.name} is already in compare list`);
+      return;
+    }
+
+    addToCompare(product);
+    toast.success(`${product.name} added to compare!`); // added toast
+  };
+
   const handleCardClick = (productId) => {
     navigate(`/best-products/${productId}`);
   };
@@ -70,7 +95,6 @@ const PopularProducts = () => {
 
   return (
     <section className="container mx-auto px-6 md:px-12 py-16 select-none bg-white">
-
       <div className="flex items-end justify-between mb-8">
         <div className="text-left">
           <span className="text-emerald-600 text-xs md:text-sm font-bold tracking-wider uppercase block mb-1">
@@ -97,7 +121,6 @@ const PopularProducts = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-
         {/* Left promo panel */}
         <div className="lg:col-span-3 rounded-[24px] p-7 flex flex-col justify-between relative overflow-hidden bg-[#EBF7F2] min-h-[360px] lg:min-h-full border border-emerald-100/30">
           <div className="text-left relative z-10">
@@ -144,13 +167,20 @@ const PopularProducts = () => {
             className="w-full h-full py-4 px-1"
           >
             {products.map((product) => {
-              const tagStyle = categoryHighlights[product.category] || "bg-zinc-100 text-zinc-600 border-zinc-200";
+              const tagStyle =
+                categoryHighlights[product.category] ||
+                "bg-zinc-100 text-zinc-600 border-zinc-200";
               const percentOff =
                 product.discount && product.discount > product.price
-                  ? Math.round(((product.discount - product.price) / product.discount) * 100)
+                  ? Math.round(
+                      ((product.discount - product.price) / product.discount) *
+                        100,
+                    )
                   : 0;
-              
-              const isWishlisted = wishlistItems.some((item) => item.id === product.id);
+
+              const isWishlisted = wishlistItems.some(
+                (item) => item.id === product.id,
+              );
 
               return (
                 <SwiperSlide key={product.id} className="h-full flex">
@@ -173,28 +203,45 @@ const PopularProducts = () => {
                             {percentOff}% Off
                           </span>
                         )}
-                        
+
                         {/* Floating Icons (Visible on Hover) */}
                         <div className="absolute top-2.5 right-2.5 z-20 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          {/* Wishlist Icon */}
-                          <button 
-                            onClick={(e) => toggleWishlist(e, product)} 
+                          <button
+                            onClick={(e) => toggleWishlist(e, product)}
                             className="p-2 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors"
                           >
-                            <FiHeart className={`text-sm ${isWishlisted ? "fill-red-500 text-red-500" : "text-gray-600"}`} />
+                            <FiHeart
+                              className={`text-sm ${isWishlisted ? "fill-red-500 text-red-500" : "text-gray-600"}`}
+                            />
                           </button>
-                          {/* Shopping Cart Icon */}
-                          <button 
-                            onClick={(e) => handleAddToCart(e, product)} 
+
+                          <button
+                            onClick={(e) => handleAddToCart(e, product)}
                             className="p-2 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors"
                           >
                             <FiShoppingCart className="text-sm text-gray-600" />
+                          </button>
+                          <button
+                            onClick={(e) => handleCompare(e, product)}
+                            className="p-2.5 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors"
+                          >
+                            <LuArrowUpDown
+                              className={
+                                compareItems.find((i) => i.id === product.id)
+                                  ? "text-green-500"
+                                  : "text-gray-600"
+                              }
+                            />
                           </button>
                         </div>
 
                         <motion.div
                           variants={{ hover: { scale: 1.04, y: -2 } }}
-                          transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                          transition={{
+                            type: "spring",
+                            stiffness: 300,
+                            damping: 25,
+                          }}
                           className="w-full h-full p-2 flex items-center justify-center"
                         >
                           <img
@@ -209,14 +256,18 @@ const PopularProducts = () => {
                       {/* Info */}
                       <div className="mt-4 flex-grow flex flex-col justify-between text-left px-0.5">
                         <div className="mb-4">
-                          <span className={`inline-block text-[10px] font-bold px-2 py-0.5 rounded-md border uppercase tracking-wider mb-2 ${tagStyle}`}>
+                          <span
+                            className={`inline-block text-[10px] font-bold px-2 py-0.5 rounded-md border uppercase tracking-wider mb-2 ${tagStyle}`}
+                          >
                             {product.category}
                           </span>
                           <h3 className="text-base font-bold text-zinc-800 tracking-tight line-clamp-1 group-hover:text-[#00A859] transition-colors duration-200">
                             {product.name}
                           </h3>
                           <span className="text-xs font-medium text-zinc-400 block mt-0.5">
-                            {product.quantity || "1 unit"} <span className="text-zinc-300 mx-1">•</span> {product.brand}
+                            {product.quantity || "1 unit"}{" "}
+                            <span className="text-zinc-300 mx-1">•</span>{" "}
+                            {product.brand}
                           </span>
                           <div className="flex items-baseline gap-2 mt-2">
                             <span className="text-lg font-black text-zinc-900">

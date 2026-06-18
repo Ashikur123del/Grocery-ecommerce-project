@@ -1,4 +1,4 @@
-import { Link, Navigate } from "react-router";
+import { Link,  } from "react-router"; // fixed: Navigate -> useNavigate
 import { motion } from "framer-motion";
 import { FiShoppingCart, FiHeart } from "react-icons/fi";
 import { useCartStore } from "../../store/useCartStore";
@@ -8,6 +8,7 @@ import { LuArrowUpDown } from "react-icons/lu";
 import { useCompareStore } from "../../store/compare";
 
 const ProductsCard = ({ products = [] }) => {
+ 
   const addToCart = useCartStore((state) => state.addToCart);
   const { wishlistItems, addToWishlist, removeFromWishlist } = useWishlistStore();
   const addToCompare = useCompareStore((state) => state.addToCompare);
@@ -36,8 +37,15 @@ const ProductsCard = ({ products = [] }) => {
   const handleCompare = (e, product) => {
     e.preventDefault();
     e.stopPropagation();
+
+    const alreadyAdded = compareItems.find((i) => i.id === product.id);
+    if (alreadyAdded) {
+      toast.info(`${product.name} is already in compare list`);
+      return;
+    }
+
     addToCompare(product);
-    Navigate('/compare');
+    toast.success(`${product.name} added to compare!`); // added toast
   };
 
   return (
@@ -49,7 +57,7 @@ const ProductsCard = ({ products = [] }) => {
 
         return (
           <Link
-            to={`/product/${product.id}`}
+            to={`/best-products/${product.id}`}
             key={product.id}
             className="group"
           >
@@ -85,13 +93,16 @@ const ProductsCard = ({ products = [] }) => {
                       }
                     />
                   </button>
-                  {/* Shopping Cart Icon */}
-                  <Link to="/compare"
+
+                  {/* Shopping Cart Icon - fixed: was Link to="/compare" */}
+                  <button
                     onClick={(e) => handleAddToCart(e, product)}
                     className="p-2.5 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors"
                   >
                     <FiShoppingCart className="text-gray-600" />
-                  </Link>
+                  </button>
+
+                  {/* Compare Icon */}
                   <button
                     onClick={(e) => handleCompare(e, product)}
                     className="p-2.5 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors"
