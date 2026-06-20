@@ -7,6 +7,7 @@ import {
   Button,
 } from "@heroui/react";
 import { useCartStore } from "../../store/useCartStore";
+import { Link } from "react-router";
 
 
 
@@ -178,15 +179,15 @@ export function Drawers() {
                   </Button>
 
                   {/* CLOSE */}
-                  <Button
-                    className="bg-[#05a845] text-white font-semibold"
+                  <Link to="/checkout"
+                    className="bg-[#05a845] text-white font-semibold flex justify-center items-center"
                     onPress={onClose}
                   >
                     Checkout
-                  </Button>
+                  </Link>
 
                 </div>
-
+ 
               </Drawer.Footer>
 
             </Drawer.Dialog>

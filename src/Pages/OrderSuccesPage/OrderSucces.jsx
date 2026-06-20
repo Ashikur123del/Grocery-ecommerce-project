@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import {
     FaCheckCircle, FaTruck, FaEnvelope, FaPrint,
     FaHome, FaShoppingBag, FaArrowRight,
-    FaStar, FaShare, FaWhatsapp, FaFacebook, FaTwitter
+    FaStar, FaWhatsapp, FaFacebook, FaTwitter
 } from "react-icons/fa";
 import { toast, Toaster } from "react-hot-toast";
 

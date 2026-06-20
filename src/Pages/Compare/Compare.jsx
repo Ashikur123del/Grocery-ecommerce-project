@@ -27,7 +27,7 @@ const addToCart = useCartStore((state) => state.addToCart);
   };
 
   return (
-    <div className="p-4 md:p-8 max-w-7xl mx-auto">
+    <div className="p-4 md:p-8 container mx-auto">
       <div className="flex items-center justify-between mb-8">
         <h2 className="text-2xl font-bold">Compare Products ({compare.length})</h2>
         <Link to="/" className="text-[#00A859] font-semibold flex items-center gap-2">

@@ -16,7 +16,13 @@ import SignIn from './Pages/SignIn/SignIn';
 import SignUp from './Pages/SignUp/SignUp';
 import OrderSuccess from './Pages/OrderSuccesPage/OrderSucces';
 import AboutPage from './Pages/About/AboutPage';
-// import ProductsCategoryPage from './Pages/ProductsCategory/ProductsCategoryPage';
+import ProductsCategoryPage from './Pages/ProductsCategory/ProductsCategoryPage';
+import ProductsBrands from './Pages/ProductBrand/ProductsBrands';
+import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
+import TermsOfService from './Pages/TermsofService/TermsOfService';
+import ReturnPolicy from './Pages/ReturnPolicy/ReturnPolicy';
+import PaymentFailed from './Pages/PaymentFailed/PaymentFailed';
+import Faqs from './Pages/FAQs/Faqs';
 
 
 
@@ -35,13 +41,19 @@ export const router = createBrowserRouter([
       { path: "cart", element: <Cart /> },
       { path: "checkout", element: <Checkout /> },
       {path: "ordersucces", element: <OrderSuccess />} ,
+      {path: "payment-failed", element: <PaymentFailed/>},
       { path: "compare", element: <Compare /> },
       { path: "wishlist", element: <Wishlist /> },
       { path: "order-tracking", element: <OrderTracking/> },
+      { path: 'privacy-policy', element: <PrivacyPolicy />} ,
+      {path: "terms-of-service", element: <TermsOfService />},
+      {path: "return-policy", element: <ReturnPolicy />},
+      {path: "faq",  element: <Faqs />},
       {path: 'about', element: <AboutPage />},
       { path: "sign-in", element: <SignIn /> },
       { path: "sign-up", element: <SignUp /> },
-      // {path: "products-category", element: <ProductsCategoryPage />}
+      {path: "products-category", element: <ProductsCategoryPage />},
+      {path: "product-brand", element: <ProductsBrands />}
     ]
   },
 ]);
