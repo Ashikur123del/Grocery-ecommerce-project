@@ -17,7 +17,7 @@ const ProductsCategoryPage = () => {
 
         <div className="container mx-auto py-10 md:py-20">
         <div className="grid grid-cols-6 gap-4">
-        {/* products অ্যারেটি ম্যাপ করুন */}
+        
         {products && products.map((product) => (
           <ProductsCategory key={product.id} product={product} />
         ))}

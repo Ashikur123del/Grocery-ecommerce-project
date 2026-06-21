@@ -72,16 +72,6 @@ const Header = () => {
         { label: "Checkout", href: "/checkout" },
       ],
     },
-    {
-      label: "Stores",
-      href: "/stores",
-      hasDropdown: true,
-      subItems: [
-        { label: "Store List", href: "/store-list" },
-        { label: "Store Details", href: "/store-details" },
-        { label: "Become a Vendor", href: "/become-vendor" },
-      ],
-    },
 
     {
       label: "Pages",
@@ -116,9 +106,6 @@ const Header = () => {
       hasDropdown: true,
       subItems: [
         { label: "Blog Classic", href: "/blog-classic" },
-        { label: "Blog Right Sidebar", href: "/blog-right-sidebar" },
-        { label: "Blog Left Sidebar", href: "/blog-left-sidebar" },
-        { label: "Blog Details", href: "/blog-details" },
       ],
     },
     {

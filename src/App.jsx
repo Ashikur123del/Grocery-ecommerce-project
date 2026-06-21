@@ -23,7 +23,9 @@ import TermsOfService from './Pages/TermsofService/TermsOfService';
 import ReturnPolicy from './Pages/ReturnPolicy/ReturnPolicy';
 import PaymentFailed from './Pages/PaymentFailed/PaymentFailed';
 import Faqs from './Pages/FAQs/Faqs';
-
+import FlashDealsPage from './Pages/FlashDeals/FlashDealsPage';
+import BlogClassicPage from './Pages/BlogClassic/BlogClassicPage';
+import ContactPage from './Pages/Contact/ContactPage';
 
 
 
@@ -49,11 +51,14 @@ export const router = createBrowserRouter([
       {path: "terms-of-service", element: <TermsOfService />},
       {path: "return-policy", element: <ReturnPolicy />},
       {path: "faq",  element: <Faqs />},
+      {path: "flash-deals",element: <FlashDealsPage />},
+      {path: "blog-classic", element: <BlogClassicPage />},
       {path: 'about', element: <AboutPage />},
       { path: "sign-in", element: <SignIn /> },
       { path: "sign-up", element: <SignUp /> },
       {path: "products-category", element: <ProductsCategoryPage />},
-      {path: "product-brand", element: <ProductsBrands />}
+      {path: "product-brand", element: <ProductsBrands />},
+      {path: "contact", element: <ContactPage />}
     ]
   },
 ]);

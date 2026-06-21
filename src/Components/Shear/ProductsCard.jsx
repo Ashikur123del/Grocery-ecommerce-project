@@ -1,4 +1,4 @@
-import { Link,  } from "react-router"; // fixed: Navigate -> useNavigate
+import { Link } from "react-router";
 import { motion } from "framer-motion";
 import { FiShoppingCart, FiHeart } from "react-icons/fi";
 import { useCartStore } from "../../store/useCartStore";
@@ -7,12 +7,14 @@ import { toast } from "react-toastify";
 import { LuArrowUpDown } from "react-icons/lu";
 import { useCompareStore } from "../../store/compare";
 
-const ProductsCard = ({ products = [] }) => {
- 
+const ProductsCard = ({ products = [], limit }) => {
   const addToCart = useCartStore((state) => state.addToCart);
   const { wishlistItems, addToWishlist, removeFromWishlist } = useWishlistStore();
   const addToCompare = useCompareStore((state) => state.addToCompare);
   const compareItems = useCompareStore((state) => state.compare);
+
+  
+  const displayProducts = limit ? products.slice(0, limit) : products;
 
   const handleAddToCart = (e, product) => {
     e.preventDefault();
@@ -45,15 +47,13 @@ const ProductsCard = ({ products = [] }) => {
     }
 
     addToCompare(product);
-    toast.success(`${product.name} added to compare!`); // added toast
+    toast.success(`${product.name} added to compare!`);
   };
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      {products.slice(0, 4).map((product) => {
-        const isWishlisted = wishlistItems.some(
-          (item) => item.id === product.id,
-        );
+      {displayProducts.map((product) => {
+        const isWishlisted = wishlistItems.some((item) => item.id === product.id);
 
         return (
           <Link
@@ -94,7 +94,7 @@ const ProductsCard = ({ products = [] }) => {
                     />
                   </button>
 
-                  {/* Shopping Cart Icon - fixed: was Link to="/compare" */}
+                  {/* Shopping Cart Icon */}
                   <button
                     onClick={(e) => handleAddToCart(e, product)}
                     className="p-2.5 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors"

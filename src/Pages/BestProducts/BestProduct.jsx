@@ -50,7 +50,7 @@ const BestProduct = () => {
       </div>
 
       {filteredProducts.length > 0 ? (
-        <ProductsCard products={filteredProducts} />
+        <ProductsCard products={filteredProducts} limit={4} />   
       ) : (
         <p className="text-center text-gray-400 py-16">No products in this category.</p>
       )}
