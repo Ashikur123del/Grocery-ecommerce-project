@@ -4,7 +4,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { IoLocationSharp } from "react-icons/io5";
 import { MdAttachEmail } from "react-icons/md";
 
-const TopBar = () => {
+const  TopBar = () => {
   return (
     <div className="bg-[#05a845] text-white text-sm hidden md:block">
       <div className="container mx-auto px-4 py-2">

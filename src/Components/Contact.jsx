@@ -1,15 +1,20 @@
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { IoMdHand } from "react-icons/io";
 
 const ContactSection = () => {
-  return (
-    <section className="container mx-auto px-4 py-16">
-      {/* ১. উপরে কন্টাক্ট ইনফো কার্ডগুলো */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-        {[
+
+        const contactData = [
           { icon: <FaPhoneAlt />, title: "Call Us", details: ["+1 (555) 123-4567", "+1 (555) 987-6543"] },
           { icon: <FaEnvelope />, title: "Email Us", details: ["support@example.com", "info@example.com"] },
           { icon: <FaMapMarkerAlt />, title: "Our Location", details: ["123 Business Avenue", "New York, NY 10001"] },
-        ].map((item, index) => (
+        ]
+
+  return (
+    <section className="container mx-auto px-4 py-16">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        {
+          
+        contactData.map((item, index) => (
           <div key={index} className="flex items-start gap-4 bg-gray-50 p-6 rounded-xl border border-gray-300">
             <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-500 text-xl flex-shrink-0">
               {item.icon}
@@ -24,20 +29,17 @@ const ContactSection = () => {
         ))}
       </div>
 
-      {/* ২. নিচে ইমেজ এবং গেট ইন টাচ ফর্ম */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        {/* বাম পাশের ইমেজ */}
         <div>
           <img
-            src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a"
             alt="Contact Us"
             className="rounded-3xl w-full h-[550px] object-cover shadow-2xl"
           />
         </div>
 
-        {/* ডান পাশের ফর্ম */}
         <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-lg">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8">Get In Touch 👋</h2>
+          <h2 className="text-3xl font-bold text-gray-800 mb-8 flex gap-2">Get In Touch <span className="text-orange-500"><IoMdHand /></span></h2>
           <form className="space-y-5">
             
               <input type="text" placeholder="Name" className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-orange-400 outline-none" />

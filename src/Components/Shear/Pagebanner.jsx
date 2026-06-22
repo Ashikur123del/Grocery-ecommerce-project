@@ -17,10 +17,8 @@ export default function PageBanner({
         backgroundPosition: "center",
       }}
     >
-      {/* Color tint over the photo so the white title/breadcrumb stay readable */}
+     
       <div className={`absolute inset-0 ${overlay}`} />
-
-      {/* Content */}
       <div className="relative z-10 mx-auto flex max-w-2xl flex-col items-center gap-2 text-center">
         <h1 className="text-3xl font-extrabold text-white sm:text-4xl">
           {title}
