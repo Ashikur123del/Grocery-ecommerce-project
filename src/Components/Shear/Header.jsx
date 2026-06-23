@@ -241,7 +241,7 @@ const Header = () => {
                   {/* User Dropdown */}
                   <div className="absolute top-full right-0 mt-3 w-56 z-50 bg-white shadow-xl rounded-lg border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                     <button
-                      onClick={() => handleUserAction("dashboard")}
+                      onClick={() => handleUserAction("/dashboard")}
                       className="w-full px-4 py-3 flex items-center gap-3 hover:bg-gray-50"
                     >
                       <MdDashboard />

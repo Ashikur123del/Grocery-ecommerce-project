@@ -26,9 +26,13 @@ import Faqs from './Pages/FAQs/Faqs';
 import FlashDealsPage from './Pages/FlashDeals/FlashDealsPage';
 import BlogClassicPage from './Pages/BlogClassic/BlogClassicPage';
 import ContactPage from './Pages/Contact/ContactPage';
+import DashboardLayout from './Pages/DashboardLayout/DashboardLayout';
+import DashboardHome from './Pages/DashboardLayout/DashboardHome/DashboardHome';
+import OverView from './Pages/DashboardLayout/OverviewPage/OverView';
 
 
 
+ 
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -61,4 +65,13 @@ export const router = createBrowserRouter([
       {path: "contact", element: <ContactPage />}
     ]
   },
-]);
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />, // আলাদা লেআউট
+    children: [
+      { index: true, element: <DashboardHome /> },
+      {path: "overview", element: <OverView />}
+     
+    ]
+  }
+]); 
