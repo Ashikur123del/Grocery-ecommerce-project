@@ -85,6 +85,7 @@ const Header = () => {
         { label: "Checkout", href: "/checkout" },
         { label: "Compare", href: "/compare" },
         { label: "Wishlist", href: "/wishlist" },
+        {label: 'My Accound', href: "/my-accound"},
         { label: "Order Tracking", href: "/order-tracking" },
         { label: "Sign In", href: "/sign-in" },
         { label: "Sign Up", href: "/sign-up" },

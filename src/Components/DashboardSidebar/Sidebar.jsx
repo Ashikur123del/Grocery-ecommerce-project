@@ -6,9 +6,9 @@ export default function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
 
   const dashboardItems = [
     { path: "/dashboard/overview", name: "Overview", icon: <HiViewGrid size={22} /> },
-    { path: "/dashboard/my-orders", name: "Orders", icon: <HiShoppingBag size={22} /> },
-    { path: "/dashboard/downloads", name: "Downloads", icon: <HiDownload size={22} /> },
-    { path: "/dashboard/returns", name: "Return Requests", icon: <HiX size={22} /> }, 
+    { path: "/dashboard/order-history", name: "Orders", icon: <HiShoppingBag size={22} /> },
+    { path: "/dashboard/download", name: "Downloads", icon: <HiDownload size={22} /> },
+    { path: "/dashboard/return", name: "Return Requests", icon: <HiX size={22} /> }, 
   ];
 
   const settingItems = [
@@ -63,7 +63,6 @@ export default function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
           </div>
         </div>
 
-        {/* লগআউট বাটন (এটি নিচে ফিক্সড থাকবে) */}
         <button className="flex items-center gap-3 p-3 w-full text-slate-300 hover:bg-slate-800 rounded-lg mt-4 flex-shrink-0">
           <HiLogout size={22} /> Logout
         </button>

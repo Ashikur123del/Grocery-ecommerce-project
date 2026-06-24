@@ -184,7 +184,7 @@ const OverView = () => {
     <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
       <div className="min-w-[640px]">
         {/* Header */}
-        <div className="grid grid-cols-5 gap-3 px-4 py-3 bg-amber-500 border-b border-gray-200 text-xs font-semibold text-white uppercase tracking-wider">
+        <div className="grid grid-cols-5 gap-3 px-2 md:px-4 py-3 bg-amber-500 border-b border-gray-200 text-xs font-semibold text-white uppercase tracking-wider">
           <div className="col-span-1">Order ID</div>
           <div className="col-span-1">Date</div>
           <div className="col-span-1">Status</div>
@@ -196,7 +196,7 @@ const OverView = () => {
         {orders.map((item, idx) => (
           <div
             key={item.id}
-            className={`grid grid-cols-5 gap-3 px-4 py-3 items-center border-b border-gray-100 last:border-0 hover:bg-blue-50/40 transition-all duration-200 text-sm ${
+            className={`grid grid-cols-5 gap-3 px-2 md:px-4 py-3 items-center border-b border-gray-100 last:border-0 hover:bg-blue-50/40 transition-all duration-200 text-sm ${
               idx % 2 === 0 ? 'bg-white' : 'bg-gray-50/30'
             }`}
           >
