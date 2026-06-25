@@ -41,6 +41,9 @@ import DownLoad from "./Pages/MyAccound/MyDownload/DownLoad"
 import Return from "./Pages/MyAccound/ReturnRequest/Return"
 import PresonalInfo from './Pages/MyAccound/PresonalInfo/PresonalInfo';
 import Address from './Pages/MyAccound/Address/Address';
+import WishList from './Pages/MyAccound/WishList/WishList';
+import MyReviews from './Pages/MyAccound/MyReviews/MyReviews';
+import ChangePasswordForm from './Pages/MyAccound/ChangePasswordForm/ChangePasswordForm';
  
 
 
@@ -87,7 +90,10 @@ export const router = createBrowserRouter([
     { path: "download", element: <DownLoad />},
     { path: "return", element: <Return />},
     { path: "profile", element: <PresonalInfo />},
-    { path: "address", element: <Address />}
+    { path: "address", element: <Address />},
+    {path: "wishlist", element: <WishList />},
+    {path: "reviews", element: <MyReviews />},
+    {path: "password", element: <ChangePasswordForm />}
   ]
 },
     ]

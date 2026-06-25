@@ -4,7 +4,7 @@ import PageBanner from "../../Components/Shear/Pagebanner";
 
 const Account = () => {
   return (
-   <>
+   <div className="bg-slate-100">
    <PageBanner title="My Account" breadcrumbs={[{ label: "Account" }]} />
     <div className="container mx-auto p-4 md:p-8 flex gap-8">
       
@@ -21,7 +21,7 @@ const Account = () => {
       
     </div>
    
-   </>
+   </div>
   );
 };
 

@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { LuArrowUpDown } from "react-icons/lu";
 import { useCompareStore } from "../../store/compare";
 
-const ProductsCard = ({ products = [], limit }) => {
+const ProductsCard = ({ products = [], limit, columns = 4, showAddToCartButton = true}) => {
   const addToCart = useCartStore((state) => state.addToCart);
   const { wishlistItems, addToWishlist, removeFromWishlist } = useWishlistStore();
   const addToCompare = useCompareStore((state) => state.addToCompare);
@@ -15,6 +15,12 @@ const ProductsCard = ({ products = [], limit }) => {
 
   
   const displayProducts = limit ? products.slice(0, limit) : products;
+
+  const columnClasses = {
+    3: "lg:grid-cols-3",
+    4: "lg:grid-cols-4",
+    5: "lg:grid-cols-5"
+  };
 
   const handleAddToCart = (e, product) => {
     e.preventDefault();
@@ -51,7 +57,7 @@ const ProductsCard = ({ products = [], limit }) => {
   };
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+   <div className={`grid grid-cols-1 sm:grid-cols-2 ${columnClasses[columns] || "lg:grid-cols-4"} gap-6`}>
       {displayProducts.map((product) => {
         const isWishlisted = wishlistItems.some((item) => item.id === product.id);
 
@@ -140,12 +146,14 @@ const ProductsCard = ({ products = [], limit }) => {
                 </div>
 
                 {/* Smart Add To Cart Button */}
-                <button
-                  onClick={(e) => handleAddToCart(e, product)}
-                  className="w-full py-3 border border-gray-200 text-gray-700 font-bold rounded-xl transition-all duration-300 hover:bg-[#00A859] hover:text-white hover:border-[#00A859] flex items-center justify-center gap-2"
-                >
-                  Add To Cart
-                </button>
+                {showAddToCartButton && (
+                  <button
+                    onClick={(e) => handleAddToCart(e, product)}
+                    className="w-full py-3 border border-gray-200 text-gray-700 font-bold rounded-xl transition-all duration-300 hover:bg-[#00A859] hover:text-white hover:border-[#00A859] flex items-center justify-center gap-2"
+                  >
+                    Add To Cart
+                  </button>
+                )}
               </div>
             </motion.div>
           </Link>

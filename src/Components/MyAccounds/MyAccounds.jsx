@@ -67,9 +67,9 @@ const MyAccounds = () => {
         </div>
       </div>
 
-      <button className="flex items-center gap-3 p-3 w-full text-slate-700 hover:bg-red-50 hover:text-red-600 rounded-lg mt-4 transition-colors">
+      <Link to="/sign-in" className="flex items-center gap-3 p-3 w-full text-slate-700 hover:bg-red-50 hover:text-red-600 rounded-lg mt-4 transition-colors">
         <HiLogout size={22} /> Logout
-      </button>
+      </Link>
     </div>
   );
 };
