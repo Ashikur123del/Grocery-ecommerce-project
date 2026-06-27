@@ -26,14 +26,6 @@ import Faqs from './Pages/FAQs/Faqs';
 import FlashDealsPage from './Pages/FlashDeals/FlashDealsPage';
 import BlogClassicPage from './Pages/BlogClassic/BlogClassicPage';
 import ContactPage from './Pages/Contact/ContactPage';
-// import DashboardLayout from './Pages/DashboardLayout/DashboardLayout';
-// import DashboardHome from './Pages/DashboardLayout/DashboardHome/DashboardHome';
-// import OverView from './Pages/DashboardLayout/OverviewPage/OverView';
-// import OrderHistory from './Pages/DashboardLayout/OrderHistory/OrderHistory';
-// import Download from './Pages/DashboardLayout/MyDownload/DownLoad';
-// import Return from './Pages/DashboardLayout/ReturnRequest/Return';
-// import PersonalInformation from './Pages/DashboardLayout/PersonalInformation/PersonalInformation';
-// import Address from './Pages/DashboardLayout/Address/Address';
 import Account from "./Pages/MyAccound/Accound"
 import OverView from "./Pages/MyAccound/OverViewPage/OverView"
 import OrderHistory from './Pages/MyAccound/OrderHistory/OrderHistory';
@@ -44,6 +36,11 @@ import Address from './Pages/MyAccound/Address/Address';
 import WishList from './Pages/MyAccound/WishList/WishList';
 import MyReviews from './Pages/MyAccound/MyReviews/MyReviews';
 import ChangePasswordForm from './Pages/MyAccound/ChangePasswordForm/ChangePasswordForm';
+import DashboardLayout from './Pages/DashboardLayout/DashboardLayout';
+import Analytics from './Pages/DashboardLayout/Analytics/Analytics';
+import Overview from './Pages/DashboardLayout/Overview/overview';
+import AddProduct from './Pages/DashboardLayout/AddProduct/AddProduct';
+import AllProducts from './Pages/DashboardLayout/AllProducts/AllProducts';
  
 
 
@@ -100,21 +97,15 @@ export const router = createBrowserRouter([
   },
 
 
- 
- 
-
-  // {
-  //   path: "/dashboard",
-  //   element: <DashboardLayout />, 
-  //   children: [
-  //     { index: true, element: <DashboardHome /> },
-  //     {path: "overview", element: <OverView />},
-  //     {path: 'order-history', element: <OrderHistory />},
-  //     {path: 'download', element: <Download />},
-  //     {path: 'return', element:<Return />},
-  //     {path: 'profile', element: <PersonalInformation />},
-  //     {path: 'address', element: <Address />}
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />, 
+    children: [
+      {index: true, element: <Overview />},
+      {path: "reports", element: <Analytics />},
+      {path: "add-product", element: <AddProduct />},
+      {path: "products", element: <AllProducts />}
      
-  //   ]
-  // }
+    ]
+  }
 ]); 

@@ -25,7 +25,6 @@ const MyAccounds = () => {
 
   return (
     <div className="bg-white border border-gray-200 rounded-2xl p-5 hidden lg:block w-64">
-      {/* Profile Section */}
       <div className="flex flex-col items-center mb-8">
         <div className="relative">
           <img src="https://i.pravatar.cc/100" alt="User" className="w-24 h-24 rounded-full border-4 border-slate-100" />
