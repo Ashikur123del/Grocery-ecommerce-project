@@ -41,6 +41,10 @@ import Analytics from './Pages/DashboardLayout/Analytics/Analytics';
 import Overview from './Pages/DashboardLayout/Overview/overview';
 import AddProduct from './Pages/DashboardLayout/AddProduct/AddProduct';
 import AllProducts from './Pages/DashboardLayout/AllProducts/AllProducts';
+// import Orders from './Pages/DashboardLayout/Orders/Orders';
+// import MediaLibrary from './Pages/DashboardLayout/Medialibrary/Medialibrary';
+// import Category from './Pages/DashboardLayout/Category/Category';
+// import Inventory from './Pages/DashboardLayout/Inventory/Inventory';
  
 
 
@@ -90,7 +94,8 @@ export const router = createBrowserRouter([
     { path: "address", element: <Address />},
     {path: "wishlist", element: <WishList />},
     {path: "reviews", element: <MyReviews />},
-    {path: "password", element: <ChangePasswordForm />}
+    {path: "password", element: <ChangePasswordForm />},
+    
   ]
 },
     ]
@@ -104,7 +109,11 @@ export const router = createBrowserRouter([
       {index: true, element: <Overview />},
       {path: "reports", element: <Analytics />},
       {path: "add-product", element: <AddProduct />},
-      {path: "products", element: <AllProducts />}
+      {path: "products", element: <AllProducts />},
+      // {path: "categories", element: <Category />},
+      // {path: 'inventory', element: <Inventory />}
+      // {path: 'media', element: <MediaLibrary />}
+      // {path: 'orders', element: <Orders />}
      
     ]
   }

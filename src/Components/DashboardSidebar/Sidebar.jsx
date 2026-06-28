@@ -70,7 +70,7 @@ export default function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
                 <Link 
                   key={item.path} 
                   to={item.path} 
-                  className={`flex items-center gap-3 p-3 mb-1 rounded-lg transition-all ${location.pathname === item.path ? "bg-amber-500 text-white font-semibold" : "text-slate-300 hover:bg-slate-800"}`}
+                  className={`flex items-center gap-3 p-2 mb-1 rounded-lg transition-all ${location.pathname === item.path ? "bg-amber-500 text-white font-semibold" : "text-slate-300 hover:bg-slate-800"}`}
                 >
                   {item.icon}
                   <span className="flex-grow">{item.name}</span>

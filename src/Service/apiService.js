@@ -6,5 +6,5 @@ export const fetchAllProducts = async () => {
 
 export const fetchProductById = async (id) => {
   const products = await fetchAllProducts();
-  return products.find((p) => String(p.id) === String(id)) ?? null;
+  return products.find((p) => (p.id) === (id)) ?? null;
 };
