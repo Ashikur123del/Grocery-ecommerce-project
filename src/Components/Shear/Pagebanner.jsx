@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { FaHome, FaChevronRight } from "react-icons/fa";
 import BgImage from "../../assets/GB-1.jpg";
 

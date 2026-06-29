@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { MdAdd, MdRemove, MdSearch, MdWarning, MdCheckCircle } from "react-icons/md";
+import { toast } from "react-toastify";
 
 const Inventory = () => {
   const [products, setProducts] = useState([
@@ -156,10 +157,10 @@ const Inventory = () => {
 
   const handleRestock = () => {
     if (!restockQuantity || restockQuantity <= 0) {
-      alert("Please enter a valid quantity!");
+      toast.error("Please enter a valid quantity!");
       return;
     }
-
+ 
     setProducts(
       products.map((p) =>
         p.id === selectedProduct.id
@@ -171,7 +172,7 @@ const Inventory = () => {
       )
     );
 
-    alert(
+    toast.success(
       `Added ${restockQuantity} ${selectedProduct.unit} of ${selectedProduct.name}`
     );
     setShowRestockModal(false);
@@ -188,9 +189,9 @@ const Inventory = () => {
             : p
         )
       );
-      alert(`Reduced ${amount} ${product.unit} of ${product.name}`);
+      toast.error(`Reduced ${amount} ${product.unit} of ${product.name}`);
     } else {
-      alert("Not enough stock to reduce!");
+      alert.warning("Not enough stock to reduce!");
     }
   };
 
@@ -219,13 +220,11 @@ const Inventory = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 p-6">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-white mb-2">Inventory Management</h1>
           <p className="text-slate-400">Monitor and manage product stock levels</p>
         </div>
 
-        {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
             <p className="text-slate-400 text-sm font-semibold uppercase">Total SKUs</p>
@@ -253,10 +252,9 @@ const Inventory = () => {
           </div>
         </div>
 
-        {/* Filters */}
+      
         <div className="bg-slate-800 rounded-xl p-6 mb-6 border border-slate-700">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Search */}
             <div>
               <label className="text-white text-sm font-semibold mb-2 block">Search</label>
               <div className="relative">
@@ -271,7 +269,6 @@ const Inventory = () => {
               </div>
             </div>
 
-            {/* Filter Status */}
             <div>
               <label className="text-white text-sm font-semibold mb-2 block">Stock Status</label>
               <select
@@ -288,7 +285,6 @@ const Inventory = () => {
           </div>
         </div>
 
-        {/* Inventory Table */}
         <div className="bg-slate-800 rounded-xl overflow-hidden border border-slate-700">
           <div className="overflow-x-auto">
             <table className="w-full text-white">
@@ -343,14 +339,14 @@ const Inventory = () => {
                         <div className="flex gap-2 justify-center">
                           <button
                             onClick={() => handleRestockClick(product)}
-                            className="bg-green-600 hover:bg-green-700 text-white p-2 rounded-lg transition-colors"
+                            className="bg-amber-600 hover:bg-amber-700 text-white p-2 rounded-lg transition-colors"
                             title="Restock"
                           >
                             <MdAdd size={18} />
                           </button>
                           <button
                             onClick={() => handleReduce(product, 1)}
-                            className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-lg transition-colors"
+                            className="bg-green-500 hover:bg-green-700 text-white p-2 rounded-lg transition-colors"
                             title="Reduce by 1"
                           >
                             <MdRemove size={18} />
@@ -372,7 +368,6 @@ const Inventory = () => {
         </div>
       </div>
 
-      {/* Restock Modal */}
       {showRestockModal && selectedProduct && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
           <div className="bg-slate-800 rounded-xl p-6 border border-amber-500 max-w-md w-full">
@@ -404,7 +399,7 @@ const Inventory = () => {
             <div className="flex gap-3">
               <button
                 onClick={handleRestock}
-                className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded-lg transition-colors"
+                className="flex-1 bg-amber-600 hover:bg-amber-700 text-white font-semibold py-2 rounded-lg transition-colors"
               >
                 Add Stock
               </button>

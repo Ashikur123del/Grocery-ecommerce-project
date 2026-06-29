@@ -1,4 +1,4 @@
-import { Outlet } from "react-router";
+import { Outlet } from "react-router-dom";
 import MyAccounds from "../../Components/MyAccounds/MyAccounds"; // আপনার সাইডবার কম্পোনেন্ট
 import PageBanner from "../../Components/Shear/Pagebanner";
 

@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FiShoppingCart, FiHeart } from "react-icons/fi";
 import { useCartStore } from "../../store/useCartStore";

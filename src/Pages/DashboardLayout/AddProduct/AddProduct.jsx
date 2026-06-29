@@ -23,11 +23,7 @@ const AddProduct = () => {
       discountPrice: "",
       stockQuantity: "",
       unit: "dozen",
-      inStock: true,
-      rating: 4.5,
-      description: "",
       origin: "Bangladesh",
-      expiryDate: "",
     },
   });
 
@@ -40,8 +36,8 @@ const AddProduct = () => {
   const fields = ["sku", "name", "category", "brand", "price", "discountPrice", "stockQuantity"];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 p-6">
-      <div className="max-w-4xl mx-auto bg-slate-800 p-8 rounded-xl shadow-lg border border-slate-700">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 p-6 flex items-center justify-center">
+      <div className="w-full max-w-4xl bg-slate-800 p-8 rounded-xl shadow-lg border border-slate-700">
         <h1 className="text-3xl font-bold mb-6 flex items-center gap-x-3 text-amber-400">
           Add New Product
           <span className="text-amber-500"><MdEdit /></span>
@@ -71,7 +67,7 @@ const AddProduct = () => {
                     }`}
                   />
                   {error && (
-                    <span className="text-red-500 text-xs mt-1">{error.message}</span>
+                    <span className="text-red-500 text-xs mt-1 block">{error.message}</span>
                   )}
                 </TextField>
               )}
@@ -98,7 +94,7 @@ const AddProduct = () => {
                     </ListBox>
                   </Select.Popover>
                 </Select>
-                {error && <span className="text-red-500 text-xs">{error.message}</span>}
+                {error && <span className="text-red-500 text-xs block">{error.message}</span>}
               </div>
             )}
           />
@@ -123,7 +119,7 @@ const AddProduct = () => {
                     </ListBox>
                   </Select.Popover>
                 </Select>
-                {error && <span className="text-red-500 text-xs">{error.message}</span>}
+                {error && <span className="text-red-500 text-xs block">{error.message}</span>}
               </div>
             )}
           />

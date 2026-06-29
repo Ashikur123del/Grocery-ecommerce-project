@@ -1,5 +1,5 @@
 import { IoMdArrowDropdown } from "react-icons/io";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 const NavLinks = ({
   navLinks,

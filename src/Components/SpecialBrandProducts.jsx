@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { FiArrowUpRight, FiStar } from 'react-icons/fi';
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { useBoundStore } from "../store/useBoundStore";
 
 const SpecialBrandProducts = () => {

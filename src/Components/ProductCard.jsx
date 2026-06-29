@@ -3,7 +3,7 @@ import { FiShoppingCart, FiHeart } from "react-icons/fi";
 import { toast } from "react-toastify";
 import { useCartStore } from "../store/useCartStore";
 import { useWishlistStore } from "../store/useWishlistStore";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { useCompareStore } from "../store/compare";
 import { LuArrowUpDown } from "react-icons/lu";
 

@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router";
+import { Link, useLocation } from "react-router-dom";
 import { HiViewGrid, HiUser, HiShoppingBag, HiLogout, HiX, HiChartBar, HiCreditCard, HiCog, HiTicket, HiSupport, HiPhotograph, HiUsers, HiClipboardList, HiTag, HiPlusCircle } from "react-icons/hi";
 
 export default function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {

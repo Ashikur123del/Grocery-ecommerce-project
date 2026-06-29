@@ -1,5 +1,5 @@
 import './index.css'
-import { createBrowserRouter} from "react-router";
+import { createBrowserRouter} from "react-router-dom";
 import Root from './Layout/Root';
 import Home from './Pages/HomePage/Home';
 import BestProduct from './Pages/BestProducts/BestProduct';
@@ -37,14 +37,20 @@ import WishList from './Pages/MyAccound/WishList/WishList';
 import MyReviews from './Pages/MyAccound/MyReviews/MyReviews';
 import ChangePasswordForm from './Pages/MyAccound/ChangePasswordForm/ChangePasswordForm';
 import DashboardLayout from './Pages/DashboardLayout/DashboardLayout';
-import Analytics from './Pages/DashboardLayout/Analytics/Analytics';
-import Overview from './Pages/DashboardLayout/Overview/overview';
+import Overview from './Pages/DashboardLayout/Overview/Overview';
 import AddProduct from './Pages/DashboardLayout/AddProduct/AddProduct';
 import AllProducts from './Pages/DashboardLayout/AllProducts/AllProducts';
-// import Orders from './Pages/DashboardLayout/Orders/Orders';
-// import MediaLibrary from './Pages/DashboardLayout/Medialibrary/Medialibrary';
-// import Category from './Pages/DashboardLayout/Category/Category';
-// import Inventory from './Pages/DashboardLayout/Inventory/Inventory';
+import Orders from './Pages/DashboardLayout/Orders/Orders';
+import MediaLibrary from './Pages/DashboardLayout/Medialibrary/Medialibrary';
+import Category from './Pages/DashboardLayout/Category/Category';
+// import SupportTickets from './Pages/DashboardLayout/Supporttickets/Supporttickets';
+// import StoreSettings from './Pages/DashboardLayout/Storesettings/Storesettings';
+// import Returns from './Pages/DashboardLayout/returns/returns';
+// import Customers from './Pages/DashboardLayout/Customers/Customers';
+// import Coupons from './Pages/DashboardLayout/Coupons/Coupons';
+// import Payments from './Pages/DashboardLayout/Payments/Payments';
+import Inventory from './Pages/DashboardLayout/Inventory/Inventory';
+// import Analytics from './Pages/DashboardLayout/Analytics/Analytics';
  
 
 
@@ -85,8 +91,8 @@ export const router = createBrowserRouter([
   path: "my-accound", 
   element: <Account/>, 
   children: [
-    { index: true, element: <OverView /> }, // ইউজার /my-accound এ আসলে এটি দেখাবে
-    { path: "overview", element: <OverView /> }, // ইউজার /my-accound/overview এ আসলে এটি দেখাবে
+    { index: true, element: <OverView /> },
+    { path: "overview", element: <OverView /> }, 
     { path: "order-history", element: <OrderHistory />},
     { path: "download", element: <DownLoad />},
     { path: "return", element: <Return />},
@@ -107,13 +113,19 @@ export const router = createBrowserRouter([
     element: <DashboardLayout />, 
     children: [
       {index: true, element: <Overview />},
-      {path: "reports", element: <Analytics />},
       {path: "add-product", element: <AddProduct />},
       {path: "products", element: <AllProducts />},
-      // {path: "categories", element: <Category />},
-      // {path: 'inventory', element: <Inventory />}
-      // {path: 'media', element: <MediaLibrary />}
-      // {path: 'orders', element: <Orders />}
+      {path: "categories", element: <Category />},
+      {path: 'inventory', element: <Inventory />},
+      {path: 'media', element: <MediaLibrary />},
+      {path: 'orders', element: <Orders />},
+      // {path: 'returns', element: <Returns />},
+      // {path: 'customers', element: <Customers />},
+      // {path: 'coupons', element: <Coupons />},
+      // {path: 'payments', element: <Payments />}
+      // {path: "reports", element: <Analytics />},
+      // {path: 'support', element: <SupportTickets />},
+      // {path: 'store-settings', element: <StoreSettings />}
      
     ]
   }

@@ -1,6 +1,11 @@
 import { useState, useMemo } from "react";
 import { MdDelete, MdSearch,  MdImage, MdDownload,  MdFileCopy, MdFileDownload } from "react-icons/md";
-
+import Image1 from '../../../assets/grocery_product_img_1.webp'
+import Image2 from '../../../assets/grocery_product_img_2.webp'
+import Image3 from '../../../assets/grocery_product_img_3.webp'
+import Image4 from '../../../assets/grocery_product_img_4.webp'
+import Image5 from '../../../assets/grocery_product_img_5.webp'
+import Image6 from '../../../assets/grocery_product_img_6.webp'
 
 const MediaLibrary = () => {
   const [mediaItems, setMediaItems] = useState([
@@ -10,7 +15,7 @@ const MediaLibrary = () => {
       type: "image/jpeg",
       size: 2048576,
       uploadDate: "2024-06-15",
-      url: "https://images.unsplash.com/photo-1586985289688-cacf913ecc0a?w=400",
+      url: Image1,
       category: "Products",
     },
     {
@@ -19,7 +24,7 @@ const MediaLibrary = () => {
       type: "image/png",
       size: 1524288,
       uploadDate: "2024-06-14",
-      url: "https://images.unsplash.com/photo-1586983270671-a4a47a4d3a78?w=400",
+      url: Image2,
       category: "Products",
     },
     {
@@ -28,7 +33,7 @@ const MediaLibrary = () => {
       type: "image/jpeg",
       size: 1835008,
       uploadDate: "2024-06-13",
-      url: "https://images.unsplash.com/photo-1574080566159-036b3cc3cc81?w=400",
+      url: Image3,
       category: "Products",
     },
     {
@@ -37,7 +42,7 @@ const MediaLibrary = () => {
       type: "image/jpeg",
       size: 3145728,
       uploadDate: "2024-06-12",
-      url: "https://images.unsplash.com/photo-1596040045703-d61b0f21f99a?w=400",
+      url: Image4,
       category: "Products",
     },
     {
@@ -46,7 +51,7 @@ const MediaLibrary = () => {
       type: "image/png",
       size: 2621440,
       uploadDate: "2024-06-11",
-      url: "https://images.unsplash.com/photo-1585707571821-b91c06b2506f?w=400",
+      url: Image5,
       category: "Products",
     },
     {
@@ -55,7 +60,7 @@ const MediaLibrary = () => {
       type: "image/jpeg",
       size: 4194304,
       uploadDate: "2024-06-10",
-      url: "https://images.unsplash.com/photo-1552820728-8ac41f1ce891?w=400",
+      url: Image6,
       category: "Banners",
     },
   ]);
@@ -71,7 +76,7 @@ const MediaLibrary = () => {
   // Filter media items
   const filteredMedia = useMemo(() => {
     return mediaItems.filter((item) => {
-      const matchSearch = item.name
+      const matchSearch = item.name 
         .toLowerCase()
         .includes(searchValue.toLowerCase());
       const matchCategory = selectedCategory === "all" || item.category === selectedCategory;
@@ -113,48 +118,39 @@ const MediaLibrary = () => {
     }
   };
 
+  const addMediaFiles = (files) => {
+    const fileArray = Array.from(files).slice(0, 5);
+    if (fileArray.length === 0) return;
+
+    setMediaItems((prevItems) => {
+      const nextId = Math.max(...prevItems.map((m) => m.id), 0);
+      const newMediaItems = fileArray.map((file, index) => ({
+        id: nextId + index + 1,
+        name: file.name,
+        type: file.type,
+        size: file.size,
+        uploadDate: new Date().toISOString().split("T")[0],
+        url: URL.createObjectURL(file),
+        category: "Products",
+      }));
+      return [...prevItems, ...newMediaItems];
+    });
+
+    alert("Files uploaded successfully!");
+  };
+
   const handleDrop = (e) => {
     e.preventDefault();
     e.stopPropagation();
     setDragActive(false);
 
     const files = e.dataTransfer.files;
-    if (files && files.length > 0) {
-      for (let i = 0; i < Math.min(files.length, 5); i++) {
-        const file = files[i];
-        const newMedia = {
-          id: Math.max(...mediaItems.map((m) => m.id), 0) + 1,
-          name: file.name,
-          type: file.type,
-          size: file.size,
-          uploadDate: new Date().toISOString().split("T")[0],
-          url: URL.createObjectURL(file),
-          category: "Products",
-        };
-        setMediaItems([...mediaItems, newMedia]);
-      }
-      alert("Files uploaded successfully!");
-    }
+    addMediaFiles(files);
   };
 
   const handleFileInput = (e) => {
     const files = e.target.files;
-    if (files && files.length > 0) {
-      for (let i = 0; i < Math.min(files.length, 5); i++) {
-        const file = files[i];
-        const newMedia = {
-          id: Math.max(...mediaItems.map((m) => m.id), 0) + 1,
-          name: file.name,
-          type: file.type,
-          size: file.size,
-          uploadDate: new Date().toISOString().split("T")[0],
-          url: URL.createObjectURL(file),
-          category: "Products",
-        };
-        setMediaItems([...mediaItems, newMedia]);
-      }
-      alert("Files uploaded successfully!");
-    }
+    addMediaFiles(files);
   };
 
   const formatFileSize = (bytes) => {

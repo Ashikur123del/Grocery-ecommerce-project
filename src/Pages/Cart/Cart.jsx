@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
 import { useCartStore } from "../../store/useCartStore";
 import { useState } from "react";
 import { FaTrash, FaPlus, FaMinus, FaShoppingBag, FaTag, FaArrowLeft, FaCreditCard, FaGift, FaTimes, FaLock, FaStore, FaTrashAlt } from "react-icons/fa";

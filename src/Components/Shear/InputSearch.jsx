@@ -1,6 +1,6 @@
 // components/InputSearch.jsx
 import { useState, useEffect, useRef, useMemo, useCallback } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { IoSearchOutline } from "react-icons/io5";
 import { useBoundStore } from "../../store/useBoundStore";
 

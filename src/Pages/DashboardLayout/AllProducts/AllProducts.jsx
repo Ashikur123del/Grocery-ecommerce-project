@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { MdEdit, MdDelete, MdSearch, MdAdd, MdClose, MdChevronLeft, MdChevronRight } from "react-icons/md";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const AllProducts = () => {

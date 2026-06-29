@@ -1,15 +1,51 @@
 import { useState, useMemo } from "react";
 import { MdEdit, MdDelete, MdAdd, MdClose, MdSearch } from "react-icons/md";
+import { toast } from "react-toastify";
 
 const Category = () => {
   const [categories, setCategories] = useState([
-    { id: 1, name: "Grains", description: "Rice, Wheat, and other grains", productCount: 3 },
-    { id: 2, name: "Flour", description: "Various types of flour", productCount: 1 },
-    { id: 3, name: "Pulses", description: "Lentils, beans, and pulses", productCount: 1 },
-    { id: 4, name: "Oils", description: "Cooking oils and ghee", productCount: 1 },
-    { id: 5, name: "Sweeteners", description: "Sugar, jaggery, honey", productCount: 2 },
-    { id: 6, name: "Spices", description: "All types of spices", productCount: 2 },
-    { id: 7, name: "Dairy", description: "Milk, yogurt, cheese", productCount: 1 },
+    {
+      id: 1,
+      name: "Grains",
+      description: "Rice, Wheat, and other grains",
+      productCount: 3,
+    },
+    {
+      id: 2,
+      name: "Flour",
+      description: "Various types of flour",
+      productCount: 1,
+    },
+    {
+      id: 3,
+      name: "Pulses",
+      description: "Lentils, beans, and pulses",
+      productCount: 1,
+    },
+    {
+      id: 4,
+      name: "Oils",
+      description: "Cooking oils and ghee",
+      productCount: 1,
+    },
+    {
+      id: 5,
+      name: "Sweeteners",
+      description: "Sugar, jaggery, honey",
+      productCount: 2,
+    },
+    {
+      id: 6,
+      name: "Spices",
+      description: "All types of spices",
+      productCount: 2,
+    },
+    {
+      id: 7,
+      name: "Dairy",
+      description: "Milk, yogurt, cheese",
+      productCount: 1,
+    },
   ]);
 
   const [searchValue, setSearchValue] = useState("");
@@ -20,17 +56,17 @@ const Category = () => {
     description: "",
   });
 
-  // Filter categories
   const filteredCategories = useMemo(() => {
-    return categories.filter((cat) =>
-      cat.name.toLowerCase().includes(searchValue.toLowerCase()) ||
-      cat.description.toLowerCase().includes(searchValue.toLowerCase())
+    return categories.filter(
+      (cat) =>
+        cat.name.toLowerCase().includes(searchValue.toLowerCase()) ||
+        cat.description.toLowerCase().includes(searchValue.toLowerCase()),
     );
   }, [categories, searchValue]);
 
   const handleAddCategory = () => {
     if (!formData.name.trim()) {
-      alert("Category name is required!");
+      toast.error("Category name is required!");
       return;
     }
 
@@ -38,10 +74,10 @@ const Category = () => {
       // Update existing category
       setCategories(
         categories.map((cat) =>
-          cat.id === editingId ? { ...cat, ...formData } : cat
-        )
+          cat.id === editingId ? { ...cat, ...formData } : cat,
+        ),
       );
-      alert("Category updated successfully!");
+      toast.success("Category updated successfully!");
     } else {
       // Add new category
       const newCategory = {
@@ -50,7 +86,7 @@ const Category = () => {
         productCount: 0,
       };
       setCategories([...categories, newCategory]);
-      alert("Category added successfully!");
+      toast.success("Category added successfully!");
     }
 
     resetForm();
@@ -69,7 +105,7 @@ const Category = () => {
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this category?")) {
       setCategories(categories.filter((cat) => cat.id !== id));
-      alert("Category deleted successfully!");
+      toast.success("Category deleted successfully!");
     }
   };
 
@@ -187,8 +223,12 @@ const Category = () => {
               >
                 <div className="flex justify-between items-start mb-4">
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold text-white">{category.name}</h3>
-                    <p className="text-slate-400 text-sm mt-1">{category.description}</p>
+                    <h3 className="text-xl font-bold text-white">
+                      {category.name}
+                    </h3>
+                    <p className="text-slate-400 text-sm mt-1">
+                      {category.description}
+                    </p>
                   </div>
                 </div>
 
@@ -236,21 +276,32 @@ const Category = () => {
         {/* Stats */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
-            <p className="text-slate-400 text-sm font-semibold uppercase">Total Categories</p>
-            <p className="text-3xl font-bold text-amber-500 mt-2">{categories.length}</p>
+            <p className="text-slate-400 text-sm font-semibold uppercase">
+              Total Categories
+            </p>
+            <p className="text-3xl font-bold text-amber-500 mt-2">
+              {categories.length}
+            </p>
           </div>
 
           <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
-            <p className="text-slate-400 text-sm font-semibold uppercase">Total Products</p>
+            <p className="text-slate-400 text-sm font-semibold uppercase">
+              Total Products
+            </p>
             <p className="text-3xl font-bold text-green-500 mt-2">
               {categories.reduce((sum, cat) => sum + cat.productCount, 0)}
             </p>
           </div>
 
           <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
-            <p className="text-slate-400 text-sm font-semibold uppercase">Avg Products/Category</p>
+            <p className="text-slate-400 text-sm font-semibold uppercase">
+              Avg Products/Category
+            </p>
             <p className="text-3xl font-bold text-blue-500 mt-2">
-              {(categories.reduce((sum, cat) => sum + cat.productCount, 0) / categories.length).toFixed(1)}
+              {(
+                categories.reduce((sum, cat) => sum + cat.productCount, 0) /
+                categories.length
+              ).toFixed(1)}
             </p>
           </div>
         </div>
