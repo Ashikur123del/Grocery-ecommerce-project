@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 import { useCartStore } from "../../store/useCartStore";
 import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";

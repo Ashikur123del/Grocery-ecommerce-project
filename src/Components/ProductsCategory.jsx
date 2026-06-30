@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 const ProductsCategory = ({ product }) => {
   const { name, image } = product;

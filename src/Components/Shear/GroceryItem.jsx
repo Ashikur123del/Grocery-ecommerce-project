@@ -11,7 +11,7 @@ import grocery3 from "../../assets/category_icon_3.webp";
 import grocery4 from "../../assets/category_icon_4.webp";
 import grocery5 from "../../assets/category_icon_5.webp";
 import grocery6 from "../../assets/category_icon_6.webp";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 
 const GroceryItem = () => {

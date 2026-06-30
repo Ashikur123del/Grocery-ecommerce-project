@@ -1,5 +1,5 @@
 import { HiDownload, HiHeart, HiLocationMarker, HiLockClosed, HiLogout, HiShoppingBag, HiStar, HiUser, HiViewGrid, HiX } from "react-icons/hi";
-import { Link, Navigate, useLocation } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router";
 
 const MyAccounds = () => {
  const location = useLocation();

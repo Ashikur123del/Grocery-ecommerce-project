@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { useCompareStore } from "../../store/compare";
 import { FiTrash2, FiArrowLeft } from "react-icons/fi";
 import { useCartStore } from "../../store/useCartStore";

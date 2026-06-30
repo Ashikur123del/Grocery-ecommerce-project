@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useBoundStore } from "../../store/useBoundStore";
 import { FaUser, FaCalendarAlt, FaComments, FaArrowRight } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 const OurNewsArticles = () => {
   const { fetchProducts, products } = useBoundStore();

@@ -15,7 +15,7 @@ import logo from "../../assets/logo.png";
 import NavLinks from "./NavLinks";
 import MobileMenu from "./MobileMenu";
 import { Drawers } from "../Modle/Drawers";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router";
 import { useWishlistStore } from "../../store/useWishlistStore";
 import { LuArrowUpDown } from "react-icons/lu";
 import { useCompareStore } from "../../store/compare";

@@ -7,7 +7,7 @@ import {
   Button,
 } from "@heroui/react";
 import { useCartStore } from "../../store/useCartStore";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 
 

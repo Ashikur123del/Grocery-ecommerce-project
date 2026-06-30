@@ -1,6 +1,6 @@
 import { FaTimes, FaPlus, FaMinus } from "react-icons/fa";
 import { FiUser } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 const MobileMenu = ({
   isOpen,

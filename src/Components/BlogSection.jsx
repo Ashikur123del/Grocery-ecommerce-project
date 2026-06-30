@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import man1 from '../assets/grocery_blog_img_1.webp';
 import man2 from '../assets/grocery_blog_img_2.webp';
 import man3 from '../assets/grocery_blog_img_3.webp';
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 const blogData = [
   { title: "Freshly Served Exploring The World Of Fresh", comments: "15 Comments", image: man1 },

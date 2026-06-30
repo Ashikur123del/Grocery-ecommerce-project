@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router";
 import { useBoundStore } from "../../store/useBoundStore";
 import { useCartStore } from "../../store/useCartStore";
 import { toast } from "react-toastify";

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { useEffect, useState } from "react";
 import {
     FaCheckCircle, FaTruck, FaEnvelope, FaPrint,
@@ -13,6 +13,7 @@ const OrderSuccess = () => {
 
     useEffect(() => {
         const randomOrder = "#ORD" + Math.floor(Math.random() * 1000000);
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setOrderNumber(randomOrder);
         const deliveryDate = new Date();
         deliveryDate.setDate(deliveryDate.getDate() + 4);
