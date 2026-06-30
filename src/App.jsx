@@ -1,133 +1,132 @@
+import './index.css'
+import { createBrowserRouter} from "react-router-dom";
+import Root from './Layout/Root';
+import Home from './Pages/HomePage/Home';
+import BestProduct from './Pages/BestProducts/BestProduct';
+import ProductDetails from './Pages/ProductDetails/ProductDetails';
+import PorpularProduct from './Pages/PopularProducts/PorpularProduct';
+import YourSpecialBrandProducts from './Pages/YourSpecialBrandProducts/YourSpecialBrandProducts';
+import ProductList from './Pages/ProductList/ProductList';
+import Cart from './Pages/Cart/Cart';
+import Checkout from './Pages/Checkout/Checkout';
+import Compare from './Pages/Compare/Compare';
+import Wishlist from './Pages/Wishlist/Wishlist';
+import OrderTracking from './Pages/OrderTracking/OrderTracking';
+import SignIn from './Pages/SignIn/SignIn';
+import SignUp from './Pages/SignUp/SignUp';
+import OrderSuccess from './Pages/OrderSuccesPage/OrderSucces';
+import AboutPage from './Pages/About/AboutPage';
+import ProductsCategoryPage from './Pages/ProductsCategory/ProductsCategoryPage';
+import ProductsBrands from './Pages/ProductBrand/ProductsBrands';
+import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
+import TermsOfService from './Pages/TermsofService/TermsOfService';
+import ReturnPolicy from './Pages/ReturnPolicy/ReturnPolicy';
+import PaymentFailed from './Pages/PaymentFailed/PaymentFailed';
+import Faqs from './Pages/FAQs/Faqs';
+import FlashDealsPage from './Pages/FlashDeals/FlashDealsPage';
+import BlogClassicPage from './Pages/BlogClassic/BlogClassicPage';
+import ContactPage from './Pages/Contact/ContactPage';
+import Account from "./Pages/MyAccound/Accound"
+import OverView from "./Pages/MyAccound/OverViewPage/OverView"
+import OrderHistory from './Pages/MyAccound/OrderHistory/OrderHistory';
+import DownLoad from "./Pages/MyAccound/MyDownload/DownLoad"
+import Return from "./Pages/MyAccound/ReturnRequest/Return"
+import PresonalInfo from './Pages/MyAccound/PresonalInfo/PresonalInfo';
+import Address from './Pages/MyAccound/Address/Address';
+import WishList from './Pages/MyAccound/WishList/WishList';
+import MyReviews from './Pages/MyAccound/MyReviews/MyReviews';
+import ChangePasswordForm from './Pages/MyAccound/ChangePasswordForm/ChangePasswordForm';
+import DashboardLayout from './Pages/DashboardLayout/DashboardLayout';
+import AddProduct from './Pages/DashboardLayout/AddProduct/AddProduct';
+import AllProducts from './Pages/DashboardLayout/AllProducts/AllProducts';
+import Orders from './Pages/DashboardLayout/Orders/Orders';
+import MediaLibrary from './Pages/DashboardLayout/Medialibrary/Medialibrary';
+import Category from './Pages/DashboardLayout/Category/Category';
+// import SupportTickets from './Pages/DashboardLayout/Supporttickets/Supporttickets';
+// import StoreSettings from './Pages/DashboardLayout/Storesettings/Storesettings';
+// import Returns from './Pages/DashboardLayout/returns/returns';
+// import Customers from './Pages/DashboardLayout/Customers/Customers';
+// import Coupons from './Pages/DashboardLayout/Coupons/Coupons';
+// import Payments from './Pages/DashboardLayout/Payments/Payments';
+import Inventory from './Pages/DashboardLayout/Inventory/Inventory';
+import DashBoradOverview from './Pages/DashboardLayout/Overview/DashBoradOverview';
+// import Analytics from './Pages/DashboardLayout/Analytics/Analytics';
+ 
 
-import { lazy, Suspense } from "react";
-import { createBrowserRouter } from "react-router-dom";
 
-// Loading component
-// eslint-disable-next-line react-refresh/only-export-components
-const Loading = () => <div style={{ textAlign: 'center', padding: '50px' }}>Loading...</div>;
 
-// Lazy Loader Wrapper
-// eslint-disable-next-line react-refresh/only-export-components
-const Loadable = (Component) => (props) => (
-  <Suspense fallback={<Loading />}>
-    <Component {...props} />
-  </Suspense>
-);
-
-// Lazy Imports
-const Root = Loadable(lazy(() => import('./Layout/Root')));
-const Home = Loadable(lazy(() => import('./Pages/HomePage/Home')));
-const BestProduct = Loadable(lazy(() => import('./Pages/BestProducts/BestProduct')));
-const ProductDetails = Loadable(lazy(() => import('./Pages/ProductDetails/ProductDetails')));
-const PorpularProduct = Loadable(lazy(() => import('./Pages/PopularProducts/PorpularProduct')));
-const YourSpecialBrandProducts = Loadable(lazy(() => import('./Pages/YourSpecialBrandProducts/YourSpecialBrandProducts')));
-const ProductList = Loadable(lazy(() => import('./Pages/ProductList/ProductList')));
-const Cart = Loadable(lazy(() => import('./Pages/Cart/Cart')));
-const Checkout = Loadable(lazy(() => import('./Pages/Checkout/Checkout')));
-const OrderSuccess = Loadable(lazy(() => import('./Pages/OrderSuccesPage/OrderSucces')));
-const PaymentFailed = Loadable(lazy(() => import('./Pages/PaymentFailed/PaymentFailed')));
-const Compare = Loadable(lazy(() => import('./Pages/Compare/Compare')));
-const Wishlist = Loadable(lazy(() => import('./Pages/Wishlist/Wishlist')));
-const OrderTracking = Loadable(lazy(() => import('./Pages/OrderTracking/OrderTracking')));
-const PrivacyPolicy = Loadable(lazy(() => import('./Pages/PrivacyPolicy/PrivacyPolicy')));
-const TermsOfService = Loadable(lazy(() => import("./Pages/TermsofService/TermsOfService.jsx")));
-const ReturnPolicy = Loadable(lazy(() => import('./Pages/ReturnPolicy/ReturnPolicy')));
-const Faqs = Loadable(lazy(() => import('./Pages/FAQs/Faqs')));
-const FlashDealsPage = Loadable(lazy(() => import('./Pages/FlashDeals/FlashDealsPage')));
-const BlogClassicPage = Loadable(lazy(() => import('./Pages/BlogClassic/BlogClassicPage')));
-const AboutPage = Loadable(lazy(() => import('./Pages/About/AboutPage')));
-const SignIn = Loadable(lazy(() => import('./Pages/SignIn/SignIn')));
-const SignUp = Loadable(lazy(() => import('./Pages/SignUp/SignUp')));
-const ProductsCategoryPage = Loadable(lazy(() => import('./Pages/ProductsCategory/ProductsCategoryPage')));
-const ProductsBrands = Loadable(lazy(() => import('./Pages/ProductBrand/ProductsBrands')));
-const ContactPage = Loadable(lazy(() => import('./Pages/Contact/ContactPage')));
-const Account = Loadable(lazy(() => import("./Pages/MyAccound/Accound")));
-const OverView = Loadable(lazy(() => import("./Pages/MyAccound/OverViewPage/OverView")));
-const OrderHistory = Loadable(lazy(() => import('./Pages/MyAccound/OrderHistory/OrderHistory')));
-const DownLoad = Loadable(lazy(() => import("./Pages/MyAccound/MyDownload/DownLoad")));
-const Return = Loadable(lazy(() => import("./Pages/MyAccound/ReturnRequest/Return")));
-const PresonalInfo = Loadable(lazy(() => import("./Pages/MyAccound/PresonalInfo/PresonalInfo")));
-const Address = Loadable(lazy(() => import("./Pages/MyAccound/Address/Address")));
-const WishList = Loadable(lazy(() => import("./Pages/MyAccound/WishList/WishList")));
-const MyReviews = Loadable(lazy(() => import("./Pages/MyAccound/MyReviews/MyReviews")));
-const ChangePasswordForm = Loadable(lazy(() => import("./Pages/MyAccound/ChangePasswordForm/ChangePasswordForm")));
-
-// Dashboard Imports
-const DashboardLayout = Loadable(lazy(() => import('./Pages/DashboardLayout/DashboardLayout')));
-const AddProduct = Loadable(lazy(() => import('./Pages/DashboardLayout/AddProduct/AddProduct')));
-const AllProducts = Loadable(lazy(() => import('./Pages/DashboardLayout/AllProducts/AllProducts')));
-const Orders = Loadable(lazy(() => import('./Pages/DashboardLayout/Orders/Orders')));
-const MediaLibrary = Loadable(lazy(() => import('./Pages/DashboardLayout/Medialibrary/Medialibrary')));
-const Category = Loadable(lazy(() => import('./Pages/DashboardLayout/Category/Category')));
-const Inventory = Loadable(lazy(() => import('./Pages/DashboardLayout/Inventory/Inventory')));
-const DashBoradOverview = Loadable(lazy(() => import('./Pages/DashboardLayout/Overview/DashBoradOverview')));
-
+ 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <Root />, 
     children: [
       { index: true, element: <Home /> },
       { path: "best-products", element: <BestProduct /> },
       { path: "best-products/:id", element: <ProductDetails /> },
-      { path: "popular-product", element: <PorpularProduct /> },
+      { path: "popular-product", element: < PorpularProduct /> }, 
       { path: "YourSpecialBrandProducts", element: <YourSpecialBrandProducts /> },
       { path: "product-list", element: <ProductList /> },
       { path: "cart", element: <Cart /> },
       { path: "checkout", element: <Checkout /> },
-      { path: "ordersucces", element: <OrderSuccess /> },
-      { path: "payment-failed", element: <PaymentFailed /> },
+      {path: "ordersucces", element: <OrderSuccess />} ,
+      {path: "payment-failed", element: <PaymentFailed/>},
       { path: "compare", element: <Compare /> },
       { path: "wishlist", element: <Wishlist /> },
-      { path: "order-tracking", element: <OrderTracking /> },
-      { path: 'privacy-policy', element: <PrivacyPolicy /> },
-      { path: "terms-of-service", element: <TermsOfService /> },
-      { path: "return-policy", element: <ReturnPolicy /> },
-      { path: "faq", element: <Faqs /> },
-      { path: "flash-deals", element: <FlashDealsPage /> },
-      { path: "blog-classic", element: <BlogClassicPage /> },
-      { path: 'about', element: <AboutPage /> },
+      { path: "order-tracking", element: <OrderTracking/> },
+      { path: 'privacy-policy', element: <PrivacyPolicy />} ,
+      {path: "terms-of-service", element: <TermsOfService />},
+      {path: "return-policy", element: <ReturnPolicy />},
+      {path: "faq",  element: <Faqs />},
+      {path: "flash-deals",element: <FlashDealsPage />},
+      {path: "blog-classic", element: <BlogClassicPage />},
+      {path: 'about', element: <AboutPage />},
       { path: "sign-in", element: <SignIn /> },
       { path: "sign-up", element: <SignUp /> },
-      { path: "products-category", element: <ProductsCategoryPage /> },
-      { path: "product-brand", element: <ProductsBrands /> },
-      { path: "contact", element: <ContactPage /> },
-      {
-        path: "my-accound",
-        element: <Account />,
-        children: [
-          { index: true, element: <OverView /> },
-          { path: "overview", element: <OverView /> },
-          { path: "order-history", element: <OrderHistory /> },
-          { path: "download", element: <DownLoad /> },
-          { path: "return", element: <Return /> },
-          { path: "profile", element: <PresonalInfo /> },
-          { path: "address", element: <Address /> },
-          { path: "wishlist", element: <WishList /> },
-          { path: "reviews", element: <MyReviews /> },
-          { path: "password", element: <ChangePasswordForm /> },
-        ]
-      },
+      {path: "products-category", element: <ProductsCategoryPage />},
+      {path: "product-brand", element: <ProductsBrands />},
+      {path: "contact", element: <ContactPage />},
+       
+     { 
+  path: "my-accound", 
+  element: <Account/>, 
+  children: [
+    { index: true, element: <OverView /> },
+    { path: "overview", element: <OverView /> }, 
+    { path: "order-history", element: <OrderHistory />},
+    { path: "download", element: <DownLoad />},
+    { path: "return", element: <Return />},
+    { path: "profile", element: <PresonalInfo />},
+    { path: "address", element: <Address />},
+    {path: "wishlist", element: <WishList />},
+    {path: "reviews", element: <MyReviews />},
+    {path: "password", element: <ChangePasswordForm />},
+    
+  ]
+},
     ]
   },
+
+
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: <DashboardLayout />, 
     children: [
-      { index: true, element: <DashBoradOverview /> },
-      { path: "add-product", element: <AddProduct /> },
-      { path: "products", element: <AllProducts /> },
-      { path: "categories", element: <Category /> },
-      { path: 'inventory', element: <Inventory /> },
-      { path: 'media', element: <MediaLibrary /> },
-      { path: 'orders', element: <Orders /> },
-     // {path: 'returns', element: <Returns />},
+      {index: true, element: <DashBoradOverview  />},
+      {path: "add-product", element: <AddProduct />},
+      {path: "products", element: <AllProducts />},
+      {path: "categories", element: <Category />},
+      {path: 'inventory', element: <Inventory />},
+      {path: 'media', element: <MediaLibrary />},
+      {path: 'orders', element: <Orders />},
+      // {path: 'returns', element: <Returns />},
       // {path: 'customers', element: <Customers />},
       // {path: 'coupons', element: <Coupons />},
       // {path: 'payments', element: <Payments />}
       // {path: "reports", element: <Analytics />},
       // {path: 'support', element: <SupportTickets />},
       // {path: 'store-settings', element: <StoreSettings />}
+     
     ]
   }
-]);
+]); 
