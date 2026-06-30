@@ -30,7 +30,7 @@ const Compare = Loadable(lazy(() => import('./Pages/Compare/Compare')));
 const Wishlist = Loadable(lazy(() => import('./Pages/Wishlist/Wishlist')));
 const OrderTracking = Loadable(lazy(() => import('./Pages/OrderTracking/OrderTracking')));
 const PrivacyPolicy = Loadable(lazy(() => import('./Pages/PrivacyPolicy/PrivacyPolicy')));
-const TermsOfService = Loadable(lazy(() => import('./Pages/TermsofService/TermsofService')));
+const TermsOfService = Loadable(lazy(() => import("./Pages/TermsofService/TermsOfService.jsx")));
 const ReturnPolicy = Loadable(lazy(() => import('./Pages/ReturnPolicy/ReturnPolicy')));
 const Faqs = Loadable(lazy(() => import('./Pages/FAQs/Faqs')));
 const FlashDealsPage = Loadable(lazy(() => import('./Pages/FlashDeals/FlashDealsPage')));
