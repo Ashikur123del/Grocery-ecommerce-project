@@ -2,7 +2,7 @@ import PageBanner from "../../Components/Shear/Pagebanner";
 
 
 
-const TermsOfService = () => {
+const TermsofService = () => {
   return (
     <>
      <PageBanner title="Terms of Service" breadcrumbs={[{ label: "Terms of Service" }]} />
@@ -52,4 +52,4 @@ const TermsOfService = () => {
   );
 };
 
-export default TermsOfService;
+export default TermsofService;

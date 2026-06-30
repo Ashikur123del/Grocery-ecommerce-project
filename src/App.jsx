@@ -19,7 +19,7 @@ import AboutPage from './Pages/About/AboutPage';
 import ProductsCategoryPage from './Pages/ProductsCategory/ProductsCategoryPage';
 import ProductsBrands from './Pages/ProductBrand/ProductsBrands';
 import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
-import TermsOfService from './Pages/TermsofService/TermsOfService';
+
 import ReturnPolicy from './Pages/ReturnPolicy/ReturnPolicy';
 import PaymentFailed from './Pages/PaymentFailed/PaymentFailed';
 import Faqs from './Pages/FAQs/Faqs';
@@ -50,6 +50,7 @@ import Category from './Pages/DashboardLayout/Category/Category';
 // import Payments from './Pages/DashboardLayout/Payments/Payments';
 import Inventory from './Pages/DashboardLayout/Inventory/Inventory';
 import DashBoradOverview from './Pages/DashboardLayout/Overview/DashBoradOverview';
+import TermsofService from './Pages/TermsofService/TermsofService';
 // import Analytics from './Pages/DashboardLayout/Analytics/Analytics';
  
 
@@ -75,7 +76,7 @@ export const router = createBrowserRouter([
       { path: "wishlist", element: <Wishlist /> },
       { path: "order-tracking", element: <OrderTracking/> },
       { path: 'privacy-policy', element: <PrivacyPolicy />} ,
-      {path: "terms-of-service", element: <TermsOfService />},
+      {path: "terms-of-service", element: <TermsofService />},
       {path: "return-policy", element: <ReturnPolicy />},
       {path: "faq",  element: <Faqs />},
       {path: "flash-deals",element: <FlashDealsPage />},
