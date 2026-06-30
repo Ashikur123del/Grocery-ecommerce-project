@@ -6,6 +6,7 @@ import Image3 from '../../../assets/grocery_product_img_3.webp'
 import Image4 from '../../../assets/grocery_product_img_4.webp'
 import Image5 from '../../../assets/grocery_product_img_5.webp'
 import Image6 from '../../../assets/grocery_product_img_6.webp'
+import { toast } from "react-toastify";
 
 const MediaLibrary = () => {
   const [mediaItems, setMediaItems] = useState([
@@ -104,7 +105,7 @@ const MediaLibrary = () => {
       if (selectedMedia?.id === id) {
         setSelectedMedia(null);
       }
-      alert("Media deleted successfully!");
+      toast.success("Media deleted successfully!");
     }
   };
 
@@ -136,7 +137,7 @@ const MediaLibrary = () => {
       return [...prevItems, ...newMediaItems];
     });
 
-    alert("Files uploaded successfully!");
+    toast.error("Files uploaded successfully!");
   };
 
   const handleDrop = (e) => {

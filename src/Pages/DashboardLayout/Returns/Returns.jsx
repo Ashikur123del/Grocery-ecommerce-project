@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { MdSearch, MdExpandMore, MdExpandLess, } from "react-icons/md";
+import { toast } from "react-toastify";
 
 const Returns = () => {
   const [returns, setReturns] = useState([
@@ -91,7 +92,7 @@ const Returns = () => {
         ret.id === returnId ? { ...ret, status: newStatus } : ret
       )
     );
-    alert("Return status updated!");
+    toast.success("Return status updated!");
   };
 
   const getStatusBadge = (status) => {

@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { MdSearch, MdExpandMore, MdExpandLess, MdCheckCircle, MdHourglassEmpty, MdLocalShipping, MdDone } from "react-icons/md";
+import { toast } from "react-toastify";
 
 const Orders = () => {
   const [orders, setOrders] = useState([
@@ -98,7 +99,6 @@ const Orders = () => {
   const [filterStatus, setFilterStatus] = useState("all");
   const [expandedOrder, setExpandedOrder] = useState(null);
 
-  // Filter orders
   const filteredOrders = useMemo(() => {
     return orders.filter((order) => {
       const matchSearch =
@@ -112,7 +112,6 @@ const Orders = () => {
     });
   }, [orders, searchValue, filterStatus]);
 
-  // Calculate stats
   const stats = useMemo(() => {
     const totalOrders = orders.length;
     const totalRevenue = orders.reduce((sum, order) => sum + order.totalAmount, 0);
@@ -128,7 +127,7 @@ const Orders = () => {
         order.id === orderId ? { ...order, status: newStatus } : order
       )
     );
-    alert("Order status updated successfully!");
+    toast.success("Order status updated successfully!");
   };
 
   const getStatusBadge = (status) => {
