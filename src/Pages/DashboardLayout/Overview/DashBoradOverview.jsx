@@ -322,9 +322,7 @@ const DashBoradOverview = () => {
             </div>
           </div>
 
-          {/* Quick Stats */}
           <div className="space-y-6">
-            {/* Today's Performance */}
             <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
               <h3 className="text-lg font-bold text-slate-800 mb-4">
                 Today's Performance
