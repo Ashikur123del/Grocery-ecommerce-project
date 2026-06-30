@@ -84,7 +84,7 @@ const statusColorMap = {
   Pending: "bg-yellow-100 text-yellow-800",
 };
 
-const Overview = () => {
+const overview = () => {
   const totalRevenue = weeklyData.reduce((sum, d) => sum + d.revenue, 0);
   const totalOrders = weeklyData.reduce((sum, d) => sum + d.orders, 0);
   const avgOrderValue = totalOrders
@@ -400,4 +400,4 @@ const Overview = () => {
   );
 };
 
-export default Overview;
+export default overview;
