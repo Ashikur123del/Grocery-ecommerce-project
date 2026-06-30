@@ -53,3 +53,5 @@ const TermsofService = () => {
 };
 
 export default TermsofService;
+
+

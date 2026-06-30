@@ -19,7 +19,6 @@ import AboutPage from './Pages/About/AboutPage';
 import ProductsCategoryPage from './Pages/ProductsCategory/ProductsCategoryPage';
 import ProductsBrands from './Pages/ProductBrand/ProductsBrands';
 import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
-
 import ReturnPolicy from './Pages/ReturnPolicy/ReturnPolicy';
 import PaymentFailed from './Pages/PaymentFailed/PaymentFailed';
 import Faqs from './Pages/FAQs/Faqs';
