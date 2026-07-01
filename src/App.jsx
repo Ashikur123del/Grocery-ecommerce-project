@@ -67,7 +67,7 @@ const ReturnsOrder = lazy(() => import('./Pages/DashboardLayout/ReturnsOrder/Ret
 // const SupportTickets = lazy(() => import('./Pages/DashboardLayout/Supporttickets/Supporttickets'));
 // const StoreSettings = lazy(() => import('./Pages/DashboardLayout/Storesettings/Storesettings'));
 
-// ---------- লেজি লোডিং হেল্পার (Suspense + fallback) ----------
+
 const Loadable = (Component) => (props) => (
   <Suspense fallback={<LoadingFallback />}>
     <Component {...props} />
