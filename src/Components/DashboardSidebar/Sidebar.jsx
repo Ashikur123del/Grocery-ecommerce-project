@@ -1,5 +1,9 @@
 import { Link, useLocation } from "react-router";
-import { HiViewGrid, HiUser, HiShoppingBag, HiLogout, HiX, HiChartBar, HiCreditCard, HiCog, HiTicket, HiSupport, HiPhotograph, HiUsers, HiClipboardList, HiTag, HiPlusCircle } from "react-icons/hi";
+import { 
+  HiViewGrid, HiUser, HiShoppingBag, HiLogout, HiX, 
+  HiChartBar, HiCreditCard, HiCog, HiTicket, HiSupport, 
+  HiPhotograph, HiUsers, HiClipboardList, HiTag, HiPlusCircle 
+} from "react-icons/hi";
 
 export default function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
   const location = useLocation();
@@ -43,18 +47,29 @@ export default function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
 
   return (
     <>
+      {/* Overlay – closes sidebar when clicked on mobile */}
       {isSidebarOpen && (
-        <div className="fixed inset-0 z-40 lg:hidden" onClick={() => setIsSidebarOpen(false)}></div>
+        <div 
+          className="fixed inset-0 z-40 lg:hidden" 
+          onClick={() => setIsSidebarOpen(false)}
+        />
       )}
 
-      <div className={`fixed inset-y-0 left-0 z-50 w-64 overflow-y-auto scrollbar-thin scrollbar scrollbar-thumb-amber-500 scrollbar-track-slate-800 bg-slate-900 text-white p-5 flex flex-col transform transition-transform duration-300  ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}>
+      {/* Sidebar */}
+      <div className={`fixed inset-y-0 left-0 z-50 w-64 overflow-y-auto scrollbar-thin scrollbar scrollbar-thumb-amber-500 scrollbar-track-slate-800 bg-slate-900 text-white p-5 flex flex-col transform transition-transform duration-300 ${
+        isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+      }`}>
         
         {/* User Info */}
         <div className="flex flex-col items-center mb-8 flex-shrink-0">
           <div className="relative">
-            <img src="https://i.pravatar.cc/100" alt="User" className="w-24 h-24 rounded-full border-4 border-slate-700" />
+            <img 
+              src="https://i.pravatar.cc/100" 
+              alt="User" 
+              className="w-24 h-24 rounded-full border-4 border-slate-700" 
+            />
             <div className="absolute bottom-0 right-0 bg-slate-700 p-1 rounded-full border-2 border-slate-900">
-               <HiUser size={14} />
+              <HiUser size={14} />
             </div>
           </div>
           <h3 className="mt-4 font-bold text-lg">Mr. Ariful Islam</h3>
@@ -65,12 +80,24 @@ export default function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
         <div className="flex-grow">
           {menuGroups.map((group, idx) => (
             <div key={idx} className="mb-6">
-              <p className="text-slate-500 text-xs font-bold uppercase tracking-wider mb-3 px-3">{group.title}</p>
+              <p className="text-slate-500 text-xs font-bold uppercase tracking-wider mb-3 px-3">
+                {group.title}
+              </p>
               {group.items.map((item) => (
                 <Link 
                   key={item.path} 
                   to={item.path} 
-                  className={`flex items-center gap-3 p-2 mb-1 rounded-lg transition-all ${location.pathname === item.path ? "bg-amber-500 text-white font-semibold" : "text-slate-300 hover:bg-slate-800"}`}
+                  onClick={() => {
+                    // ✅ Close sidebar only on mobile (screen width < 1024px)
+                    if (window.innerWidth < 1024) {
+                      setIsSidebarOpen(false);
+                    }
+                  }}
+                  className={`flex items-center gap-3 p-2 mb-1 rounded-lg transition-all ${
+                    location.pathname === item.path 
+                      ? "bg-amber-500 text-white font-semibold" 
+                      : "text-slate-300 hover:bg-slate-800"
+                  }`}
                 >
                   {item.icon}
                   <span className="flex-grow">{item.name}</span>
@@ -85,7 +112,8 @@ export default function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
           ))}
         </div>
 
-        <button className="flex items-center gap-3 p-3 w-full text-slate-300 hover:bg-slate-800 rounded-lg mt-4 flex-shrink-0">
+        {/* Logout Button */}
+        <button className="flex items-center font-semibold justify-center gap-3 p-3 w-full text-white bg-slate-600 hover:bg-slate-800 rounded-lg mt-4 flex-shrink-0">
           <HiLogout size={22} /> Logout
         </button>
       </div>

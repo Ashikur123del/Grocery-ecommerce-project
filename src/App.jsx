@@ -1,132 +1,211 @@
-import './index.css'
-import { createBrowserRouter} from "react-router";
-import Root from './Layout/Root';
-import Home from './Pages/HomePage/Home';
-import BestProduct from './Pages/BestProducts/BestProduct';
-import ProductDetails from './Pages/ProductDetails/ProductDetails';
-import PorpularProduct from './Pages/PopularProducts/PorpularProduct';
-import YourSpecialBrandProducts from './Pages/YourSpecialBrandProducts/YourSpecialBrandProducts';
-import ProductList from './Pages/ProductList/ProductList';
-import Cart from './Pages/Cart/Cart';
-import Checkout from './Pages/Checkout/Checkout';
-import Compare from './Pages/Compare/Compare';
-import Wishlist from './Pages/Wishlist/Wishlist';
-import OrderTracking from './Pages/OrderTracking/OrderTracking';
-import SignIn from './Pages/SignIn/SignIn';
-import SignUp from './Pages/SignUp/SignUp';
-import OrderSuccess from './Pages/OrderSuccesPage/OrderSucces';
-import AboutPage from './Pages/About/AboutPage';
-import ProductsCategoryPage from './Pages/ProductsCategory/ProductsCategoryPage';
-import ProductsBrands from './Pages/ProductBrand/ProductsBrands';
-import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
-import ReturnPolicy from './Pages/ReturnPolicy/ReturnPolicy';
-import PaymentFailed from './Pages/PaymentFailed/PaymentFailed';
-import Faqs from './Pages/FAQs/Faqs';
-import FlashDealsPage from './Pages/FlashDeals/FlashDealsPage';
-import BlogClassicPage from './Pages/BlogClassic/BlogClassicPage';
-import ContactPage from './Pages/Contact/ContactPage';
-import Account from "./Pages/MyAccound/Accound"
-import OverView from "./Pages/MyAccound/OverViewPage/OverView"
-import OrderHistory from './Pages/MyAccound/OrderHistory/OrderHistory';
-import DownLoad from "./Pages/MyAccound/MyDownload/DownLoad"
-import Return from "./Pages/MyAccound/ReturnRequest/Return"
-import PresonalInfo from './Pages/MyAccound/PresonalInfo/PresonalInfo';
-import Address from './Pages/MyAccound/Address/Address';
-import WishList from './Pages/MyAccound/WishList/WishList';
-import MyReviews from './Pages/MyAccound/MyReviews/MyReviews';
-import ChangePasswordForm from './Pages/MyAccound/ChangePasswordForm/ChangePasswordForm';
-import DashboardLayout from './Pages/DashboardLayout/DashboardLayout';
-import AddProduct from './Pages/DashboardLayout/AddProduct/AddProduct';
-import AllProducts from './Pages/DashboardLayout/AllProducts/AllProducts';
-import Orders from './Pages/DashboardLayout/Orders/Orders';
-import MediaLibrary from './Pages/DashboardLayout/Medialibrary/Medialibrary';
-import Category from './Pages/DashboardLayout/Category/Category';
-// import SupportTickets from './Pages/DashboardLayout/Supporttickets/Supporttickets';
-// import StoreSettings from './Pages/DashboardLayout/Storesettings/Storesettings';
-import Customers from './Pages/DashboardLayout/Customers/Customers';
-// import Coupons from './Pages/DashboardLayout/Coupons/Coupons';
-// import Payments from './Pages/DashboardLayout/Payments/Payments';
-import Inventory from './Pages/DashboardLayout/Inventory/Inventory';
-import DashBoradOverview from './Pages/DashboardLayout/Overview/DashBoradOverview';
-import TranOfService from './Pages/TranOfService/TranOfService';
-import ReturnsOrder from './Pages/DashboardLayout/ReturnsOrder/ReturnsOrder';
-// import Analytics from './Pages/DashboardLayout/Analytics/Analytics';
- 
+/* eslint-disable react-refresh/only-export-components */
+import { lazy, Suspense } from 'react';
+import './index.css';
+import { createBrowserRouter } from "react-router";
+import { Spinner } from '@heroui/react';
 
+// ---------- লোডিং স্পিনার (ফ্যালব্যাক UI) ----------
 
+const LoadingFallback = () => (
+  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+    <div className="flex flex-col items-center gap-2">
+        <Spinner color="success" size="xl"/>  Loading...
+      </div>
+  </div>
+);
 
- 
+// ---------- লেজি লোডিংয়ের জন্য ইম্পোর্ট ----------
+const Root = lazy(() => import('./Layout/Root'));
+const Home = lazy(() => import('./Pages/HomePage/Home'));
+const BestProduct = lazy(() => import('./Pages/BestProducts/BestProduct'));
+const ProductDetails = lazy(() => import('./Pages/ProductDetails/ProductDetails'));
+const PorpularProduct = lazy(() => import('./Pages/PopularProducts/PorpularProduct')); // নাম ঠিক রাখলাম
+const YourSpecialBrandProducts = lazy(() => import('./Pages/YourSpecialBrandProducts/YourSpecialBrandProducts'));
+const ProductList = lazy(() => import('./Pages/ProductList/ProductList'));
+const Cart = lazy(() => import('./Pages/Cart/Cart'));
+const Checkout = lazy(() => import('./Pages/Checkout/Checkout'));
+const OrderSuccess = lazy(() => import('./Pages/OrderSuccesPage/OrderSucces'));
+const PaymentFailed = lazy(() => import('./Pages/PaymentFailed/PaymentFailed'));
+const Compare = lazy(() => import('./Pages/Compare/Compare'));
+const Wishlist = lazy(() => import('./Pages/Wishlist/Wishlist'));
+const OrderTracking = lazy(() => import('./Pages/OrderTracking/OrderTracking'));
+const PrivacyPolicy = lazy(() => import('./Pages/PrivacyPolicy/PrivacyPolicy'));
+const TranOfService = lazy(() => import('./Pages/TranOfService/TranOfService'));
+const ReturnPolicy = lazy(() => import('./Pages/ReturnPolicy/ReturnPolicy'));
+const Faqs = lazy(() => import('./Pages/FAQs/Faqs'));
+const FlashDealsPage = lazy(() => import('./Pages/FlashDeals/FlashDealsPage'));
+const BlogClassicPage = lazy(() => import('./Pages/BlogClassic/BlogClassicPage'));
+const AboutPage = lazy(() => import('./Pages/About/AboutPage'));
+const SignIn = lazy(() => import('./Pages/SignIn/SignIn'));
+const SignUp = lazy(() => import('./Pages/SignUp/SignUp'));
+const ProductsCategoryPage = lazy(() => import('./Pages/ProductsCategory/ProductsCategoryPage'));
+const ProductsBrands = lazy(() => import('./Pages/ProductBrand/ProductsBrands'));
+const ContactPage = lazy(() => import('./Pages/Contact/ContactPage'));
+const Account = lazy(() => import("./Pages/MyAccound/Accound"));
+const OverView = lazy(() => import("./Pages/MyAccound/OverViewPage/OverView"));
+const OrderHistory = lazy(() => import('./Pages/MyAccound/OrderHistory/OrderHistory'));
+const DownLoad = lazy(() => import("./Pages/MyAccound/MyDownload/DownLoad"));
+const Return = lazy(() => import("./Pages/MyAccound/ReturnRequest/Return"));
+const PresonalInfo = lazy(() => import('./Pages/MyAccound/PresonalInfo/PresonalInfo'));
+const Address = lazy(() => import('./Pages/MyAccound/Address/Address'));
+const WishList = lazy(() => import('./Pages/MyAccound/WishList/WishList'));
+const MyReviews = lazy(() => import('./Pages/MyAccound/MyReviews/MyReviews'));
+const ChangePasswordForm = lazy(() => import('./Pages/MyAccound/ChangePasswordForm/ChangePasswordForm'));
+const DashboardLayout = lazy(() => import('./Pages/DashboardLayout/DashboardLayout'));
+const AddProduct = lazy(() => import('./Pages/DashboardLayout/AddProduct/AddProduct'));
+const AllProducts = lazy(() => import('./Pages/DashboardLayout/AllProducts/AllProducts'));
+const Orders = lazy(() => import('./Pages/DashboardLayout/Orders/Orders'));
+const MediaLibrary = lazy(() => import('./Pages/DashboardLayout/Medialibrary/Medialibrary'));
+const Category = lazy(() => import('./Pages/DashboardLayout/Category/Category'));
+const Customers = lazy(() => import('./Pages/DashboardLayout/Customers/Customers'));
+const Coupons = lazy(() => import('./Pages/DashboardLayout/Coupons/Coupons'));
+const Inventory = lazy(() => import('./Pages/DashboardLayout/Inventory/Inventory'));
+const DashBoradOverview = lazy(() => import('./Pages/DashboardLayout/Overview/DashBoradOverview'));
+const ReturnsOrder = lazy(() => import('./Pages/DashboardLayout/ReturnsOrder/ReturnsOrder'));
+// const Payments = lazy(() => import('./Pages/DashboardLayout/Payments/Payments'));
+// const Analytics = lazy(() => import('./Pages/DashboardLayout/Analytics/Analytics'));
+// const SupportTickets = lazy(() => import('./Pages/DashboardLayout/Supporttickets/Supporttickets'));
+// const StoreSettings = lazy(() => import('./Pages/DashboardLayout/Storesettings/Storesettings'));
+
+// ---------- লেজি লোডিং হেল্পার (Suspense + fallback) ----------
+const Loadable = (Component) => (props) => (
+  <Suspense fallback={<LoadingFallback />}>
+    <Component {...props} />
+  </Suspense>
+);
+
+// ---------- লেজি লোডেড কম্পোনেন্টগুলোর র‍্যাপার ----------
+const LRoot = Loadable(Root);
+const LHome = Loadable(Home);
+const LBestProduct = Loadable(BestProduct);
+const LProductDetails = Loadable(ProductDetails);
+const LPorpularProduct = Loadable(PorpularProduct);
+const LYourSpecialBrandProducts = Loadable(YourSpecialBrandProducts);
+const LProductList = Loadable(ProductList);
+const LCart = Loadable(Cart);
+const LCheckout = Loadable(Checkout);
+const LOrderSuccess = Loadable(OrderSuccess);
+const LPaymentFailed = Loadable(PaymentFailed);
+const LCompare = Loadable(Compare);
+const LWishlist = Loadable(Wishlist);
+const LOrderTracking = Loadable(OrderTracking);
+const LPrivacyPolicy = Loadable(PrivacyPolicy);
+const LTranOfService = Loadable(TranOfService);
+const LReturnPolicy = Loadable(ReturnPolicy);
+const LFaqs = Loadable(Faqs);
+const LFlashDealsPage = Loadable(FlashDealsPage);
+const LBlogClassicPage = Loadable(BlogClassicPage);
+const LAboutPage = Loadable(AboutPage);
+const LSignIn = Loadable(SignIn);
+const LSignUp = Loadable(SignUp);
+const LProductsCategoryPage = Loadable(ProductsCategoryPage);
+const LProductsBrands = Loadable(ProductsBrands);
+const LContactPage = Loadable(ContactPage);
+const LAccount = Loadable(Account);
+const LOverView = Loadable(OverView);
+const LOrderHistory = Loadable(OrderHistory);
+const LDownLoad = Loadable(DownLoad);
+const LReturn = Loadable(Return);
+const LPresonalInfo = Loadable(PresonalInfo);
+const LAddress = Loadable(Address);
+const LWishList = Loadable(WishList);
+const LMyReviews = Loadable(MyReviews);
+const LChangePasswordForm = Loadable(ChangePasswordForm);
+const LDashboardLayout = Loadable(DashboardLayout);
+const LAddProduct = Loadable(AddProduct);
+const LAllProducts = Loadable(AllProducts);
+const LOrders = Loadable(Orders);
+const LMediaLibrary = Loadable(MediaLibrary);
+const LCategory = Loadable(Category);
+const LCustomers = Loadable(Customers);
+const LCoupons = Loadable(Coupons);
+const LInventory = Loadable(Inventory);
+const LDashBoradOverview = Loadable(DashBoradOverview);
+const LReturnsOrder = Loadable(ReturnsOrder);
+
+// const LPayments = Loadable(Payments);
+// const LAnalytics = Loadable(Analytics);
+// const LSupportTickets = Loadable(SupportTickets);
+// const LStoreSettings = Loadable(StoreSettings);
+
+// ---------- রাউটার কনফিগারেশন ----------
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />, 
+    element: <LRoot />,
     children: [
-      { index: true, element: <Home /> },
-      { path: "best-products", element: <BestProduct /> },
-      { path: "best-products/:id", element: <ProductDetails /> },
-      { path: "popular-product", element: < PorpularProduct /> }, 
-      { path: "YourSpecialBrandProducts", element: <YourSpecialBrandProducts /> },
-      { path: "product-list", element: <ProductList /> },
-      { path: "cart", element: <Cart /> },
-      { path: "checkout", element: <Checkout /> },
-      {path: "ordersucces", element: <OrderSuccess />} ,
-      {path: "payment-failed", element: <PaymentFailed/>},
-      { path: "compare", element: <Compare /> },
-      { path: "wishlist", element: <Wishlist /> },
-      { path: "order-tracking", element: <OrderTracking/> },
-      { path: 'privacy-policy', element: <PrivacyPolicy />} ,
-      {path: 'terms-of-service', element: <TranOfService />},
-      {path: "return-policy", element: <ReturnPolicy />},
-      {path: "faq",  element: <Faqs />},
-      {path: "flash-deals",element: <FlashDealsPage />},
-      {path: "blog-classic", element: <BlogClassicPage />},
-      {path: 'about', element: <AboutPage />},
-      { path: "sign-in", element: <SignIn /> },
-      { path: "sign-up", element: <SignUp /> },
-      {path: "products-category", element: <ProductsCategoryPage />},
-      {path: "product-brand", element: <ProductsBrands />},
-      {path: "contact", element: <ContactPage />},
-       
-     { 
-  path: "my-accound", 
-  element: <Account/>, 
-  children: [
-    { index: true, element: <OverView /> },
-    { path: "overview", element: <OverView /> }, 
-    { path: "order-history", element: <OrderHistory />},
-    { path: "download", element: <DownLoad />},
-    { path: "return", element: <Return />},
-    { path: "profile", element: <PresonalInfo />},
-    { path: "address", element: <Address />},
-    {path: "wishlist", element: <WishList />},
-    {path: "reviews", element: <MyReviews />},
-    {path: "password", element: <ChangePasswordForm />},
-    
-  ]
-},
+      { index: true, element: <LHome /> },
+      { path: "best-products", element: <LBestProduct /> },
+      { path: "best-products/:id", element: <LProductDetails /> },
+      { path: "popular-product", element: <LPorpularProduct /> },
+      { path: "YourSpecialBrandProducts", element: <LYourSpecialBrandProducts /> },
+      { path: "product-list", element: <LProductList /> },
+      { path: "cart", element: <LCart /> },
+      { path: "checkout", element: <LCheckout /> },
+      { path: "ordersucces", element: <LOrderSuccess /> },
+      { path: "payment-failed", element: <LPaymentFailed /> },
+      { path: "compare", element: <LCompare /> },
+      { path: "wishlist", element: <LWishlist /> },
+      { path: "order-tracking", element: <LOrderTracking /> },
+      { path: 'privacy-policy', element: <LPrivacyPolicy /> },
+      { path: 'terms-of-service', element: <LTranOfService /> },
+      { path: "return-policy", element: <LReturnPolicy /> },
+      { path: "faq", element: <LFaqs /> },
+      { path: "flash-deals", element: <LFlashDealsPage /> },
+      { path: "blog-classic", element: <LBlogClassicPage /> },
+      { path: 'about', element: <LAboutPage /> },
+      { path: "sign-in", element: <LSignIn /> },
+      { path: "sign-up", element: <LSignUp /> },
+      { path: "products-category", element: <LProductsCategoryPage /> },
+      { path: "product-brand", element: <LProductsBrands /> },
+      { path: "contact", element: <LContactPage /> },
+      {
+        path: "my-accound",
+        element: <LAccount />,
+        children: [
+          { index: true, element: <LOverView /> },
+          { path: "overview", element: <LOverView /> },
+          { path: "order-history", element: <LOrderHistory /> },
+          { path: "download", element: <LDownLoad /> },
+          { path: "return", element: <LReturn /> },
+          { path: "profile", element: <LPresonalInfo /> },
+          { path: "address", element: <LAddress /> },
+          { path: "wishlist", element: <LWishList /> },
+          { path: "reviews", element: <LMyReviews /> },
+          { path: "password", element: <LChangePasswordForm /> },
+        ]
+      },
     ]
   },
-
-
   {
     path: "/dashboard",
-    element: <DashboardLayout />, 
+    element: <LDashboardLayout />,
     children: [
-      {index: true, element: <DashBoradOverview  />},
-      {path: "add-product", element: <AddProduct />},
-      {path: "products", element: <AllProducts />},
-      {path: "categories", element: <Category />},
-      {path: 'inventory', element: <Inventory />},
-      {path: 'media', element: <MediaLibrary />},
-      {path: 'orders', element: <Orders />},
-      {path: 'returns', element: <ReturnsOrder />},
-      {path: 'customers', element: <Customers />},
-      // {path: 'coupons', element: <Coupons />},
-      // {path: 'payments', element: <Payments />}
-      // {path: "reports", element: <Analytics />},
-      // {path: 'support', element: <SupportTickets />},
-      // {path: 'store-settings', element: <StoreSettings />}
-     
+      { index: true, element: <LDashBoradOverview /> },
+      { path: "add-product", element: <LAddProduct /> },
+      { path: "products", element: <LAllProducts /> },
+      { path: "categories", element: <LCategory /> },
+      { path: 'inventory', element: <LInventory /> },
+      { path: 'media', element: <LMediaLibrary /> },
+      { path: 'orders', element: <LOrders /> },
+      { path: 'returns', element: <LReturnsOrder /> },
+      { path: 'customers', element: <LCustomers /> },
+      { path: 'coupons', element: <LCoupons /> },
+     // নতুন যোগ করা রাউটগুলো:
+      // { path: 'payments', element: <LPayments /> },
+      // { path: "reports", element: <LAnalytics /> },
+      // { path: 'support', element: <LSupportTickets /> },
+      // { path: 'store-settings', element: <LStoreSettings /> }
     ]
   }
-]); 
+]);
+
+  
+
+
+
+
+
+
+
+

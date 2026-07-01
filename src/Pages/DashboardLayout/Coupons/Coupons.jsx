@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { MdAdd, MdEdit, MdDelete, MdSearch, MdClose } from "react-icons/md";
+import { toast } from "react-toastify";
 
 const Coupons = () => {
   const [coupons, setCoupons] = useState([
@@ -95,7 +96,7 @@ const Coupons = () => {
 
   const handleAddCoupon = () => {
     if (!formData.code.trim() || !formData.discountValue) {
-      alert("Please fill all required fields!");
+      toast.error("Please fill all required fields!");
       return;
     }
 
@@ -105,7 +106,7 @@ const Coupons = () => {
           c.id === editingId ? { ...c, ...formData } : c
         )
       );
-      alert("Coupon updated successfully!");
+      toast.success("Coupon updated successfully!");
     } else {
       const newCoupon = {
         id: Math.max(...coupons.map((c) => c.id), 0) + 1,
@@ -114,7 +115,7 @@ const Coupons = () => {
         status: "active",
       };
       setCoupons([...coupons, newCoupon]);
-      alert("Coupon created successfully!");
+      toast.success("Coupon created successfully!");
     }
 
     resetForm();
@@ -130,7 +131,7 @@ const Coupons = () => {
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this coupon?")) {
       setCoupons(coupons.filter((c) => c.id !== id));
-      alert("Coupon deleted successfully!");
+      toast.success("Coupon deleted successfully!");
     }
   };
 

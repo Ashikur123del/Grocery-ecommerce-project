@@ -104,7 +104,6 @@ const Customers = () => {
           <p className="text-slate-400">Manage and view customer information</p>
         </div>
 
-        {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
             <p className="text-slate-400 text-sm font-semibold uppercase">Total Customers</p>
@@ -131,7 +130,6 @@ const Customers = () => {
           </div>
         </div>
 
-        {/* Filters */}
         <div className="bg-slate-800 rounded-xl p-6 mb-6 border border-slate-700">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
@@ -163,7 +161,6 @@ const Customers = () => {
           </div>
         </div>
 
-        {/* Customers List */}
         <div className="space-y-4">
           {filteredCustomers.length > 0 ? (
             filteredCustomers.map((customer) => (
