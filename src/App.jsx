@@ -62,7 +62,7 @@ const Coupons = lazy(() => import('./Pages/DashboardLayout/Coupons/Coupons'));
 const Inventory = lazy(() => import('./Pages/DashboardLayout/Inventory/Inventory'));
 const DashBoradOverview = lazy(() => import('./Pages/DashboardLayout/Overview/DashBoradOverview'));
 const ReturnsOrder = lazy(() => import('./Pages/DashboardLayout/ReturnsOrder/ReturnsOrder'));
-// const Payments = lazy(() => import('./Pages/DashboardLayout/Payments/Payments'));
+const Payments = lazy(() => import('./Pages/DashboardLayout/Payments/Payments'));
 // const Analytics = lazy(() => import('./Pages/DashboardLayout/Analytics/Analytics'));
 // const SupportTickets = lazy(() => import('./Pages/DashboardLayout/Supporttickets/Supporttickets'));
 // const StoreSettings = lazy(() => import('./Pages/DashboardLayout/Storesettings/Storesettings'));
@@ -123,7 +123,7 @@ const LInventory = Loadable(Inventory);
 const LDashBoradOverview = Loadable(DashBoradOverview);
 const LReturnsOrder = Loadable(ReturnsOrder);
 
-// const LPayments = Loadable(Payments);
+const LPayments = Loadable(Payments);
 // const LAnalytics = Loadable(Analytics);
 // const LSupportTickets = Loadable(SupportTickets);
 // const LStoreSettings = Loadable(StoreSettings);
@@ -192,7 +192,7 @@ export const router = createBrowserRouter([
       { path: 'customers', element: <LCustomers /> },
       { path: 'coupons', element: <LCoupons /> },
      // নতুন যোগ করা রাউটগুলো:
-      // { path: 'payments', element: <LPayments /> },
+       { path: 'payments', element: <LPayments /> },
       // { path: "reports", element: <LAnalytics /> },
       // { path: 'support', element: <LSupportTickets /> },
       // { path: 'store-settings', element: <LStoreSettings /> }
