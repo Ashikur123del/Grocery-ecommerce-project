@@ -17,13 +17,14 @@ const AddProduct = () => {
     defaultValues: {
       sku: "",
       name: "",
-      category: "",
+      category: "Electronics",
       brand: "",
       price: "",
       discountPrice: "",
       stockQuantity: "",
       unit: "dozen",
       origin: "Bangladesh",
+      image: null,
     },
   });
 
@@ -33,7 +34,41 @@ const AddProduct = () => {
     reset();
   };
 
-  const fields = ["sku", "name", "category", "brand", "price", "discountPrice", "stockQuantity"];
+  const categoryOptions = [
+    { id: "Electronics", label: "Electronics" },
+    { id: "Clothing", label: "Clothing" },
+    { id: "Books", label: "Books" },
+    { id: "Home & Garden", label: "Home & Garden" },
+    { id: "Toys", label: "Toys" },
+  ];
+
+  // Helper to render a text field with Controller
+  const renderTextField = (name, placeholder, label) => (
+    <Controller
+      key={name}
+      name={name}
+      control={control}
+      rules={{ required: `${label || name} is required` }}
+      render={({ field: { onChange, value }, fieldState: { error } }) => (
+        <TextField className="w-full">
+          <Label className="text-white text-sm font-semibold mb-1 block capitalize">
+            {label || name}
+          </Label>
+          <Input
+            value={value}
+            onChange={onChange}
+            placeholder={placeholder || `Enter ${name}`}
+            className={`w-full bg-slate-700 text-white border rounded-lg px-4 py-2 ${
+              error ? "border-red-500" : "border-slate-600"
+            }`}
+          />
+          {error && (
+            <span className="text-red-500 text-xs mt-1 block">{error.message}</span>
+          )}
+        </TextField>
+      )}
+    />
+  );
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 p-6 flex items-center justify-center">
@@ -47,34 +82,81 @@ const AddProduct = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="grid grid-cols-1 md:grid-cols-2 gap-4"
         >
-          {fields.map((field) => (
-            <Controller
-              key={field}
-              name={field}
-              control={control}
-              rules={{ required: `${field} is required` }}
-              render={({ field: { onChange, value }, fieldState: { error } }) => (
-                <TextField className="w-full">
-                  <Label className="text-white text-sm font-semibold mb-1 block capitalize">
-                    {field}
-                  </Label>
-                  <Input
-                    value={value}
-                    onChange={onChange}
-                    placeholder={`Enter ${field}`}
-                    className={`w-full bg-slate-700 text-white border rounded-lg px-4 py-2 ${
+          {/* Row 1: SKU & Name */}
+          {renderTextField("sku", "Enter SKU", "SKU")}
+          {renderTextField("name", "Enter product name", "Name")}
+
+          {/* Row 2: Brand & Price */}
+          {renderTextField("brand", "Enter brand", "Brand")}
+          {renderTextField("price", "Enter price", "Price")}
+
+          {/* Row 3: Discount Price & Stock Quantity */}
+          {renderTextField("discountPrice", "Enter discount price", "Discount Price")}
+          {renderTextField("stockQuantity", "Enter stock quantity", "Stock Quantity")}
+
+          {/* Row 4: Category & Image (side by side) */}
+          <Controller
+            name="category"
+            control={control}
+            rules={{ required: "Category is required" }}
+            render={({ field: { onChange, value }, fieldState: { error } }) => (
+              <div className="w-full">
+                <Label className="text-white text-sm font-semibold mb-1 block">Category</Label>
+                <Select
+                  selectedKey={value}
+                  onSelectionChange={(key) => onChange(key)}
+                  className="w-full"
+                >
+                  <Select.Trigger
+                    className={`bg-slate-700 text-white border rounded-lg px-4 py-2 ${
                       error ? "border-red-500" : "border-slate-600"
                     }`}
-                  />
-                  {error && (
-                    <span className="text-red-500 text-xs mt-1 block">{error.message}</span>
-                  )}
-                </TextField>
-              )}
-            />
-          ))}
+                  >
+                    <Select.Value />
+                  </Select.Trigger>
+                  <Select.Popover>
+                    <ListBox>
+                      {categoryOptions.map((cat) => (
+                        <ListBox.Item key={cat.id} id={cat.id}>
+                          {cat.label}
+                        </ListBox.Item>
+                      ))}
+                    </ListBox>
+                  </Select.Popover>
+                </Select>
+                {error && <span className="text-red-500 text-xs block">{error.message}</span>}
+              </div>
+            )}
+          />
 
-          {/* Unit Select */}
+          <Controller
+            name="image"
+            control={control}
+            render={({ field: { onChange, value }, fieldState: { error } }) => (
+              <div className="w-full">
+                <Label className="text-white text-sm font-semibold mb-1 block">Product Image</Label>
+                <Input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0] || null;
+                    onChange(file);
+                  }}
+                  className={`w-full bg-slate-700 text-white border rounded-lg px-4 py-2 ${
+                    error ? "border-red-500" : "border-slate-600"
+                  }`}
+                />
+                {value && (
+                  <p className="text-green-400 text-xs mt-1">
+                    Selected: {value.name}
+                  </p>
+                )}
+                {error && <span className="text-red-500 text-xs block">{error.message}</span>}
+              </div>
+            )}
+          />
+
+          {/* Row 5: Unit & Origin */}
           <Controller
             name="unit"
             control={control}
@@ -83,7 +165,11 @@ const AddProduct = () => {
               <div className="w-full">
                 <Label className="text-white text-sm font-semibold mb-1 block">Unit</Label>
                 <Select selectedKey={value} onSelectionChange={onChange} className="w-full">
-                  <Select.Trigger className={`bg-slate-700 text-white border rounded-lg px-4 py-2 ${error ? "border-red-500" : "border-slate-600"}`}>
+                  <Select.Trigger
+                    className={`bg-slate-700 text-white border rounded-lg px-4 py-2 ${
+                      error ? "border-red-500" : "border-slate-600"
+                    }`}
+                  >
                     <Select.Value />
                   </Select.Trigger>
                   <Select.Popover>
@@ -99,7 +185,6 @@ const AddProduct = () => {
             )}
           />
 
-          {/* Origin Select */}
           <Controller
             name="origin"
             control={control}
@@ -108,7 +193,11 @@ const AddProduct = () => {
               <div className="w-full">
                 <Label className="text-white text-sm font-semibold mb-1 block">Origin</Label>
                 <Select selectedKey={value} onSelectionChange={onChange} className="w-full">
-                  <Select.Trigger className={`bg-slate-700 text-white border rounded-lg px-4 py-2 ${error ? "border-red-500" : "border-slate-600"}`}>
+                  <Select.Trigger
+                    className={`bg-slate-700 text-white border rounded-lg px-4 py-2 ${
+                      error ? "border-red-500" : "border-slate-600"
+                    }`}
+                  >
                     <Select.Value />
                   </Select.Trigger>
                   <Select.Popover>

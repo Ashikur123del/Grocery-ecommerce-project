@@ -43,13 +43,13 @@ import MediaLibrary from './Pages/DashboardLayout/Medialibrary/Medialibrary';
 import Category from './Pages/DashboardLayout/Category/Category';
 // import SupportTickets from './Pages/DashboardLayout/Supporttickets/Supporttickets';
 // import StoreSettings from './Pages/DashboardLayout/Storesettings/Storesettings';
-import Returns from './Pages/DashboardLayout/returns/returns';
-// import Customers from './Pages/DashboardLayout/Customers/Customers';
+import Customers from './Pages/DashboardLayout/Customers/Customers';
 // import Coupons from './Pages/DashboardLayout/Coupons/Coupons';
 // import Payments from './Pages/DashboardLayout/Payments/Payments';
 import Inventory from './Pages/DashboardLayout/Inventory/Inventory';
 import DashBoradOverview from './Pages/DashboardLayout/Overview/DashBoradOverview';
 import TranOfService from './Pages/TranOfService/TranOfService';
+import ReturnsOrder from './Pages/DashboardLayout/ReturnsOrder/ReturnsOrder';
 // import Analytics from './Pages/DashboardLayout/Analytics/Analytics';
  
 
@@ -119,8 +119,8 @@ export const router = createBrowserRouter([
       {path: 'inventory', element: <Inventory />},
       {path: 'media', element: <MediaLibrary />},
       {path: 'orders', element: <Orders />},
-      {path: 'returns', element: <Returns />},
-      // {path: 'customers', element: <Customers />},
+      {path: 'returns', element: <ReturnsOrder />},
+      {path: 'customers', element: <Customers />},
       // {path: 'coupons', element: <Coupons />},
       // {path: 'payments', element: <Payments />}
       // {path: "reports", element: <Analytics />},

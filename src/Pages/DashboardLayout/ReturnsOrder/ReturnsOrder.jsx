@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { MdSearch, MdExpandMore, MdExpandLess, } from "react-icons/md";
 import { toast } from "react-toastify";
 
-const Returns = () => {
+const ReturnsOrder = () => {
   const [returns, setReturns] = useState([
     {
       id: "RET001",
@@ -287,4 +287,4 @@ const Returns = () => {
   );
 };
 
-export default Returns;
+export default ReturnsOrder;

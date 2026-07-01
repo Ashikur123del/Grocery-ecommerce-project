@@ -37,7 +37,6 @@ export default function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
         { path: "/dashboard/reports", name: "Analytics", icon: <HiChartBar size={20} /> },
         { path: "/dashboard/support", name: "Support Tickets", icon: <HiSupport size={20} />, badge: 8 },
         { path: "/dashboard/store-settings", name: "Store Settings", icon: <HiCog size={20} /> },
-          {path: "/dashboard/unich", name: 'Unick'}
       ]
     }
   ];
