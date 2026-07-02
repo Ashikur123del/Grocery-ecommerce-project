@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useMemo } from "react";
 import {
   LineChart,
@@ -19,7 +20,7 @@ import {  MdShoppingCart, MdPeople,  MdDoDisturb } from "react-icons/md";
 const Analytics = () => {
   const [dateRange, setDateRange] = useState("month");
 
-  // Sales data by date
+
   const salesData = [
     { date: "Jun 1", sales: 4000, revenue: 2400, customers: 240 },
     { date: "Jun 5", sales: 3000, revenue: 1398, customers: 221 },
@@ -69,7 +70,7 @@ const Analytics = () => {
     const conversionRate = 3.2;
     const productsSold = topProducts.reduce((sum, p) => sum + p.sales, 0);
 
-    return {
+    return { 
       totalRevenue,
       totalSales,
       totalCustomers,
@@ -264,7 +265,7 @@ const Analytics = () => {
                 <Bar dataKey="revenue" fill="#10B981" name="Revenue (৳)" />
               </BarChart>
             </ResponsiveContainer>
-          </div>
+          </div>   
 
           {/* Payment Methods */}
           <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">

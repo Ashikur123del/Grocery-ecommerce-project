@@ -78,10 +78,10 @@ const categoryData = [
 const chartColors = ["#F59E0B", "#3B82F6", "#10B981", "#EF4444", "#8B5CF6"];
 
 const statusColorMap = {
-  Completed: "bg-green-100 text-green-800",
-  Processing: "bg-blue-100 text-blue-800",
-  Shipped: "bg-purple-100 text-purple-800",
-  Pending: "bg-yellow-100 text-yellow-800",
+  Completed: "bg-green-900/30 text-green-400",
+  Processing: "bg-blue-900/30 text-blue-400",
+  Shipped: "bg-purple-900/30 text-purple-400",
+  Pending: "bg-yellow-900/30 text-yellow-400",
 };
 
 const DashBoradOverview = () => {
@@ -99,101 +99,101 @@ const DashBoradOverview = () => {
   };
 
   const getStatusColor = (status) =>
-    statusColorMap[status] || "bg-gray-100 text-gray-800";
+    statusColorMap[status] || "bg-gray-700/30 text-gray-400";
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 p-6">
       <div className="container mx-auto">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-slate-800 mb-2">
+          <h1 className="text-3xl font-bold text-white mb-2">
             Dashboard Overview
           </h1>
-          <p className="text-slate-600">
+          <p className="text-slate-400">
             Welcome back! Here's your business performance
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border-l-4 border-amber-500">
+          <div className="bg-slate-800/70 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-amber-500 border border-slate-700">
             <div className="flex justify-between items-start">
               <div>
-                <p className="text-slate-600 text-sm font-semibold uppercase mb-2">
+                <p className="text-slate-400 text-sm font-semibold uppercase mb-2">
                   Total Revenue
                 </p>
-                <p className="text-3xl font-bold text-slate-800">
+                <p className="text-3xl font-bold text-white">
                   ৳{stats.totalRevenue.toLocaleString()}
                 </p>
-                <p className="text-green-600 text-sm mt-2">
+                <p className="text-green-400 text-sm mt-2">
                   ↑ 12.5% from last week
                 </p>
               </div>
-              <div className="p-3 bg-amber-100 rounded-lg">
-                <HiCurrencyDollar className="text-2xl text-amber-600" />
+              <div className="p-3 bg-amber-900/30 rounded-lg">
+                <HiCurrencyDollar className="text-2xl text-amber-400" />
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border-l-4 border-blue-500">
+          <div className="bg-slate-800/70 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-blue-500 border border-slate-700">
             <div className="flex justify-between items-start">
               <div>
-                <p className="text-slate-600 text-sm font-semibold uppercase mb-2">
+                <p className="text-slate-400 text-sm font-semibold uppercase mb-2">
                   Total Orders
                 </p>
-                <p className="text-3xl font-bold text-slate-800">
+                <p className="text-3xl font-bold text-white">
                   {stats.totalOrders.toLocaleString()}
                 </p>
-                <p className="text-green-600 text-sm mt-2">
+                <p className="text-green-400 text-sm mt-2">
                   ↑ 8.2% from last week
                 </p>
               </div>
-              <div className="p-3 bg-blue-100 rounded-lg">
-                <HiShoppingBag className="text-2xl text-blue-600" />
+              <div className="p-3 bg-blue-900/30 rounded-lg">
+                <HiShoppingBag className="text-2xl text-blue-400" />
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border-l-4 border-purple-500">
+          <div className="bg-slate-800/70 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-purple-500 border border-slate-700">
             <div className="flex justify-between items-start">
               <div>
-                <p className="text-slate-600 text-sm font-semibold uppercase mb-2">
+                <p className="text-slate-400 text-sm font-semibold uppercase mb-2">
                   New Customers
                 </p>
-                <p className="text-3xl font-bold text-slate-800">
+                <p className="text-3xl font-bold text-white">
                   {stats.newCustomers}
                 </p>
-                <p className="text-green-600 text-sm mt-2">
+                <p className="text-green-400 text-sm mt-2">
                   ↑ 5.1% from last week
                 </p>
               </div>
-              <div className="p-3 bg-purple-100 rounded-lg">
-                <HiUsers className="text-2xl text-purple-600" />
+              <div className="p-3 bg-purple-900/30 rounded-lg">
+                <HiUsers className="text-2xl text-purple-400" />
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border-l-4 border-green-500">
+          <div className="bg-slate-800/70 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-green-500 border border-slate-700">
             <div className="flex justify-between items-start">
               <div>
-                <p className="text-slate-600 text-sm font-semibold uppercase mb-2">
+                <p className="text-slate-400 text-sm font-semibold uppercase mb-2">
                   Avg Order Value
                 </p>
-                <p className="text-3xl font-bold text-slate-800">
+                <p className="text-3xl font-bold text-white">
                   ৳{stats.avgOrderValue.toLocaleString()}
                 </p>
-                <p className="text-green-600 text-sm mt-2">
+                <p className="text-green-400 text-sm mt-2">
                   ↑ 3.2% from last week
                 </p>
               </div>
-              <div className="p-3 bg-green-100 rounded-lg">
-                <HiTrendingUp className="text-2xl text-green-600" />
+              <div className="p-3 bg-green-900/30 rounded-lg">
+                <HiTrendingUp className="text-2xl text-green-400" />
               </div>
             </div>
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-          <div className="lg:col-span-2 bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
-            <h2 className="text-xl font-bold text-slate-800 mb-6">
+          <div className="lg:col-span-2 bg-slate-800/70 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-slate-700">
+            <h2 className="text-xl font-bold text-white mb-6">
               Weekly Performance
             </h2>
             <ResponsiveContainer width="100%" height={300}>
@@ -201,19 +201,19 @@ const DashBoradOverview = () => {
                 data={weeklyData}
                 margin={{ top: 20, right: 30, left: 0, bottom: 0 }}
               >
-                <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                <XAxis dataKey="name" stroke="#64748b" />
-                <YAxis stroke="#64748b" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                <XAxis dataKey="name" stroke="#94A3B8" />
+                <YAxis stroke="#94A3B8" />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: "#1e293b",
+                    backgroundColor: "#1E293B",
                     color: "#fff",
                     borderRadius: "8px",
-                    border: "none",
+                    border: "1px solid #475569",
                   }}
-                  labelStyle={{ color: "#facc15" }}
+                  labelStyle={{ color: "#FACC15" }}
                 />
-                <Legend />
+                <Legend wrapperStyle={{ color: "#F3F4F6" }} />
                 <Bar
                   dataKey="revenue"
                   fill="#F59E0B"
@@ -230,8 +230,8 @@ const DashBoradOverview = () => {
             </ResponsiveContainer>
           </div>
 
-          <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
-            <h2 className="text-xl font-bold text-slate-800 mb-6">
+          <div className="bg-slate-800/70 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-slate-700">
+            <h2 className="text-xl font-bold text-white mb-6">
               Sales by Category
             </h2>
             <ResponsiveContainer width="100%" height={300}>
@@ -255,10 +255,10 @@ const DashBoradOverview = () => {
                 </Pie>
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: "#1e293b",
+                    backgroundColor: "#1E293B",
                     color: "#fff",
                     borderRadius: "8px",
-                    border: "none",
+                    border: "1px solid #475569",
                   }}
                 />
               </PieChart>
@@ -267,27 +267,27 @@ const DashBoradOverview = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
-            <h2 className="text-xl font-bold text-slate-800 mb-6">
+          <div className="lg:col-span-2 bg-slate-800/70 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-slate-700">
+            <h2 className="text-xl font-bold text-white mb-6">
               Recent Orders
             </h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
-                <thead className="border-b border-slate-200">
+                <thead className="border-b border-slate-700">
                   <tr>
-                    <th className="text-left py-3 px-4 text-slate-600 font-semibold">
+                    <th className="text-left py-3 px-4 text-slate-400 font-semibold">
                       Order ID
                     </th>
-                    <th className="text-left py-3 px-4 text-slate-600 font-semibold">
+                    <th className="text-left py-3 px-4 text-slate-400 font-semibold">
                       Customer
                     </th>
-                    <th className="text-left py-3 px-4 text-slate-600 font-semibold">
+                    <th className="text-left py-3 px-4 text-slate-400 font-semibold">
                       Amount
                     </th>
-                    <th className="text-left py-3 px-4 text-slate-600 font-semibold">
+                    <th className="text-left py-3 px-4 text-slate-400 font-semibold">
                       Status
                     </th>
-                    <th className="text-left py-3 px-4 text-slate-600 font-semibold">
+                    <th className="text-left py-3 px-4 text-slate-400 font-semibold">
                       Date
                     </th>
                   </tr>
@@ -296,15 +296,15 @@ const DashBoradOverview = () => {
                   {recentOrders.map((order) => (
                     <tr
                       key={order.id}
-                      className="border-b border-slate-100 hover:bg-slate-50"
+                      className="border-b border-slate-700 hover:bg-slate-700/40 transition-all"
                     >
-                      <td className="py-3 px-4 font-semibold text-amber-600">
+                      <td className="py-3 px-4 font-semibold text-amber-400">
                         {order.id}
                       </td>
-                      <td className="py-3 px-4 text-slate-700">
+                      <td className="py-3 px-4 text-slate-300">
                         {order.customer}
                       </td>
-                      <td className="py-3 px-4 font-semibold text-slate-800">
+                      <td className="py-3 px-4 font-semibold text-white">
                         ৳{order.amount.toLocaleString()}
                       </td>
                       <td className="py-3 px-4">
@@ -314,7 +314,7 @@ const DashBoradOverview = () => {
                           {order.status}
                         </span>
                       </td>
-                      <td className="py-3 px-4 text-slate-600">{order.date}</td>
+                      <td className="py-3 px-4 text-slate-400">{order.date}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -323,16 +323,16 @@ const DashBoradOverview = () => {
           </div>
 
           <div className="space-y-6">
-            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
-              <h3 className="text-lg font-bold text-slate-800 mb-4">
+            <div className="bg-slate-800/70 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-slate-700">
+              <h3 className="text-lg font-bold text-white mb-4">
                 Today's Performance
               </h3>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-slate-600">Orders</span>
-                  <span className="text-2xl font-bold text-slate-800">45</span>
+                  <span className="text-slate-400">Orders</span>
+                  <span className="text-2xl font-bold text-white">45</span>
                 </div>
-                <div className="w-full bg-slate-200 rounded-full h-2">
+                <div className="w-full bg-slate-700 rounded-full h-2">
                   <div
                     className="bg-blue-500 h-2 rounded-full"
                     style={{ width: "60%" }}
@@ -340,12 +340,12 @@ const DashBoradOverview = () => {
                 </div>
 
                 <div className="flex justify-between items-center pt-2">
-                  <span className="text-slate-600">Revenue</span>
-                  <span className="text-2xl font-bold text-slate-800">
+                  <span className="text-slate-400">Revenue</span>
+                  <span className="text-2xl font-bold text-white">
                     ৳8,000
                   </span>
                 </div>
-                <div className="w-full bg-slate-200 rounded-full h-2">
+                <div className="w-full bg-slate-700 rounded-full h-2">
                   <div
                     className="bg-amber-500 h-2 rounded-full"
                     style={{ width: "75%" }}
@@ -353,10 +353,10 @@ const DashBoradOverview = () => {
                 </div>
 
                 <div className="flex justify-between items-center pt-2">
-                  <span className="text-slate-600">Customers</span>
-                  <span className="text-2xl font-bold text-slate-800">28</span>
+                  <span className="text-slate-400">Customers</span>
+                  <span className="text-2xl font-bold text-white">28</span>
                 </div>
-                <div className="w-full bg-slate-200 rounded-full h-2">
+                <div className="w-full bg-slate-700 rounded-full h-2">
                   <div
                     className="bg-purple-500 h-2 rounded-full"
                     style={{ width: "50%" }}
@@ -364,28 +364,21 @@ const DashBoradOverview = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
-              <h3 className="text-lg font-bold text-slate-800 mb-4">
+            <div className="bg-slate-800/70 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-slate-700">
+              <h3 className="text-lg font-bold text-white mb-4">
                 Quick Actions
               </h3>
               <div className="space-y-3">
                 <Link
-                  to="/dashboard/add-order"
-                  className="w-full flex justify-center items-center bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-lg transition-colors"
-                >
-                  Create New Order
-                </Link>
-
-                <Link
                   to="/dashboard/add-product"
-                  className="w-full flex justify-center items-center bg-green-500 hover:bg-green-600 text-white font-semibold py-2 rounded-lg transition-colors"
+                  className="w-full flex justify-center items-center bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded-lg transition-colors"
                 >
                   Add Product
                 </Link>
 
                 <Link
                   to="/dashboard/reports"
-                  className="w-full flex justify-center items-center bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 rounded-lg transition-colors"
+                  className="w-full flex justify-center items-center bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 rounded-lg transition-colors"
                 >
                   View Reports
                 </Link>

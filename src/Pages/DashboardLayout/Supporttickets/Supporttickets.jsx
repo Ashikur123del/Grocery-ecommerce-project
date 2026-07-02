@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { MdSearch, MdExpandMore, MdExpandLess, MdReply} from "react-icons/md";
+import { toast } from "react-toastify";
 
 const SupportTickets = () => {
   const [tickets, setTickets] = useState([
@@ -133,12 +134,12 @@ const SupportTickets = () => {
         t.id === ticketId ? { ...t, status: newStatus } : t
       )
     );
-    alert("Ticket status updated!");
+    toast.success("Ticket status updated!");
   };
 
   const handleReply = (ticketId) => {
     if (!replyText.trim()) {
-      alert("Please enter a reply message!");
+      toast.error("Please enter a reply message!");
       return;
     }
 
@@ -162,7 +163,7 @@ const SupportTickets = () => {
       })
     );
     setReplyText("");
-    alert("Reply sent successfully!");
+    toast.success("Reply sent successfully!");
   };
 
   const getPriorityColor = (priority) => {
@@ -273,7 +274,7 @@ const SupportTickets = () => {
                   onClick={() =>
                     setExpandedTicket(expandedTicket?.id === ticket.id ? null : ticket)
                   }
-                  className="p-6 cursor-pointer flex justify-between items-center hover:bg-slate-700/50 transition-colors"
+                  className="p-3 cursor-pointer flex justify-between items-center hover:bg-slate-700/50 transition-colors"
                 >
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
@@ -353,7 +354,7 @@ const SupportTickets = () => {
                       </p>
                     </div>
 
-                    {/* Conversation */}
+        
                     <div className="mb-6">
                       <h3 className="text-white font-semibold mb-4">Conversation</h3>
                       <div className="space-y-4">
@@ -373,7 +374,7 @@ const SupportTickets = () => {
                       </div>
                     </div>
 
-                    {/* Reply Box */}
+ 
                     <div>
                       <h3 className="text-white font-semibold mb-4">Send Reply</h3>
                       <div className="space-y-4">

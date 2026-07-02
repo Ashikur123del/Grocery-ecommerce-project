@@ -63,9 +63,9 @@ const Inventory = lazy(() => import('./Pages/DashboardLayout/Inventory/Inventory
 const DashBoradOverview = lazy(() => import('./Pages/DashboardLayout/Overview/DashBoradOverview'));
 const ReturnsOrder = lazy(() => import('./Pages/DashboardLayout/ReturnsOrder/ReturnsOrder'));
 const Payments = lazy(() => import('./Pages/DashboardLayout/Payments/Payments'));
-// const Analytics = lazy(() => import('./Pages/DashboardLayout/Analytics/Analytics'));
-// const SupportTickets = lazy(() => import('./Pages/DashboardLayout/Supporttickets/Supporttickets'));
-// const StoreSettings = lazy(() => import('./Pages/DashboardLayout/Storesettings/Storesettings'));
+const Analytics = lazy(() => import('./Pages/DashboardLayout/Analytics/Analytics'));
+const SupportTickets = lazy(() => import('./Pages/DashboardLayout/Supporttickets/Supporttickets'));
+const StoreSettings = lazy(() => import('./Pages/DashboardLayout/Storesettings/Storesettings'));
 
 
 const Loadable = (Component) => (props) => (
@@ -124,9 +124,9 @@ const LDashBoradOverview = Loadable(DashBoradOverview);
 const LReturnsOrder = Loadable(ReturnsOrder);
 
 const LPayments = Loadable(Payments);
-// const LAnalytics = Loadable(Analytics);
-// const LSupportTickets = Loadable(SupportTickets);
-// const LStoreSettings = Loadable(StoreSettings);
+const LAnalytics = Loadable(Analytics);
+const LSupportTickets = Loadable(SupportTickets);
+const LStoreSettings = Loadable(StoreSettings);
 
 // ---------- রাউটার কনফিগারেশন ----------
 export const router = createBrowserRouter([
@@ -191,11 +191,10 @@ export const router = createBrowserRouter([
       { path: 'returns', element: <LReturnsOrder /> },
       { path: 'customers', element: <LCustomers /> },
       { path: 'coupons', element: <LCoupons /> },
-     // নতুন যোগ করা রাউটগুলো:
-       { path: 'payments', element: <LPayments /> },
-      // { path: "reports", element: <LAnalytics /> },
-      // { path: 'support', element: <LSupportTickets /> },
-      // { path: 'store-settings', element: <LStoreSettings /> }
+      { path: 'payments', element: <LPayments /> },
+      { path: "reports", element: <LAnalytics /> },
+      { path: 'support', element: <LSupportTickets /> },
+      { path: 'store-settings', element: <LStoreSettings /> }
     ]
   }
 ]);

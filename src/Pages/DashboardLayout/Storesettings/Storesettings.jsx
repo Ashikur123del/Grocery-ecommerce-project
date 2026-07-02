@@ -79,7 +79,6 @@ const StoreSettings = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 p-6">
       <div className="max-w-4xl mx-auto">
-        {/* Header */}
         <div className="mb-8 flex justify-between items-center">
           <div>
             <h1 className="text-3xl font-bold text-white mb-2">Store Settings</h1>
@@ -95,16 +94,13 @@ const StoreSettings = () => {
           )}
         </div>
 
-        {/* Save Message */}
         {saveMessage && (
           <div className="bg-green-900 border border-green-700 text-green-200 px-6 py-3 rounded-lg mb-6 flex items-center gap-2">
             <MdCheck size={20} /> {saveMessage}
           </div>
         )}
 
-        {/* Settings Form */}
         <div className="space-y-6">
-          {/* Store Information */}
           <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
             <h2 className="text-2xl font-bold text-white mb-6">Store Information</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -219,7 +215,6 @@ const StoreSettings = () => {
             </div>
           </div>
 
-          {/* Business Hours */}
           <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
             <h2 className="text-2xl font-bold text-white mb-6">Business Hours</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -272,7 +267,6 @@ const StoreSettings = () => {
             </div>
           </div>
 
-          {/* Delivery Settings */}
           <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
             <h2 className="text-2xl font-bold text-white mb-6">Delivery Settings</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -346,7 +340,6 @@ const StoreSettings = () => {
             </div>
           </div>
 
-          {/* Payment Methods */}
           <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
             <h2 className="text-2xl font-bold text-white mb-6">Payment Methods</h2>
             <div className="space-y-4">
@@ -370,7 +363,6 @@ const StoreSettings = () => {
             </div>
           </div>
 
-          {/* General Settings */}
           <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
             <h2 className="text-2xl font-bold text-white mb-6">General Settings</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -441,7 +433,6 @@ const StoreSettings = () => {
             </div>
           </div>
 
-          {/* Notification Settings */}
           <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
             <h2 className="text-2xl font-bold text-white mb-6">Notification Settings</h2>
             <div className="space-y-4">
@@ -463,8 +454,6 @@ const StoreSettings = () => {
               ))}
             </div>
           </div>
-
-          {/* Action Buttons */}
           {isEditing && (
             <div className="flex gap-3">
               <button
