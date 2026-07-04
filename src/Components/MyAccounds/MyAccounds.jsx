@@ -13,7 +13,7 @@ import {
   HiCreditCard,
   HiSupport,
 } from "react-icons/hi";
-import { Link, Navigate, useLocation, useResolvedPath } from "react-router-dom";
+import { Link, Navigate, useLocation, useResolvedPath } from "react-router";
 
 const menuItems = [
   { path: "/my-accound/overview", name: "Dashboard", icon: <HiViewGrid size={22} /> },
