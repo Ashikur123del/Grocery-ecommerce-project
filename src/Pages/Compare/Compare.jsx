@@ -3,6 +3,7 @@ import { useCompareStore } from "../../store/compare";
 import { FiTrash2, FiArrowLeft } from "react-icons/fi";
 import { useCartStore } from "../../store/useCartStore";
 import { toast } from "react-toastify";
+import PageBanner from "../../Components/Shear/Pagebanner";
 
 const Compare = () => {
 const { compare, removeFromCompare } = useCompareStore();
@@ -27,6 +28,8 @@ const addToCart = useCartStore((state) => state.addToCart);
   };
 
   return (
+    <>
+     <PageBanner title="Product Comparison" breadcrumbs={[{ label: "Comparison" }]} />
     <div className="p-4 md:p-8 container mx-auto">
       <div className="flex items-center justify-between mb-8">
         <h2 className="text-2xl font-bold">Compare Products ({compare.length})</h2>
@@ -66,7 +69,6 @@ const addToCart = useCartStore((state) => state.addToCart);
                 {product.description}
               </div>
 
-              {/* Attributes */}
               <div className="space-y-2 mb-4">
                 <div className="flex justify-between text-xs">
                   <span className="text-gray-400">Qty:</span>
@@ -84,7 +86,6 @@ const addToCart = useCartStore((state) => state.addToCart);
 
               <div className="mb-4">{renderStars(product.rating)}</div>
 
-              {/* Button Container: Add to Cart + Delete */}
               <div className="flex gap-2">
                 <button onClick={(e) => handleAddToCart(e, product)} className="flex-grow bg-[#00A859] text-white py-2 rounded-lg font-semibold hover:bg-[#008f4a] transition-colors text-sm">
                   Add to Cart
@@ -101,6 +102,7 @@ const addToCart = useCartStore((state) => state.addToCart);
         </div>
       )}
     </div>
+    </>
   );
 };
 

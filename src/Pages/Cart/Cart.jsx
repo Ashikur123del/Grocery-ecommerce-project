@@ -5,6 +5,7 @@ import { FaTrash, FaPlus, FaMinus, FaShoppingBag, FaTag, FaArrowLeft, FaCreditCa
 import { toast, Toaster } from "react-hot-toast";
 import { GiSugarCane } from "react-icons/gi";
 import { FcProcess } from "react-icons/fc";
+import PageBanner from "../../Components/Shear/Pagebanner";
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -101,6 +102,8 @@ const Cart = () => {
   }
 
   return (
+    <>
+     <PageBanner title="Add To Cart" breadcrumbs={[{ label: "Cart" }]} />
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-6 md:p-12">
       <Toaster 
         position="top-right"
@@ -128,17 +131,14 @@ const Cart = () => {
       />
       
       <div className="container mx-auto">
-        {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">Shopping Cart</h1>
           <p className="text-gray-500">{cartItems.length} {cartItems.length === 1 ? 'item' : 'items'} in your cart</p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          {/* Left Side: Cart Items */}
           <div className="lg:col-span-2 space-y-6">
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl">
-              {/* Header */}
               <div className="hidden md:grid grid-cols-12 gap-4 p-5 bg-gradient-to-r from-orange-50 to-amber-50 border-b border-orange-100 text-xs font-bold text-gray-600 uppercase tracking-wider">
                 <div className="col-span-5">Product Details</div>
                 <div className="col-span-2 text-center">Unit Price</div>
@@ -146,12 +146,10 @@ const Cart = () => {
                 <div className="col-span-2 text-center">Subtotal</div>
               </div>
 
-              {/* Products */}
               <div className="divide-y divide-gray-100">
                 {cartItems.map((item) => (
                   <div key={item.id} className="p-5 hover:bg-gray-50 transition-all duration-300 group">
                     <div className="flex flex-col md:grid md:grid-cols-12 gap-4 items-center">
-                      {/* Product Info */}
                       <div className="flex items-center gap-4 md:col-span-5 w-full">
                         <div className="relative">
                           <img 
@@ -176,12 +174,10 @@ const Cart = () => {
                         </div>
                       </div>
 
-                      {/* Unit Price */}
+
                       <div className="md:col-span-2 text-center">
                         <span className="font-semibold text-gray-700">${item.price}</span>
                       </div>
-
-                      {/* Quantity Controls */}
                       <div className="md:col-span-3">
                         <div className="flex items-center justify-center gap-3">
                           <button 
@@ -201,7 +197,6 @@ const Cart = () => {
                         </div>
                       </div>
 
-                      {/* Subtotal with Delete Icon */}
                       <div className="md:col-span-2 flex items-center justify-center gap-2">
                         <span className="font-bold text-lg text-orange-600">${(item.price * item.quantity).toFixed(2)}</span>
                         <button 
@@ -218,7 +213,6 @@ const Cart = () => {
               </div>
             </div>
 
-            {/* Continue Shopping Button (Mobile) */}
             <Link 
               to="/product-list" 
               className="md:hidden flex items-center justify-center gap-2 bg-gray-800 text-white py-3 rounded-xl font-semibold hover:bg-gray-900 transition-all duration-300"
@@ -228,15 +222,13 @@ const Cart = () => {
             </Link>
           </div>
 
-          {/* Right Side: Billing Summary */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-2xl shadow-xl p-6 sticky top-6 transition-all duration-300 hover:shadow-2xl">
               <h2 className="font-bold text-2xl mb-6 flex items-center gap-2">
                 <FaCreditCard className="w-6 h-6 text-orange-500" />
                 Billing Summary
               </h2>
-              
-              {/* Store Header */}
+            
               <div className="bg-gradient-to-r from-orange-500 to-amber-500 text-white rounded-xl p-4 mb-6 transition-all duration-300 hover:shadow-lg">
                 <div className="flex items-center gap-2 font-bold">
                   <FaStore className="text-2xl" /> 
@@ -245,7 +237,6 @@ const Cart = () => {
                 <p className="text-xs text-orange-100 mt-1">Free shipping on orders over $50</p>
               </div>
 
-              {/* Product List Box */}
               <div className="bg-gray-50 rounded-xl p-4 mb-6 max-h-64 overflow-y-auto custom-scrollbar">
                 {cartItems.map((item) => (
                   <div key={item.id} className="flex gap-3 mb-4 last:mb-0 pb-3 border-b border-gray-200 last:border-0 last:pb-0 transition-all duration-200 hover:bg-gray-100 rounded-lg p-2 group">
@@ -270,7 +261,6 @@ const Cart = () => {
                 ))}
               </div>
 
-              {/* Calculations */}
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between items-center">
                   <span className="text-gray-600">Subtotal</span>
@@ -296,7 +286,6 @@ const Cart = () => {
                 </div>
               </div>
               
-              {/* Coupon Section */}
               <div className="mt-6">
                 <div className="flex gap-2">
                   <div className="relative flex-1">
@@ -335,8 +324,6 @@ const Cart = () => {
                   </div>
                 )}
               </div>
-
-              {/* Bottom Buttons */}
               <div className="mt-8 space-y-3">
                 <button 
                   onClick={handleProceedToCheckout}
@@ -354,8 +341,6 @@ const Cart = () => {
                   Continue Shopping
                 </Link>
               </div>
-
-              {/* Secure Checkout Badge */}
               <div className="mt-6 text-center">
                 <p className="text-xs text-gray-400 flex items-center justify-center gap-1">
                   <FaLock className="w-3 h-3" />
@@ -387,6 +372,8 @@ const Cart = () => {
         `}
       </style>
     </div>
+    
+    </>
   );
 };
 

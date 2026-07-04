@@ -1,10 +1,11 @@
 /* eslint-disable react-refresh/only-export-components */
+
 import { lazy, Suspense } from 'react';
 import './index.css';
 import { createBrowserRouter } from "react-router";
 import { Spinner } from '@heroui/react';
 
-// ---------- লোডিং স্পিনার (ফ্যালব্যাক UI) ----------
+
 
 const LoadingFallback = () => (
   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
@@ -14,7 +15,6 @@ const LoadingFallback = () => (
   </div>
 );
 
-// ---------- লেজি লোডিংয়ের জন্য ইম্পোর্ট ----------
 const Root = lazy(() => import('./Layout/Root'));
 const Home = lazy(() => import('./Pages/HomePage/Home'));
 const BestProduct = lazy(() => import('./Pages/BestProducts/BestProduct'));
@@ -66,6 +66,11 @@ const Payments = lazy(() => import('./Pages/DashboardLayout/Payments/Payments'))
 const Analytics = lazy(() => import('./Pages/DashboardLayout/Analytics/Analytics'));
 const SupportTickets = lazy(() => import('./Pages/DashboardLayout/Supporttickets/Supporttickets'));
 const StoreSettings = lazy(() => import('./Pages/DashboardLayout/Storesettings/Storesettings'));
+const PromoCoupon = lazy(() => import('./Pages/MyAccound/PromoCoupon/PromoCoupon'))
+const Payment = lazy(() => import('./Pages/MyAccound/Payment/Payment'))
+const SupportUser = lazy(() => import("./Pages/MyAccound/SupportUser/SupportUser"))
+const ManageSpecialDay = lazy(() => import("./Pages/MyAccound/ManageSpecialDay/ManageSpecialDay"))
+const BecomeAgent = lazy(() => import("./Pages/MyAccound/BecomeAgent/BecomeAgent"))
 
 
 const Loadable = (Component) => (props) => (
@@ -74,7 +79,6 @@ const Loadable = (Component) => (props) => (
   </Suspense>
 );
 
-// ---------- লেজি লোডেড কম্পোনেন্টগুলোর র‍্যাপার ----------
 const LRoot = Loadable(Root);
 const LHome = Loadable(Home);
 const LBestProduct = Loadable(BestProduct);
@@ -127,8 +131,13 @@ const LPayments = Loadable(Payments);
 const LAnalytics = Loadable(Analytics);
 const LSupportTickets = Loadable(SupportTickets);
 const LStoreSettings = Loadable(StoreSettings);
+const LPromoCoupon = Loadable(PromoCoupon)
+const LPayment = Loadable(Payment)
+const LSupportUser = Loadable(SupportUser)
+const LManageSpecialDay = Loadable(ManageSpecialDay)
+const LBecomeAgent = Loadable(BecomeAgent)
 
-// ---------- রাউটার কনফিগারেশন ----------
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -155,7 +164,7 @@ export const router = createBrowserRouter([
       { path: "blog-classic", element: <LBlogClassicPage /> },
       { path: 'about', element: <LAboutPage /> },
       { path: "sign-in", element: <LSignIn /> },
-      { path: "sign-up", element: <LSignUp /> },
+      { path: "sign-up", element: <LSignUp /> }, 
       { path: "products-category", element: <LProductsCategoryPage /> },
       { path: "product-brand", element: <LProductsBrands /> },
       { path: "contact", element: <LContactPage /> },
@@ -173,10 +182,15 @@ export const router = createBrowserRouter([
           { path: "wishlist", element: <LWishList /> },
           { path: "reviews", element: <LMyReviews /> },
           { path: "password", element: <LChangePasswordForm /> },
+          {path: 'promocoupon', element: <LPromoCoupon />},
+          {path: 'payment', element: <LPayment />},
+          {path: "supportuser", element: < LSupportUser />},
+          {path: 'managespecialday', element: < LManageSpecialDay />},
+          {path: "becomeagent", element: <LBecomeAgent />}
         ]
       },
     ]
-  },
+  }, 
   {
     path: "/dashboard",
     element: <LDashboardLayout />,

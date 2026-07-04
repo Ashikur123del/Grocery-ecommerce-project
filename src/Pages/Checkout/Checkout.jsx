@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import { Link, useNavigate } from "react-router";
 import { useCartStore } from "../../store/useCartStore";
 import { useState, useEffect } from "react";
@@ -8,6 +9,7 @@ import {
   FaEnvelope, FaCommentDots, FaTag, FaShoppingBag
 } from "react-icons/fa";
 import { toast, Toaster } from "react-hot-toast";
+import PageBanner from "../../Components/Shear/Pagebanner";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -27,12 +29,11 @@ const Checkout = () => {
     notes: "",
   }); 
 
-  // Load coupon from localStorage when component mounts
   useEffect(() => {
     const savedCoupon = localStorage.getItem('appliedCoupon');
     if (savedCoupon) {
       setAppliedCoupon(JSON.parse(savedCoupon));
-      localStorage.removeItem('appliedCoupon'); // Clear after loading
+      localStorage.removeItem('appliedCoupon'); 
     }
   }, []);
 
@@ -50,7 +51,6 @@ const Checkout = () => {
   };
 
   const handlePlaceOrder = async () => {
-    // Basic validation
     if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone || !formData.address) {
       toast.error("Please fill in all required fields!", {
         duration: 3000,
@@ -70,7 +70,6 @@ const Checkout = () => {
 
     setIsProcessing(true);
 
-    // Simulate API call
     setTimeout(() => {
       toast.success("Order placed successfully! 🎉", {
         duration: 4000,
@@ -106,11 +105,12 @@ const Checkout = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8 px-4 md:px-8">
+   <>
+    <PageBanner title="Order Summary" breadcrumbs={[{ label: "Checkout" }]} />
+       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8 px-4 md:px-8">
       <Toaster />
       
       <div className="container mx-auto max-w-7xl">
-        {/* Header */}
         <div className="mb-8">
           <Link 
             to="/cart" 
@@ -124,9 +124,7 @@ const Checkout = () => {
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          {/* Left Side - Forms */}
           <div className="lg:col-span-2 space-y-6">
-            {/* Customer Information */}
             <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
@@ -197,7 +195,6 @@ const Checkout = () => {
               </div>
             </div>
 
-            {/* Shipping Information */}
             <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
@@ -321,7 +318,6 @@ const Checkout = () => {
                 </label>
               </div>
 
-              {/* Order Notes */}
               <div className="mt-6">
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   <FaCommentDots className="inline mr-2" />
@@ -338,13 +334,9 @@ const Checkout = () => {
               </div>
             </div>
           </div>
-
-          {/* Right Side - Order Summary */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-6 hover:shadow-xl transition-all duration-300">
               <h2 className="text-xl font-bold mb-4">Order Summary</h2>
-            
-              {/* Products List */}
               <div className="max-h-64 overflow-y-auto mb-4 space-y-3 custom-scrollbar">
                 {cartItems.map((item) => (
                   <div key={item.id} className="flex gap-3 pb-3 border-b border-gray-100">
@@ -357,8 +349,6 @@ const Checkout = () => {
                   </div>
                 ))}
               </div>
-
-              {/* Price Breakdown */}
               <div className="space-y-3 pt-4 border-t">
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-600">Subtotal</span>
@@ -394,7 +384,6 @@ const Checkout = () => {
                 </div>
               </div>
 
-              {/* Delivery Info */}
               <div className="mt-6 bg-gradient-to-r from-gray-50 to-orange-50 rounded-lg p-4 space-y-2">
                 <div className="flex items-center gap-2 text-sm">
                   <FaClock className="text-orange-500" />
@@ -410,7 +399,6 @@ const Checkout = () => {
                 </div>
               </div>
 
-              {/* Place Order Button */}
               <button
                 onClick={handlePlaceOrder}
                 disabled={isProcessing}
@@ -437,7 +425,6 @@ const Checkout = () => {
         </div>
       </div>
 
-      {/* Custom Scrollbar Styles */}
       <style>
         {`
           .custom-scrollbar::-webkit-scrollbar {
@@ -470,6 +457,7 @@ const Checkout = () => {
         `}
       </style>
     </div>
+   </>
   );
 };
 

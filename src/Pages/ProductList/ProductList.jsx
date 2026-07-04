@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/static-components */
 import { useEffect, useState, useMemo } from "react";
 import ProductCard from "../../Components/ProductCard";
 import { 
@@ -13,9 +14,9 @@ import {
   FiTrendingUp,
   FiGrid,
   FiList,
-  FiShoppingBag
 } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
+import PageBanner from "../../Components/Shear/Pagebanner";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -186,29 +187,12 @@ const ProductList = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+    <>
+     <PageBanner title="Shop Now" breadcrumbs={[{ label: "Shop" }]} />
+         <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       <div className="container mx-auto px-4 py-8 lg:py-12">
         
-        {/* Header Section */}
-        <div className="mb-8 text-center">
-          <motion.div
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="text-emerald-600 text-sm font-bold tracking-wider uppercase inline-flex items-center gap-2">
-              <FiShoppingBag /> Shop Collection
-            </span>
-            <h1 className="text-3xl lg:text-5xl font-black text-gray-800 mt-2 mb-3">
-              Find Your <span className="text-emerald-600">Perfect Product</span>
-            </h1>
-            <p className="text-gray-500 max-w-2xl mx-auto">
-              Discover our curated collection of high-quality products with amazing discounts
-            </p>
-          </motion.div>
-        </div>
 
-        {/* Mobile Filter Toggle */}
         <button
           onClick={() => setShowFilters(!showFilters)}
           className="lg:hidden fixed bottom-6 right-6 z-50 bg-emerald-600 text-white p-4 rounded-full shadow-lg hover:bg-emerald-700 transition-all transform hover:scale-105"
@@ -499,6 +483,7 @@ const ProductList = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
     

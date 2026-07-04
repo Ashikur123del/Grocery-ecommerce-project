@@ -27,10 +27,10 @@ const MidHeader = () => {
   }, []);
 
   const userMenuItems = [
-    { label: "Dashboard", icon: MdDashboard, path: "/my-account" },
-    { label: "My Orders", icon: FaBoxOpen, path: "/my-account/order-history" },
-    { label: "My Account", icon: MdAccountCircle, path: "/my-account/profile" },
-    { label: "Wishlist", icon: FaHeart, path: "/my-account/wishlist" },
+    { label: "Dashboard", icon: MdDashboard, path: "/my-accound" },
+    { label: "My Orders", icon: FaBoxOpen, path: "/my-accound/order-history" },
+    { label: "My Account", icon: MdAccountCircle, path: "/my-accound/profile" },
+    { label: "Wishlist", icon: FaHeart, path: "/my-accound/wishlist" },
   ];
 
   const handleMenuNavigate = (path) => {
@@ -43,6 +43,7 @@ const MidHeader = () => {
     setShowUserMenu(false);
     navigate("/sign-in");
   };
+
 
   return (
     <div className="bg-white border-b border-gray-100 hidden md:block">

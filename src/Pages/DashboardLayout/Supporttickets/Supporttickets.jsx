@@ -191,8 +191,6 @@ const SupportTickets = () => {
           <h1 className="text-3xl font-bold text-white mb-2">Support Tickets</h1>
           <p className="text-slate-400">Manage customer support requests</p>
         </div>
-
-        {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
             <p className="text-slate-400 text-sm font-semibold uppercase">Total Tickets</p>
@@ -214,8 +212,6 @@ const SupportTickets = () => {
             <p className="text-3xl font-bold text-green-500 mt-2">{stats.resolvedCount}</p>
           </div>
         </div>
-
-        {/* Filters */}
         <div className="bg-slate-800 rounded-xl p-6 mb-6 border border-slate-700">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
@@ -261,8 +257,6 @@ const SupportTickets = () => {
             </div>
           </div>
         </div>
-
-        {/* Tickets List */}
         <div className="space-y-4">
           {filteredTickets.length > 0 ? (
             filteredTickets.map((ticket) => (
@@ -346,15 +340,12 @@ const SupportTickets = () => {
                         </div>
                       </div>
                     </div>
-
                     <div className="mb-6">
                       <h3 className="text-white font-semibold mb-4">Issue Description</h3>
                       <p className="text-slate-300 text-sm bg-slate-700/50 rounded-lg p-4">
                         {ticket.message}
                       </p>
                     </div>
-
-        
                     <div className="mb-6">
                       <h3 className="text-white font-semibold mb-4">Conversation</h3>
                       <div className="space-y-4">

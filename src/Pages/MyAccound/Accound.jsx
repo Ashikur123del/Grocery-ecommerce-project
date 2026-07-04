@@ -6,7 +6,7 @@ const Account = () => {
   return (
    <div className="bg-slate-100">
    <PageBanner title="My Account" breadcrumbs={[{ label: "Account" }]} />
-    <div className="container mx-auto p-4 md:p-8 flex gap-8">
+    <div className="container mx-auto p-4 md:p-8 flex gap-6">
       
       <div className="hidden lg:block w-64 shrink-0">
         <MyAccounds />

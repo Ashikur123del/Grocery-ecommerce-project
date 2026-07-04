@@ -12,7 +12,7 @@ export default function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
     {
       title: "Dashboard",
       items: [
-        { path: "/dashboard", name: "Overview", icon: <HiViewGrid size={22} /> },
+        { path: "/dashboard", name: "Dashboard", icon: <HiViewGrid size={22} /> },
       ]
     },
     {
