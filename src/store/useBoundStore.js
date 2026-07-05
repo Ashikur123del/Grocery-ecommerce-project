@@ -8,7 +8,7 @@ export const useBoundStore = create((set, get) => ({
   isLoading: false,
   isLoaded: false,
 
-  // সব products fetch — cache করা থাকলে আর call করবে না
+ 
   fetchProducts: async () => {
     if (get().isLoaded) return;
     set({ isLoading: true });
@@ -20,7 +20,7 @@ export const useBoundStore = create((set, get) => ({
     }
   },
 
-  // Dynamic ID দিয়ে product খোঁজা — store থেকেই, extra API call নেই
+
   fetchProductById: (id) => {
     const found = get().products.find((p) => (p.id) === (id));
     set({ currentProduct: found ?? null });

@@ -28,7 +28,7 @@ const menuItems = [
   { path: "/my-accound/becomeagent", name: "Become an Agent", icon: <HiUser size={22} /> },
   { path: "/my-accound/address", name: "Address", icon: <HiLocationMarker size={22} /> },
   { path: "/my-accound/password", name: "Change Password", icon: <HiLockClosed size={22} /> },
-  { path: "/my-accound/delete-account", name: "Delete My Account", icon: <HiUser size={22} /> },
+  { path: "/my-accound/deleteaccount", name: "Delete My Account", icon: <HiUser size={22} /> },
 ];
 
 

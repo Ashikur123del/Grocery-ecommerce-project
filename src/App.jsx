@@ -71,6 +71,8 @@ const Payment = lazy(() => import('./Pages/MyAccound/Payment/Payment'))
 const SupportUser = lazy(() => import("./Pages/MyAccound/SupportUser/SupportUser"))
 const ManageSpecialDay = lazy(() => import("./Pages/MyAccound/ManageSpecialDay/ManageSpecialDay"))
 const BecomeAgent = lazy(() => import("./Pages/MyAccound/BecomeAgent/BecomeAgent"))
+const DeleteAccount = lazy(() => import("./Pages/MyAccound/DeleteAccount/DeleteAccount"))
+
 
 
 const Loadable = (Component) => (props) => (
@@ -136,6 +138,9 @@ const LPayment = Loadable(Payment)
 const LSupportUser = Loadable(SupportUser)
 const LManageSpecialDay = Loadable(ManageSpecialDay)
 const LBecomeAgent = Loadable(BecomeAgent)
+const LDeleteAccount = Loadable(DeleteAccount)
+
+
 
 
 export const router = createBrowserRouter([
@@ -186,7 +191,8 @@ export const router = createBrowserRouter([
           {path: 'payment', element: <LPayment />},
           {path: "supportuser", element: < LSupportUser />},
           {path: 'managespecialday', element: < LManageSpecialDay />},
-          {path: "becomeagent", element: <LBecomeAgent />}
+          {path: "becomeagent", element: <LBecomeAgent />},
+          {path: "deleteaccount", element: <LDeleteAccount />}
         ]
       },
     ]

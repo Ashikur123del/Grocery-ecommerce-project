@@ -56,6 +56,14 @@ const Header = () => {
       ],
     },
     {
+      label: "Store", href: "/store", hasDropdown: true,
+      subItems: [
+        { label: "Store List", href: "/storelist" },
+        { label: "Store Details", href: "/storedetails" },
+        { label: "Become a Vendor", href: "/becomevendor" },
+      ],
+    },
+    {
       label: "Pages", href: "/pages", hasDropdown: true,
       subItems: [
         { label: "About Us", href: "/about" },
