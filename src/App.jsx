@@ -5,21 +5,20 @@ import './index.css';
 import { createBrowserRouter } from "react-router";
 import { Spinner } from '@heroui/react';
 
-
-
 const LoadingFallback = () => (
   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
     <div className="flex flex-col items-center gap-2">
         <Spinner color="success" size="xl"/>  Loading...
-      </div>
+    </div>
   </div>
 );
 
+// General Pages
 const Root = lazy(() => import('./Layout/Root'));
 const Home = lazy(() => import('./Pages/HomePage/Home'));
 const BestProduct = lazy(() => import('./Pages/BestProducts/BestProduct'));
 const ProductDetails = lazy(() => import('./Pages/ProductDetails/ProductDetails'));
-const PorpularProduct = lazy(() => import('./Pages/PopularProducts/PorpularProduct')); // নাম ঠিক রাখলাম
+const PorpularProduct = lazy(() => import('./Pages/PopularProducts/PorpularProduct'));
 const YourSpecialBrandProducts = lazy(() => import('./Pages/YourSpecialBrandProducts/YourSpecialBrandProducts'));
 const ProductList = lazy(() => import('./Pages/ProductList/ProductList'));
 const Cart = lazy(() => import('./Pages/Cart/Cart'));
@@ -41,6 +40,8 @@ const SignUp = lazy(() => import('./Pages/SignUp/SignUp'));
 const ProductsCategoryPage = lazy(() => import('./Pages/ProductsCategory/ProductsCategoryPage'));
 const ProductsBrands = lazy(() => import('./Pages/ProductBrand/ProductsBrands'));
 const ContactPage = lazy(() => import('./Pages/Contact/ContactPage'));
+
+// Shop User Account Pages
 const Account = lazy(() => import("./Pages/MyAccound/Accound"));
 const OverView = lazy(() => import("./Pages/MyAccound/OverViewPage/OverView"));
 const OrderHistory = lazy(() => import('./Pages/MyAccound/OrderHistory/OrderHistory'));
@@ -51,6 +52,14 @@ const Address = lazy(() => import('./Pages/MyAccound/Address/Address'));
 const WishList = lazy(() => import('./Pages/MyAccound/WishList/WishList'));
 const MyReviews = lazy(() => import('./Pages/MyAccound/MyReviews/MyReviews'));
 const ChangePasswordForm = lazy(() => import('./Pages/MyAccound/ChangePasswordForm/ChangePasswordForm'));
+const PromoCoupon = lazy(() => import('./Pages/MyAccound/PromoCoupon/PromoCoupon'));
+const Payment = lazy(() => import('./Pages/MyAccound/Payment/Payment'));
+const SupportUser = lazy(() => import("./Pages/MyAccound/SupportUser/SupportUser"));
+const ManageSpecialDay = lazy(() => import("./Pages/MyAccound/ManageSpecialDay/ManageSpecialDay"));
+const BecomeAgent = lazy(() => import("./Pages/MyAccound/BecomeAgent/BecomeAgent"));
+const DeleteAccount = lazy(() => import("./Pages/MyAccound/DeleteAccount/DeleteAccount"));
+
+// Vendor Dashboard Pages
 const DashboardLayout = lazy(() => import('./Pages/DashboardLayout/DashboardLayout'));
 const AddProduct = lazy(() => import('./Pages/DashboardLayout/AddProduct/AddProduct'));
 const AllProducts = lazy(() => import('./Pages/DashboardLayout/AllProducts/AllProducts'));
@@ -66,21 +75,30 @@ const Payments = lazy(() => import('./Pages/DashboardLayout/Payments/Payments'))
 const Analytics = lazy(() => import('./Pages/DashboardLayout/Analytics/Analytics'));
 const SupportTickets = lazy(() => import('./Pages/DashboardLayout/Supporttickets/Supporttickets'));
 const StoreSettings = lazy(() => import('./Pages/DashboardLayout/Storesettings/Storesettings'));
-const PromoCoupon = lazy(() => import('./Pages/MyAccound/PromoCoupon/PromoCoupon'))
-const Payment = lazy(() => import('./Pages/MyAccound/Payment/Payment'))
-const SupportUser = lazy(() => import("./Pages/MyAccound/SupportUser/SupportUser"))
-const ManageSpecialDay = lazy(() => import("./Pages/MyAccound/ManageSpecialDay/ManageSpecialDay"))
-const BecomeAgent = lazy(() => import("./Pages/MyAccound/BecomeAgent/BecomeAgent"))
-const DeleteAccount = lazy(() => import("./Pages/MyAccound/DeleteAccount/DeleteAccount"))
 
+// Super Admin Pages (New Additions)
+const SuperAdminLayout = lazy(() => import('./Pages/SupperAdminLayout/SuperAdminLayout'));
+const AdminDashboard = lazy(() => import('./Pages/SupperAdminLayout/AdminDashboard/AdminDashboard'));
+const AdminAnalytics = lazy(() => import('./Pages/SupperAdminLayout/AdminAnalytics/AdminAnalytics'));
+// const ManageStores = lazy(() => import('./Pages/SuperAdminLayout/ManageStores/ManageStores'));
+// const PendingStores = lazy(() => import('./Pages/SuperAdminLayout/PendingStores/PendingStores'));
+// const VendorsDirectory = lazy(() => import('./Pages/SuperAdminLayout/Vendors/VendorsDirectory'));
+// const DomainRequests = lazy(() => import('./Pages/SuperAdminLayout/Domains/DomainRequests'));
+// const SubscriptionPlans = lazy(() => import('./Pages/SuperAdminLayout/Plans/SubscriptionPlans'));
+// const Payouts = lazy(() => import('./Pages/SuperAdminLayout/Payouts/Payouts'));
+// const GlobalSalesLog = lazy(() => import('./Pages/SuperAdminLayout/SalesLog/GlobalSalesLog'));
+// const SystemSettings = lazy(() => import('./Pages/SuperAdminLayout/Settings/SystemSettings'));
 
+const NotFound = lazy(() => import("./Pages/NotFound/NotFound"));
 
+// Higher Order Component for Dynamic Suspense Fallback
 const Loadable = (Component) => (props) => (
   <Suspense fallback={<LoadingFallback />}>
     <Component {...props} />
   </Suspense>
 );
 
+// Wrapping Components
 const LRoot = Loadable(Root);
 const LHome = Loadable(Home);
 const LBestProduct = Loadable(BestProduct);
@@ -107,6 +125,7 @@ const LSignUp = Loadable(SignUp);
 const LProductsCategoryPage = Loadable(ProductsCategoryPage);
 const LProductsBrands = Loadable(ProductsBrands);
 const LContactPage = Loadable(ContactPage);
+
 const LAccount = Loadable(Account);
 const LOverView = Loadable(OverView);
 const LOrderHistory = Loadable(OrderHistory);
@@ -117,6 +136,13 @@ const LAddress = Loadable(Address);
 const LWishList = Loadable(WishList);
 const LMyReviews = Loadable(MyReviews);
 const LChangePasswordForm = Loadable(ChangePasswordForm);
+const LPromoCoupon = Loadable(PromoCoupon);
+const LPayment = Loadable(Payment);
+const LSupportUser = Loadable(SupportUser);
+const LManageSpecialDay = Loadable(ManageSpecialDay);
+const LBecomeAgent = Loadable(BecomeAgent);
+const LDeleteAccount = Loadable(DeleteAccount);
+
 const LDashboardLayout = Loadable(DashboardLayout);
 const LAddProduct = Loadable(AddProduct);
 const LAllProducts = Loadable(AllProducts);
@@ -128,20 +154,25 @@ const LCoupons = Loadable(Coupons);
 const LInventory = Loadable(Inventory);
 const LDashBoradOverview = Loadable(DashBoradOverview);
 const LReturnsOrder = Loadable(ReturnsOrder);
-
 const LPayments = Loadable(Payments);
 const LAnalytics = Loadable(Analytics);
 const LSupportTickets = Loadable(SupportTickets);
 const LStoreSettings = Loadable(StoreSettings);
-const LPromoCoupon = Loadable(PromoCoupon)
-const LPayment = Loadable(Payment)
-const LSupportUser = Loadable(SupportUser)
-const LManageSpecialDay = Loadable(ManageSpecialDay)
-const LBecomeAgent = Loadable(BecomeAgent)
-const LDeleteAccount = Loadable(DeleteAccount)
 
+// Super Admin Loadable Elements
+const LSuperAdminLayout = Loadable(SuperAdminLayout);
+const LAdminDashboard  = Loadable(AdminDashboard);
+const LAdminAnalytics = Loadable(AdminAnalytics);
+// const LManageStores = Loadable(ManageStores);
+// const LPendingStores = Loadable(PendingStores);
+// const LVendorsDirectory = Loadable(VendorsDirectory);
+// const LDomainRequests = Loadable(DomainRequests);
+// const LSubscriptionPlans = Loadable(SubscriptionPlans);
+// const LPayouts = Loadable(Payouts);
+// const LGlobalSalesLog = Loadable(GlobalSalesLog);
+// const LSystemSettings = Loadable(SystemSettings);
 
-
+const LNotFound = Loadable(NotFound);
 
 export const router = createBrowserRouter([
   {
@@ -187,12 +218,12 @@ export const router = createBrowserRouter([
           { path: "wishlist", element: <LWishList /> },
           { path: "reviews", element: <LMyReviews /> },
           { path: "password", element: <LChangePasswordForm /> },
-          {path: 'promocoupon', element: <LPromoCoupon />},
-          {path: 'payment', element: <LPayment />},
-          {path: "supportuser", element: < LSupportUser />},
-          {path: 'managespecialday', element: < LManageSpecialDay />},
-          {path: "becomeagent", element: <LBecomeAgent />},
-          {path: "deleteaccount", element: <LDeleteAccount />}
+          { path: 'promocoupon', element: <LPromoCoupon />},
+          { path: 'payment', element: <LPayment />},
+          { path: "supportuser", element: < LSupportUser />},
+          { path: 'managespecialday', element: < LManageSpecialDay />},
+          { path: "becomeagent", element: <LBecomeAgent />},
+          { path: "deleteaccount", element: <LDeleteAccount />}
         ]
       },
     ]
@@ -216,15 +247,25 @@ export const router = createBrowserRouter([
       { path: 'support', element: <LSupportTickets /> },
       { path: 'store-settings', element: <LStoreSettings /> }
     ]
+  },
+  {
+    path: "/supper-admin",
+    element: <LSuperAdminLayout />,
+    children: [
+      { index: true, element: <LAdminDashboard /> },
+      { path: "analytics", element: <LAdminAnalytics /> },
+      // { path: "stores", element: <LManageStores /> },
+      // { path: "pending-stores", element: <LPendingStores /> },
+      // { path: "vendors", element: <LVendorsDirectory /> },
+      // { path: "custom-domains", element: <LDomainRequests /> },
+      // { path: "plans", element: <LSubscriptionPlans /> },
+      // { path: "payouts", element: <LPayouts /> },
+      // { path: "transactions", element: <LGlobalSalesLog /> },
+      // { path: "settings", element: <LSystemSettings /> }
+    ]
+  },
+  {
+    path: "*",
+    element: <LNotFound />
   }
 ]);
-
-  
-
-
-
-
-
-
-
-

@@ -40,9 +40,15 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const categories = [
-    "Electronics & Gadgets", "Fashion & Clothing", "Health & Beauty",
-    "Home & Kitchen", "Sports & Outdoors", "Baby & Toys",
+ const categories = [
+    { name: "Fruits", link: "/products-category" },
+    { name: "Dairy", link: "/product-list" },
+    { name: "Bakery", link: "/products-category" },
+    { name: "Cooking", link: "/product-list" },
+    { name: "Seafood", link: "/products-category" },
+    { name: "Beverages", link: "/product-list" },
+    { name: "Meat", link: "/products-category" },
+    { name: "Vegetables", link: "/product-list" }
   ];
 
   const navLinks = [
@@ -55,14 +61,14 @@ const Header = () => {
         { label: "Checkout", href: "/checkout" },
       ],
     },
-    {
-      label: "Store", href: "/store", hasDropdown: true,
-      subItems: [
-        { label: "Store List", href: "/storelist" },
-        { label: "Store Details", href: "/storedetails" },
-        { label: "Become a Vendor", href: "/becomevendor" },
-      ],
-    },
+    // {
+    //   label: "Store", href: "/store", hasDropdown: true,
+    //   subItems: [
+    //     { label: "Store List", href: "/storelist" },
+    //     { label: "Store Details", href: "/storedetails" },
+    //     { label: "Become a Vendor", href: "/becomevendor" },
+    //   ],
+    // },
     {
       label: "Pages", href: "/pages", hasDropdown: true,
       subItems: [
@@ -92,7 +98,7 @@ const Header = () => {
     },
     { label: "Contact", href: "/contact" },
   ];
-
+  
   const userMenuItems = [
     { label: "Dashboard", icon: MdDashboard, path: "/my-accound" },
     { label: "My Orders", icon: FaBoxOpen, path: "/my-accound/order-history" },
@@ -126,23 +132,28 @@ const Header = () => {
 
             {!isSticky && (
               <div className="hidden lg:block relative group">
-                <button className="bg-[#05a845] text-white px-5 py-3 rounded-t-md flex items-center gap-3 min-w-[230px]">
-                  <HiMenuAlt3 size={20} />
-                  <span className="font-semibold uppercase text-sm">Categories</span>
-                  <IoMdArrowDropdown size={18} className="ml-auto" />
-                </button>
-                <div className="absolute top-full left-0 w-full bg-white shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-                  <ul className="py-1">
-                    {categories.map((cat, i) => (
-                      <li key={i}>
-                        <Link to="/" className="flex items-center justify-between px-5 py-3 text-sm text-gray-700 hover:bg-[#05a845] hover:text-white">
-                          {cat} <FaChevronRight size={10} />
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+    
+      <button className="bg-[#05a845] text-white px-5 py-3 rounded-t-md flex items-center gap-3 min-w-[230px]">
+        <HiMenuAlt3 size={20} />
+        <span className="font-semibold uppercase text-sm">Categories</span>
+        <IoMdArrowDropdown size={18} className="ml-auto" />
+      </button>
+      <div className="absolute top-full left-0 w-full bg-white shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border-t-2 border-[#05a845]">
+        <ul className="py-1">
+          {categories.map((cat, i) => (
+            <li key={i}>
+              <Link 
+                to={cat.link} 
+                className="flex items-center justify-between px-5 py-3 text-sm text-gray-700 hover:bg-[#05a845] hover:text-white transition-colors duration-200"
+              >
+                {cat.name} 
+                <FaChevronRight size={10} className="text-gray-400 group-hover:text-white" />
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
             )}
 
             <NavLinks navLinks={navLinks} activeDropdown={activeDropdown} setActiveDropdown={setActiveDropdown} />
