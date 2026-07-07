@@ -13,6 +13,7 @@ const LoadingFallback = () => (
   </div>
 );
 
+
 // General Pages
 const Root = lazy(() => import('./Layout/Root'));
 const Home = lazy(() => import('./Pages/HomePage/Home'));
@@ -80,14 +81,14 @@ const StoreSettings = lazy(() => import('./Pages/DashboardLayout/Storesettings/S
 const SuperAdminLayout = lazy(() => import('./Pages/SupperAdminLayout/SuperAdminLayout'));
 const AdminDashboard = lazy(() => import('./Pages/SupperAdminLayout/AdminDashboard/AdminDashboard'));
 const AdminAnalytics = lazy(() => import('./Pages/SupperAdminLayout/AdminAnalytics/AdminAnalytics'));
-// const ManageStores = lazy(() => import('./Pages/SuperAdminLayout/ManageStores/ManageStores'));
-// const PendingStores = lazy(() => import('./Pages/SuperAdminLayout/PendingStores/PendingStores'));
-// const VendorsDirectory = lazy(() => import('./Pages/SuperAdminLayout/Vendors/VendorsDirectory'));
-// const DomainRequests = lazy(() => import('./Pages/SuperAdminLayout/Domains/DomainRequests'));
-// const SubscriptionPlans = lazy(() => import('./Pages/SuperAdminLayout/Plans/SubscriptionPlans'));
-// const Payouts = lazy(() => import('./Pages/SuperAdminLayout/Payouts/Payouts'));
-// const GlobalSalesLog = lazy(() => import('./Pages/SuperAdminLayout/SalesLog/GlobalSalesLog'));
-// const SystemSettings = lazy(() => import('./Pages/SuperAdminLayout/Settings/SystemSettings'));
+const AllStores = lazy(() => import("./Pages/SupperAdminLayout/AllStores/AllStores"));
+const PendingApprovals = lazy(() =>  import("./Pages/SupperAdminLayout/PendingApprovals/PendingApprovals"));
+const VendorsDirectory = lazy(() =>  import("./Pages/SupperAdminLayout/VendorsDirectory/VendorsDirectory"));
+const DomainRequests = lazy(() =>  import("./Pages/SupperAdminLayout/DomainRequests/DomainRequests"));
+const SubscriptionPlans = lazy(() =>  import("./Pages/SupperAdminLayout/SubscriptionPlans/SubscriptionPlans"));
+const VendorPayouts = lazy(() =>  import("./Pages/SupperAdminLayout/VendorPayouts/VendorPayouts"));
+const GlobalSalesLog = lazy(() =>  import("./Pages/SupperAdminLayout/GlobalSalesLog/GlobalSalesLog"));
+const SystemSettings = lazy(() =>  import("./Pages/SupperAdminLayout/SystemSettings/SystemSettings"));
 
 const NotFound = lazy(() => import("./Pages/NotFound/NotFound"));
 
@@ -163,14 +164,14 @@ const LStoreSettings = Loadable(StoreSettings);
 const LSuperAdminLayout = Loadable(SuperAdminLayout);
 const LAdminDashboard  = Loadable(AdminDashboard);
 const LAdminAnalytics = Loadable(AdminAnalytics);
-// const LManageStores = Loadable(ManageStores);
-// const LPendingStores = Loadable(PendingStores);
-// const LVendorsDirectory = Loadable(VendorsDirectory);
-// const LDomainRequests = Loadable(DomainRequests);
-// const LSubscriptionPlans = Loadable(SubscriptionPlans);
-// const LPayouts = Loadable(Payouts);
-// const LGlobalSalesLog = Loadable(GlobalSalesLog);
-// const LSystemSettings = Loadable(SystemSettings);
+const LAllStores = Loadable(AllStores);
+const LPendingApprovals = Loadable(PendingApprovals);
+const LVendorsDirectory = Loadable(VendorsDirectory);
+const LDomainRequests = Loadable(DomainRequests);
+const LSubscriptionPlans = Loadable(SubscriptionPlans);
+const LVendorPayouts = Loadable(VendorPayouts);
+const LGlobalSalesLog = Loadable(GlobalSalesLog);
+const LSystemSettings = Loadable(SystemSettings);
 
 const LNotFound = Loadable(NotFound);
 
@@ -254,14 +255,14 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <LAdminDashboard /> },
       { path: "analytics", element: <LAdminAnalytics /> },
-      // { path: "stores", element: <LManageStores /> },
-      // { path: "pending-stores", element: <LPendingStores /> },
-      // { path: "vendors", element: <LVendorsDirectory /> },
-      // { path: "custom-domains", element: <LDomainRequests /> },
-      // { path: "plans", element: <LSubscriptionPlans /> },
-      // { path: "payouts", element: <LPayouts /> },
-      // { path: "transactions", element: <LGlobalSalesLog /> },
-      // { path: "settings", element: <LSystemSettings /> }
+      { path: "stores", element: <LAllStores /> },
+      { path: "pending-stores", element: <LPendingApprovals  /> },
+      { path: "vendors", element: <LVendorsDirectory /> },
+      { path: "custom-domains", element: <LDomainRequests /> },
+      { path: "plans", element: <LSubscriptionPlans /> },
+      { path: "payouts", element: <LVendorPayouts/> },
+      { path: "transactions", element: <LGlobalSalesLog /> },
+      { path: "settings", element: <LSystemSettings /> }
     ]
   },
   {
