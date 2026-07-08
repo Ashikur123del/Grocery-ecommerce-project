@@ -85,10 +85,10 @@ const AllStores = lazy(() => import("./Pages/SupperAdminLayout/AllStores/AllStor
 const PendingApprovals = lazy(() =>  import("./Pages/SupperAdminLayout/PendingApprovals/PendingApprovals"));
 const VendorsDirectory = lazy(() =>  import("./Pages/SupperAdminLayout/VendorsDirectory/VendorsDirectory"));
 const DomainRequests = lazy(() =>  import("./Pages/SupperAdminLayout/DomainRequests/DomainRequests"));
-// const SubscriptionPlans = lazy(() =>  import("./Pages/SupperAdminLayout/SubscriptionPlans/SubscriptionPlans"));
+const SubscriptionPlans = lazy(() =>  import("./Pages/SupperAdminLayout/SubscriptionPlans/SubscriptionPlans"));
 // const VendorPayouts = lazy(() =>  import("./Pages/SupperAdminLayout/VendorPayouts/VendorPayouts"));
-const GlobalSalesLog = lazy(() =>  import("./Pages/SupperAdminLayout/GlobalSalesLog/GlobalSalesLog"));
-const SystemSettings = lazy(() =>  import("./Pages/SupperAdminLayout/SystemSettings/SystemSettings"));
+// const GlobalSalesLog = lazy(() =>  import("./Pages/SupperAdminLayout/GlobalSalesLog/GlobalSalesLog"));
+// const SystemSettings = lazy(() =>  import("./Pages/SupperAdminLayout/SystemSettings/SystemSettings"));
 
 const NotFound = lazy(() => import("./Pages/NotFound/NotFound"));
 
@@ -168,10 +168,10 @@ const LAllStores = Loadable(AllStores);
 const LPendingApprovals = Loadable(PendingApprovals);
 const LVendorsDirectory = Loadable(VendorsDirectory);
 const LDomainRequests = Loadable(DomainRequests);
-// const LSubscriptionPlans = Loadable(SubscriptionPlans);
+const LSubscriptionPlans = Loadable(SubscriptionPlans);
 // const LVendorPayouts = Loadable(VendorPayouts);
-const LGlobalSalesLog = Loadable(GlobalSalesLog);
-const LSystemSettings = Loadable(SystemSettings);
+// const LGlobalSalesLog = Loadable(GlobalSalesLog);
+// const LSystemSettings = Loadable(SystemSettings);
 
 const LNotFound = Loadable(NotFound);
 
@@ -259,10 +259,10 @@ export const router = createBrowserRouter([
       { path: "pending-stores", element: <LPendingApprovals  /> },
       { path: "vendors", element: <LVendorsDirectory /> },
       { path: "custom-domains", element: <LDomainRequests /> },
-      // { path: "plans", element: <LSubscriptionPlans /> },
+      { path: "plans", element: <LSubscriptionPlans /> },
       // { path: "payouts", element: <LVendorPayouts/> },
-      { path: "transactions", element: <LGlobalSalesLog /> },
-      { path: "settings", element: <LSystemSettings /> }
+      // { path: "transactions", element: <LGlobalSalesLog /> },
+      // { path: "settings", element: <LSystemSettings /> }
     ]
   },
   {
