@@ -21,7 +21,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-// প্ল্যাটফর্মের গ্লোবাল ডাটা (সুপার অ্যাডমিন পুরো ইকোসিস্টেমের হিসাব দেখবে)
+
 const weeklyData = [
   { name: "Sat", revenue: 45000, orders: 320 },
   { name: "Sun", revenue: 38000, orders: 280 },
@@ -48,7 +48,6 @@ const categoryData = [
   { name: "Others", value: 5 },
 ];
 
-// ডার্ক ব্যাকগ্রাউন্ডের সাথে ম্যাচিং করা নিয়ন কালার প্যালেট
 const chartColors = ["#6366F1", "#06B6D4", "#10B981", "#F59E0B", "#8B5CF6"];
 
 const statusColorMap = {
@@ -65,8 +64,7 @@ const AdminDashboard = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 p-6">
       <div className="container mx-auto space-y-6">
-        
-        {/* Header Section */}
+      
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 bg-slate-800/50 backdrop-blur-md p-6 rounded-xl border border-slate-700/50 shadow-xl">
           <div>
             <h1 className="text-3xl font-bold text-white mb-1">Super Admin Dashboard</h1>
@@ -76,11 +74,8 @@ const AdminDashboard = () => {
             <HiRefresh size={16} /> Refresh Data
           </button>
         </div>
-
-        {/* 4 Stats Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          
-          {/* Total Network Sales */}
+        
           <div className="bg-slate-800/70 backdrop-blur-sm rounded-xl p-5 shadow-lg border-l-4 border-indigo-500 border border-slate-700/60">
             <div className="flex justify-between items-start">
               <div className="space-y-1">
@@ -96,7 +91,7 @@ const AdminDashboard = () => {
             </div>
           </div>
 
-          {/* Total Network Orders */}
+
           <div className="bg-slate-800/70 backdrop-blur-sm rounded-xl p-5 shadow-lg border-l-4 border-cyan-500 border border-slate-700/60">
             <div className="flex justify-between items-start">
               <div className="space-y-1">

@@ -13,7 +13,6 @@ import {
 } from "react-icons/hi";
 import { toast } from "react-toastify";
 
-// ডেমো গ্লোবাল সেলস ডাটা
 const initialSales = [
   { id: "TXN-2026-901", vendor: "Apex Digital", region: "North America", units: 142, revenue: 185000, date: "06 Jul 2026" },
   { id: "TXN-2026-902", vendor: "Gadget BD", region: "South Asia", units: 320, revenue: 450000, date: "05 Jul 2026" },
@@ -32,7 +31,6 @@ const GlobalSalesLog = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [editingSaleId, setEditingSaleId] = useState(null);
 
-  // ইনলাইন এডিটের জন্য ফর্ম স্টেট
   const [editForm, setEditForm] = useState({
     vendor: "",
     region: "North America",
@@ -307,4 +305,4 @@ const GlobalSalesLog = () => {
   );
 };
 
-export default GlobalSalesLog;
+export default GlobalSalesLog;   

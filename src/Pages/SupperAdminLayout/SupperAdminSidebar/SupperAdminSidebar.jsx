@@ -43,7 +43,7 @@ export default function SuperAdminSidebar({ isSidebarOpen, setIsSidebarOpen }) {
 
   return (
     <>
-      {/* Mobile Overlay */}
+
       {isSidebarOpen && (
         <div 
           className="fixed inset-0 z-40 bg-black/40 lg:hidden" 
@@ -51,12 +51,10 @@ export default function SuperAdminSidebar({ isSidebarOpen, setIsSidebarOpen }) {
         />
       )}
 
-      {/* Sidebar Containers */}
       <aside className={`fixed inset-y-0 left-0 z-50 w-64 overflow-y-auto scrollbar-thin scrollbar scrollbar-thumb-amber-500 scrollbar-track-slate-800 bg-slate-950 text-white p-5 flex flex-col transform transition-transform duration-300 lg:translate-x-0 ${
         isSidebarOpen ? "translate-x-0" : "-translate-x-full"
       }`}>
         
-        {/* Admin Branding / Profile */}
         <div className="flex flex-col items-center mb-8 flex-shrink-0 border-b border-slate-800 pb-5">
           <div className="relative">
             <img 
@@ -72,7 +70,6 @@ export default function SuperAdminSidebar({ isSidebarOpen, setIsSidebarOpen }) {
           <p className="text-indigo-400 text-xs font-semibold tracking-wide uppercase mt-1">Platform Owner</p>
         </div>
 
-        {/* Dynamic Navigation */}
         <div className="flex-grow space-y-6">
           {menuGroups.map((group, idx) => (
             <div key={idx}>
@@ -80,8 +77,6 @@ export default function SuperAdminSidebar({ isSidebarOpen, setIsSidebarOpen }) {
                 {group.title}
               </p>
               {group.items.map((item) => {
-                // চেক করা হচ্ছে কারেন্ট পাথ এবং লিংকের পাথ মিলছে কিনা
-                // অথবা হোম ড্যাশবোর্ডের জন্য সাব-রুট (যেমন: /supper-admin/dashboard) হ্যান্ডেল করা
                 const isActive = location.pathname === item.path || 
                   (item.path === "/supper-admin" && location.pathname === "/supper-admin/dashboard");
                 
@@ -112,11 +107,10 @@ export default function SuperAdminSidebar({ isSidebarOpen, setIsSidebarOpen }) {
           ))}
         </div>
 
-        {/* System Logout */}
         <button className="flex items-center font-semibold justify-center gap-3 p-3 w-full text-white bg-slate-900 hover:bg-rose-600 transition-colors rounded-lg mt-6 flex-shrink-0 border border-slate-800 hover:border-transparent">
           <HiLogout size={20} /> Logout System
         </button>
       </aside>
     </>
   );
-}
+} 
